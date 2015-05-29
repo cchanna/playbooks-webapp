@@ -1,0 +1,27 @@
+<div class="col-xs-3 col-sm-3 col-md-12 stat col-centered">
+	<div class="row thin">
+		<span class="name <%=stat%>"><%=stat.capitalize%></span> 
+		<span class="value">
+<% if value >= 0 then %>
+			+<%=value%>
+<% else %>
+			&minus;<%=value*-1%>
+<% end %>
+		</span>
+	</div>
+<% case stat %>
+<% when "brave" %>
+	<p class="row move <%=stat%>">Court Peril</p>
+	<p class="row move <%=stat%>">Assert Yourself</p>
+<% when "fierce" %>
+	<p class="row move <%=stat%>">Lash Out</p>
+<% when "wary" %>
+	<p class="row move <%=stat%>">Take Stock</p>
+	<p class="row move <%=stat%>">Get Out of the Way</p>
+<% when "clever" %>
+	<p class="row move <%=stat%>">Recall Something Useful</p>
+	<p class="row move <%=stat%>">Use a Skill</span>
+<% when "strange" %>
+	<p class="row move <%=stat%>">Meddle With Magic</p>
+<% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="container-fluid experience">
+	<div class="row row-centered experience">
+		<div class="col-xs-4 col-sm-12 col-lg-12 col-centered experience">
+			Experience
+		</div>
+		<div class="col-xs-7 col-sm-12 col-md-12 col-centered experience-bubbles">
+			<% (1..5).each do |n|%>
+				<% if @character.experience >= n %>
+					<button type="button" class="btn btn-default btn-circle pressed"></button>
+				<% else %>
+					<button type="button" class="btn btn-default btn-circle"></button>
+				<% end %>
+			<% end %>	
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<% provide(:title, @character.name) %>
+<div class="row">
+	<h1><%=@character.name%></h1>
+	<h2>The <%=@character.archetype%></h2>
+</div>
+<div class="row row-centered">
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-centered panel center" id="stats">
+		<div class="container-fluid">
+			<%= render partial: "stats" %>
+		    <%= render partial: "experience" %>
+	    </div>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-centered panel center" id="losses">
+		<div class="container-fluid">
+		    <%= render partial: "losses" %>
+	    </div>
+	</div>
+
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-centered panel center">
+		<div class="container-fluid">
+		    <%= render partial: "archetype_feature" %>
+	    </div>
+	</div>
+
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-centered panel center">
+		text text text
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+	</div>
+	<div class="col-md-6">
+	</div>
+</div>
+<div class="row">
+</div>
