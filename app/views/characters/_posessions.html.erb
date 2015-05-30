@@ -1,0 +1,6 @@
+<h3>Posessions</h3>
+<div class="well well-sm">
+	<% @character.posessions.split("\n").each do |text| %>
+		<p><%= text %></p>
+	<% end %>
+</div>

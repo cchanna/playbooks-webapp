@@ -24,7 +24,7 @@ html {
 }
 
 body {
-	padding-top: 4rem;
+	// padding-top: 4rem;
 	background-color: $background;
 	font-family: Crimson;
 	color: white;
@@ -41,6 +41,7 @@ textarea {
 .center {
 	margin-left: auto;
 	margin-right: auto;
+	text-align: center;
 }
 
 .centered {
@@ -67,7 +68,7 @@ textarea {
 
 .panel {
 	// margin: 0.5rem;
-	// max-width: 30rem;
+	max-width: 60rem;
 	vertical-align: top;
 	border: 0.75rem solid $background;
 	border-radius: 1.25rem;
@@ -84,10 +85,15 @@ textarea {
 		font-size: 3rem;
 	}
 
+	h2 {
+		color: black;
+	}
+
 	h3 {
 		font-size: 1.5rem;
 		font-weight: normal;
 		text-align: center;
+		margin-top: 1rem;
 	}
 }
 
@@ -97,6 +103,7 @@ textarea {
 
 .well {
 	margin: 0;
+	text-align: left;
 }
 
 /* stat colors */
@@ -230,7 +237,7 @@ h2 {
 	font-size: 3em;
 	text-align: center;
 	font-weight: normal;
-	margin: 0 0 1rem 0;
+	margin: 1rem 0 1rem 0;
 	padding: 0;
 	color: white;
 }
@@ -264,7 +271,7 @@ result- {
 
 /* header */
 
-header.navbar-inverse {
+nav.navbar {
 	background-color: $background;
 	border-bottom: 1px solid #262040;
 }
@@ -282,6 +289,10 @@ header.navbar-inverse {
 		color: white;
 		text-decoration: none;
 	}
+}
+
+.icon-bar {
+	background-color: white;
 }
 
 /* sidebar */
