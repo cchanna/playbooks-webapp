@@ -129,10 +129,10 @@ textarea {
 			margin: -0.2rem 0 -0.2rem 0;
 		}
 		.name {
-			font: bold 2rem "Caslon Antique";
+			font: bold 2rem "Antique";
 		}
 		.value {
-			font: bold 2rem "Caslon Antique";
+			font: bold 2rem "Antique";
 		}
 		.move {
 			// height: 10;
@@ -148,10 +148,10 @@ textarea {
 	margin: 0 auto 0 auto;
 	padding: 1rem 0 0 0;
 	max-width: 16rem;
-	font: 1.5rem "Caslon Antique";
+	font: 1.5rem "Antique";
 	.experience {
 		text-align: center;
-		font: 1.5rem "Caslon Antique";
+		font: 1.5rem "Antique";
 		padding: 0;
 	}
 	.experience-bubbles {
@@ -213,7 +213,7 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6, {
-	font-family: "Caslon Antique";
+	font-family: "Antique";
 	font-weight: bold;
 	line-height: 1;
 }
@@ -241,12 +241,25 @@ p {
 	margin: 0;
 }
 
-stat- {
-	font-size: .8rem;
+.result {
+	font-weight: bold;
+	&:before {
+		content: "\f005";
+	}
 }
 
-star- {
-	font-family: "Icomoon";
+stat- {
+	font-size: 0.8rem;
+}
+
+result- {
+	font-weight: bold;
+	&:before {
+		content: "*";
+		font-family: "icon";
+		font-size: 0.8rem;
+		line-height: 1;
+	}
 }
 
 /* header */
@@ -261,7 +274,7 @@ header.navbar-inverse {
 	margin-right: 10px;
 	font-size: 1.7em;
 	color: white;
-	font-family: "Caslon Antique";
+	font-family: "Antique";
 	text-transform: uppercase;
 	padding-top: 9px;
 	font-weight: bold;

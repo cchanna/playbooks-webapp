@@ -1,15 +1,10 @@
 <h1>Virtues</h1>
-<div class="row">
-	<div class="col-xs-12">
-		<% if @character.virtue_noble %>
-			<h3 class="brave">Noble</h3>
-			<p>You gain +1 <stat- class="brave">BRAVE</stat->. When you <strong>distract something dnagerous to keep it away from a friend,</strong> roll + <stat- class="brave">BRAVE</stat->. <span class="icon-star">*</span><strong>On a hit,</strong> you draw its attention, alright – maybe you should have thought this through better. Gain Fate with your friend. <star->*@#asdbafklg)(*$%R^><</star-><strong>On a 7-9,</strong> whatever you distracted gains Fate with you.</p>
-		<% end %>
-	</div>
-	<div class="col-xs-12">
-		<% if true %>
-			<h3 class="clever">Practical</h3>
-			<p>You gain +1 <stat- class="clever">CLEVER</stat->. When you <strong>recall what should be common knowledge</strong> (such as the location of landmarks in a city or the local customs) <strong>or make use of a down-to-earth skill</strong> (such as operating a common piece of machinery or making simple repairs), the information is recalled or the job gets done without any complications or added difficulties – no need to roll.</p>
-		<% end %>
-	</div>
-</div>
+<% if @character.virtue_noble %>
+	<h3 class="brave">Noble</h3>
+	<p>You gain +1 <stat- class="brave">BRAVE</stat->. When you <strong>distract something dangerous to keep it away from a friend,</strong> roll + <stat- class="brave">BRAVE</stat->. <result->On a hit,</result-> you draw its attention, alright – maybe you should have thought this through better. Gain Fate with your friend. <result->On a 7-9,</result-> whatever you distracted gains Fate with you.</p>
+<% end %>
+
+<% if @character.virtue_practical %>
+	<h3 class="clever">Practical</h3>
+	<p>You gain +1 <stat- class="clever">CLEVER</stat->. When you <strong>recall what should be common knowledge</strong> (such as the location of landmarks in a city or the local customs) <strong>or make use of a down-to-earth skill</strong> (such as operating a common piece of machinery or making simple repairs), the information is recalled or the job gets done without any complications or added difficulties – no need to roll.</p>
+<% end %>
