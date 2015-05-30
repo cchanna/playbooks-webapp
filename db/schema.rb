@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20150529001448) do
     t.text     "look"
     t.boolean  "virtue_noble"
     t.boolean  "virtue_strong"
+    t.text     "virtue_strong_description"
     t.boolean  "virtue_unassuming"
     t.boolean  "virtue_practical"
     t.boolean  "virtue_weird"
+    t.text     "virtue_weird_description"
     t.string   "artifact_name"
     t.integer  "artifact_type"
     t.integer  "artifact_look"
@@ -51,8 +53,8 @@ ActiveRecord::Schema.define(version: 20150529001448) do
     t.integer  "artifact_risk"
     t.string   "artifact_risk_soughtby"
     t.integer  "path"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -4,7 +4,30 @@
 	<p>You gain +1 <stat- class="brave">BRAVE</stat->. When you <strong>distract something dangerous to keep it away from a friend,</strong> roll + <stat- class="brave">BRAVE</stat->. <result->On a hit,</result-> you draw its attention, alright – maybe you should have thought this through better. Gain Fate with your friend. <result->On a 7-9,</result-> whatever you distracted gains Fate with you.</p>
 <% end %>
 
+<% if @character.virtue_strong %>
+	<h3 class="fierce">Strong</h3>
+	<p>You gain +1 <stat- class="fierce">FIERCE</stat->. Choose a fighting style (such as fencing, gunfights, or hand-to-hand combat). You can hold your own while fighting in that style.
+	</p>
+	<div class="well well-small">
+		<%= @character.virtue_strong_description %>
+	</div>
+<% end %>
+
+<% if @character.virtue_unassuming %>
+	<h3 class="wary">Unassuming</h3>
+	<p>You gain +1 <stat- class="wary">WARY</stat->. Others often underestimate your capabilities – as long as you don't do anything to draw attention to yourself, you will tend to be the last person anyone notices.
+	</p>
+<% end %>
+
 <% if @character.virtue_practical %>
 	<h3 class="clever">Practical</h3>
 	<p>You gain +1 <stat- class="clever">CLEVER</stat->. When you <strong>recall what should be common knowledge</strong> (such as the location of landmarks in a city or the local customs) <strong>or make use of a down-to-earth skill</strong> (such as operating a common piece of machinery or making simple repairs), the information is recalled or the job gets done without any complications or added difficulties – no need to roll.</p>
+<% end %>
+
+<% if @character.virtue_weird %>
+	<h3 class="strange">Weird</h3>
+	<p>You gain +1 <stat- class="strange">STRANGE</stat->. Maybe you're not so normal after all. There's something minor and subtle about you that is mysterious, and perhaps supernatural in nature. Maybe you can smell magic, or you start hearing people's thoughts if they look you in the eyes. Nothing too obvious, but enough to mark you as different.</p>
+	<div class="well well-small">
+		<%= @character.virtue_weird_description %>
+	</div>
 <% end %>

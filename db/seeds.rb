@@ -31,9 +31,8 @@ Character.create!(
   dead: false,
   unprepared: true,
   notes: "Nobody too special",
-  look: "Meek",
+  look: "Meek", 
   virtue_noble: true,
-  virtue_strong: false,
   virtue_unassuming: true,
-  virtue_practical: false,
-  virtue_weird: true) 
+  virtue_weird: true,
+  virtue_weird_description: "I can hear the spirits of the world whispering to me") 

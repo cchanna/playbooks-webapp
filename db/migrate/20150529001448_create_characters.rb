@@ -28,9 +28,11 @@ class CreateCharacters < ActiveRecord::Migration
 
     	t.boolean :virtue_noble
     	t.boolean :virtue_strong
+        t.text :virtue_strong_description
     	t.boolean :virtue_unassuming
     	t.boolean :virtue_practical
     	t.boolean :virtue_weird
+        t.text :virtue_weird_description
 
     	t.string :artifact_name
     	t.integer :artifact_type
