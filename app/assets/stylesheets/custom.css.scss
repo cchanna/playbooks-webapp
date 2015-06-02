@@ -290,16 +290,26 @@ ul {
 nav.navbar {
 	background-color: $background;
 	border-bottom: 1px solid #262040;
+	ul {
+		li {
+			padding: 1rem;
+			color: #428BCA;
+			a {
+				display: inline-block;
+				padding: 0;
+			}
+		}
+	}
 }
 
 #logo {
+	padding-top: 0.9rem;
 	float: left;
 	margin-right: 10px;
 	font-size: 1.7em;
 	color: white;
 	font-family: "Antique";
 	text-transform: uppercase;
-	padding-top: 9px; 
 	font-weight: bold;
 	&:hover {
 		color: white;
