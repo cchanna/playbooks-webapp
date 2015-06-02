@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529001448) do
+ActiveRecord::Schema.define(version: 20150602002448) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
@@ -56,6 +56,29 @@ ActiveRecord::Schema.define(version: 20150529001448) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "database_moves", force: :cascade do |t|
+    t.string   "name"
+    t.string   "stat"
+    t.string   "archetype"
+    t.text     "text"
+    t.text     "options"
+    t.boolean  "has_description?"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "database_move_id"
+    t.text     "description"
+    t.integer  "options",          default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "moves", ["character_id"], name: "index_moves_on_character_id"
+  add_index "moves", ["database_move_id"], name: "index_moves_on_database_move_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

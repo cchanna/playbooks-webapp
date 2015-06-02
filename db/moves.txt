@@ -1,0 +1,27 @@
+A Hero's Fate
+Ally
+Brave
+(Requires BRAVE+2) You have stumbled upon, been gifted, or otherwise acquired an Artifact from the Hero achetype.
+
+A Warrior's Honor
+Ally
+Brave
+(Requires FIERCE+2) Choose a Path from the Warrior archetype.
+
+Unfathomably Lucky
+Ally
+Wary
+(Requires WARY+2) In spite of the constant danger surrounding you, you always seem to be in the right place at the right time. When you #count on your luck to remove you from danger's path,# roll + WARY. *On a 10+, Something fortunate (and often contrived) occurs that not only leaves you unscathed, but also advantaged: you end up in a superior position, an enemy is disrupted, or you stumble across something useful or valuable – Narrator's choice. *On a 7-9, you still get a lucky break, but it's immediately followed by misfortune: you take a hit, lose track of something, or end up in a tight spot – Narrator's choice.
+
+Pretty Much an Expert
+Ally
+Clever
+(Requires CLEVER+2) During your adventures, you've managed to pick up some very useful skills along the way. Choose an expertise (such as sailling, smithing, or playing an instrument). When you #/C/Use a Skill/C/ related to your expertise and roll a 7+,# choose an additional option from the list. When you #/C/Make Known a Fact/C/ related to your expertise and roll a 10+,# the Narrator will also add some additional useful information.
+
+Natural Power
+ALly
+Strange
+(Requires STRANGE+2) You have developed a natural talent for magic; describe its natur and its limitations. When you #tap into your power,# describe the desired effects and roll + STRANGE. *On a 10+, you get what you needed, but maybe not exactly how you expected it. *On a 7-9, you get what you needed, but choose 1:
+>you get more than you bargained for
+>you get less than you hoped for
+>there are unexpected side effects or consequences
