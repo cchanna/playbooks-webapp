@@ -269,6 +269,22 @@ result- {
 	}
 }
 
+ul {
+	padding-left: 0.25rem;
+	list-style: none;
+	font-size: 1rem;
+	li {
+		font-style: italic;
+		&:before {
+			content: ">";
+			font-family: "icon";
+			line-height: 1;
+			margin-right: 0.5rem;
+			font-style: normal;
+		}
+	}
+}
+
 /* header */
 
 nav.navbar {

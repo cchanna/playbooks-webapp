@@ -12,11 +12,11 @@ moves.each do |move|
   has_description = false
   list = false
   lines.each do |line|
-    line.gsub!(/BRAVE/, '<stat- class="brave">BRAVE</stat>')
-    line.gsub!(/FIERCE/, '<stat- class="fierce">FIERCE</stat>')
-    line.gsub!(/WARY/, '<stat- class="wary">WARY</stat>')
-    line.gsub!(/CLEVER/, '<stat- class="clever">CLEVER</stat>')
-    line.gsub!(/STRANGE/, '<stat- class="strange">STRANGE</stat>')
+    line.gsub!(/BRAVE/, '<stat- class="brave">BRAVE</stat->')
+    line.gsub!(/FIERCE/, '<stat- class="fierce">FIERCE</stat->')
+    line.gsub!(/WARY/, '<stat- class="wary">WARY</stat->')
+    line.gsub!(/CLEVER/, '<stat- class="clever">CLEVER</stat->')
+    line.gsub!(/STRANGE/, '<stat- class="strange">STRANGE</stat->')
 
     line.gsub!(/(\#.*?\#)/) {|s| '<strong>' + s[1..-2] + '</strong>'}
     line.gsub!(/\*.*?,/) {|s| '<result->' + s[1..-1] + '</result->'}
@@ -34,14 +34,14 @@ moves.each do |move|
         text += '<ul>'
         list = true
       end
-      text += '<li>' + line + '</li>'
+      text += '<li>' + line[1..-1] + '</li>'
     else
       if list == true then
         text += '</ul>'
         list = false
       end
       if line[0] == "@" then
-        options += line
+        options += line[1..-1]
       elsif line[0] == "&" then
         has_description = true
       else
