@@ -73,6 +73,7 @@ User.create!(name:  "Cerisa",
 # Characters
 Character.create!(
   name: "Claire",
+  slug: "claire",
   archetype: "Ally",
   goal: "the World-Tree",
   motive: "protect Saanvi",

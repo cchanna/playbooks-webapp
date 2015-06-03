@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'demo'    => 'users#show'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users do
-    resources :characters
-  end
+  resources :characters, param: :slug
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

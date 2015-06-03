@@ -1,6 +1,8 @@
 class CharactersController < ApplicationController
+  
+
   def show
-  	@character = Character.find(params[:id])
+  	@character = Character.find_by(slug: params[:slug])
   end
 
   def new
@@ -27,7 +29,6 @@ class CharactersController < ApplicationController
 
   private
   	def Character_params
-  		params.require(:Character).permit(:name, :email, :password, :password_confirmation)
   	end
 
 end
