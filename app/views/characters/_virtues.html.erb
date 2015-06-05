@@ -8,8 +8,10 @@
 	<h3 class="fierce">Strong</h3>
 	<p>You gain +1 <stat- class="fierce">FIERCE</stat->. Choose a fighting style (such as fencing, gunfights, or hand-to-hand combat). You can hold your own while fighting in that style.
 	</p>
-	<div class="well well-small">
-		<%= @character.virtue_strong_description %>
+	<div class="well well-sm">
+		<% @character.virtue_strong_description.split("\n").each do |text| %>
+			<p><%= text %></p>
+		<% end %>
 	</div>
 <% end %>
 
@@ -27,7 +29,9 @@
 <% if @character.virtue_weird %>
 	<h3 class="strange">Weird</h3>
 	<p>You gain +1 <stat- class="strange">STRANGE</stat->. Maybe you're not so normal after all. There's something minor and subtle about you that is mysterious, and perhaps supernatural in nature. Maybe you can smell magic, or you start hearing people's thoughts if they look you in the eyes. Nothing too obvious, but enough to mark you as different.</p>
-	<div class="well well-small">
-		<%= @character.virtue_weird_description %>
+	<div class="well well-sm">
+		<% @character.virtue_weird_description.split("\n").each do |text| %>
+			<p><%= text %></p>
+		<% end %>
 	</div>
 <% end %>

@@ -3,7 +3,9 @@
 		<h3>Losses</h3>
 		<p><em>I have lost...</em></p>
 		<div class="well well-sm">
-			<%= @character.losses%>
+			<% @character.losses.split("\n").each do |text| %>
+				<p><%= text %></p>
+			<% end %>
 		</div>
 		<p><em>but I still have...</em></p>
 	</div>

@@ -1,4 +1,6 @@
 <h1 class="gap">Notes</h1>
 <div class="well">
-	<%= @character.notes %>
+	<% @character.notes.split("\n").each do |text| %>
+		<p><%= text %></p>
+	<% end %>
 </div>
