@@ -4,3 +4,17 @@
 		<p><%= text %></p>
 	<% end %>
 </div>
+<div class="container-fluid unprepared">
+	<div class="row row-centered">
+		<div class="unprepared">
+			Unprepared
+		</div>
+		<div class="unprepared-bubble">
+			<% if @character.unprepared %>
+				<button type="button" class="btn btn-default btn-circle pressed"></button>
+			<% else %>
+				<button type="button" class="btn btn-default btn-circle"></button>
+			<% end %>
+		</div>
+	</div>
+</div>

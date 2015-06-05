@@ -108,3 +108,15 @@ Move.create!(
   database_move_id: 5,
   description: "I can call upon the spirits of the world to aid me with their magic",
 )
+
+Fate.create!(
+  character_id: 1,
+  name: "Aya",
+  value: 3
+)
+
+Fate.create!(
+  character_id: 1,
+  name: "Yuki",
+  value: 1
+)

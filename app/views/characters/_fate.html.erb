@@ -1,1 +1,14 @@
 <h1>Fate</h1>
+<div class="row row-centered">
+<% @character.fates.each do |fate| %>
+	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered fate center">
+		<div class="row thin">
+			<span class="fate-name"><%= fate.name %></span>
+			<% (1..fate.value).each do |n| %>
+				<i class="fate">*</i>
+			<% end %>
+			<i class="fate-plus">+</i>
+		</div>
+	</div>
+<% end %>
+<div>

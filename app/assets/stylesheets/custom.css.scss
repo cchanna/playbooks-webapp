@@ -83,6 +83,8 @@ textarea {
 
 	h1 {
 		font-size: 3rem;
+
+		
 	}
 
 	h2 {
@@ -167,6 +169,24 @@ textarea {
 	}
 }
 
+.container-fluid.unprepared {
+	margin: 0 auto 0 auto;
+	padding: 1rem 0 0 0;
+	max-width: 16rem;
+	font: 1.5rem "Antique";
+	.unprepared {
+		display: inline-block;
+		text-align: center;
+		font: 1.5rem "Antique";
+		padding: 0;
+	}
+	.unprepared-bubble {
+		display: inline-block;
+		text-align: center;
+		padding: 0;
+	}
+}
+
 /* loss panel */
 
 #losses {
@@ -184,12 +204,45 @@ textarea {
 	}
 }
 
+/* posessions */
+
+// .unprepared {
+// 	display: inline-block;
+// 	padding: 1rem 0 0 0;
+// 	text-align: center;
+// 	font: bold 1.5rem "Antique";
+// }
+
 /* archetype panel */
 
 #archetype {
 	p {
 		margin-bottom: 1rem;
 	}
+}
+
+/* fate panel */
+div.fate {
+	// min-width: 7rem;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.fate-name {
+	font: bold 2rem "Antique";
+	text-align: center;
+}
+
+i.fate {
+	font-size: 1.25rem;
+}
+
+i.fate-plus {
+	font-size: 1rem;
+	// display: inline-block;
+	// vertical-align: middle;
+	vertical-align: 0.1rem;
+	line-height: 1;
 }
 
 /* buttons */
@@ -231,6 +284,10 @@ h1 {
 	text-align: center;
 	margin: 0;
 	padding: 0;
+
+	&.gap {
+		margin-top: 2rem; 
+	}
 }
 
 h2 {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603221321) do
+ActiveRecord::Schema.define(version: 20150605214818) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20150603221321) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  create_table "fates", force: :cascade do |t|
+    t.integer  "character_id"
+    t.string   "name"
+    t.integer  "value"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "fates", ["character_id"], name: "index_fates_on_character_id"
 
   create_table "moves", force: :cascade do |t|
     t.integer  "character_id"
