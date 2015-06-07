@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20150605214818) do
 
   create_table "characters", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "slug"
     t.string   "archetype"

@@ -10,10 +10,17 @@
 			Unprepared
 		</div>
 		<div class="unprepared-bubble">
-			<% if @character.unprepared %>
-				<button type="button" class="btn btn-default btn-circle pressed"></button>
+			<% if logged_in? && @character.owned_by?(current_user) %>
+				<%= form_for @character, :remote => true do |f| %>
+					<%= f.check_box 'unprepared', :class => 'submittable awesome-checkbox' , id: "unprepared", :data => {'icon-checked' => 'i i-circle', 'icon-unchecked' => 'i i-circle-o'}%>
+				<% end %>
+
 			<% else %>
-				<button type="button" class="btn btn-default btn-circle"></button>
+				<% if @character.unprepared %>
+					<i class="i i-circle"></i>
+				<% else %>
+					<i class="i i-circle-o"></i>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

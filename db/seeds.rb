@@ -72,6 +72,7 @@ User.create!(name:  "Cerisa",
 
 # Characters
 Character.create!(
+  user_id: 1,
   name: "Claire",
   slug: "claire",
   archetype: "Ally",

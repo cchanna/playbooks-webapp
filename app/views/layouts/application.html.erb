@@ -7,6 +7,7 @@
       'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application',
       'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'awesome-checkbox' %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,3 +28,6 @@
     </div>
   </body>
 </html>
+<script>
+initialize_awesome_checkbox();
+</script>

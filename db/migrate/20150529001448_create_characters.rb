@@ -1,6 +1,7 @@
 class CreateCharacters < ActiveRecord::Migration
   def change
     create_table :characters do |t|
+        t.belongs_to :user
     	t.string :name
         t.string :slug
     	t.string :archetype

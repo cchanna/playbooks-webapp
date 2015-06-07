@@ -18,17 +18,18 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @character = Character.find(params[:id])
-    if @character.update_attributes(Character_params)
-      flash[:success] = "Profile updated"
-      redirect_to @character
-    else
-      render 'edit'
-    end
+    @character = Character.find_by(slug: params[:slug])
+    @character.update_attributes(character_params)
+      # flash[:success] = "Profile updated"
+      # redirect_to @character
+    # else
+      # render 'edit'
+    # end
   end
 
   private
-  	def Character_params
+  	def character_params
+      params.require(:character).permit(:unprepared)
   	end
 
 end

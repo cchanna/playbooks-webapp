@@ -251,17 +251,23 @@ i.fate-plus {
 
 /* buttons */
 .btn-circle {
-  	width: 1.25rem;
+	width: 1.25rem;
 	height: 1.25rem;
   	text-align: center;
   	padding: 0;
   	font-size: 1rem;
   	margin-bottom: 0.25rem;
-
-  	// line-height: 2rem;
   	border-radius: 1.5rem;
   	border: 3px solid black;
+}
+
+button.btn-circle {
   	&:hover {
+  		background-color: #AAAAFF;
+  		border-color: #000077;
+  	}
+
+  	&:active {
   		background-color: #AAAAFF;
   		border-color: #000077;
   	}
@@ -271,6 +277,34 @@ i.fate-plus {
 	  		background-color: #3333AA;
 	  		border-color: #000077;
   		}
+  	}
+}
+
+div.btn-circle.inactive {
+	 -ms-touch-action: none;
+      touch-action: none;
+  	cursor: default;
+  	-webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+	&:hover {
+  		background-color: white;
+  		border-color: black;
+  		box-shadow: none;
+  	}
+  	&:active {
+  		background-color: white;
+  		border-color: black;
+  		box-shadow: none;
+  	}
+  	&:focus {
+  		background-color: white;
+  		border-color: black;
+  		box-shadow: none;
+  	}
+  	&.pressed {
+  		background-color: black;
   	}
 }
 
@@ -544,5 +578,60 @@ input {
 		overflow: auto;
 		padding: 10px 0;
 		border-bottom: 1px solid $gray-lighter;
+	}
+}
+
+.awesome-checkbox{
+	display:none;
+}
+
+.awesome-checkbox-label{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.i-circle-o {
+	position: relative;
+	&:before {
+		position: relative;
+		top: 0.1rem;
+		content: "o";
+		z-index: 1;
+	}
+	&:hover {
+		cursor: pointer;
+		&:after {
+			content: "O";
+			position: absolute;
+			left: 0;
+			top: 0.1rem;
+			color: #9999FF;
+			z-index: 0;
+		}
+	}
+}
+.i-circle {
+	position: relative;
+	&:before {
+		position: relative;
+		top: 0.1rem;
+		content: "O";
+		z-index: 0;
+	}
+	&:hover {
+		cursor: pointer;
+		&:before {
+			color: #222288;
+		}
+		&:after {
+			content: "o";
+			position: absolute;
+			left: 0rem;
+			top: 0.1rem;
+			z-index: 1;
+		}
 	}
 }

@@ -9,4 +9,9 @@ class Character < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def owned_by?(user)
+		return (user.id == user_id)
+	end
+
 end
