@@ -9,19 +9,20 @@
 		<div class="unprepared">
 			Unprepared
 		</div>
-		<div class="unprepared-bubble">
-			<% if logged_in? && @character.owned_by?(current_user) %>
-				<%= form_for @character, :remote => true do |f| %>
-					<%= f.check_box 'unprepared', :class => 'submittable awesome-checkbox' , id: "unprepared", :data => {'icon-checked' => 'i i-circle', 'icon-unchecked' => 'i i-circle-o'}%>
-				<% end %>
-
-			<% else %>
+		<% if logged_in? && @character.owned_by?(current_user) %>
+			<div class="unprepared-bubble active">
+					<%= form_for @character, :remote => true do |f| %>
+						<%= f.check_box 'unprepared', :class => 'submittable awesome-checkbox' , id: "unprepared", :data => {'icon-checked' => 'i i-circle', 'icon-unchecked' => 'i i-circle-o'}%>
+					<% end %>
+			</div>
+		<% else %>
+			<div class="unprepared-bubble">
 				<% if @character.unprepared %>
 					<i class="i i-circle"></i>
 				<% else %>
 					<i class="i i-circle-o"></i>
 				<% end %>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 </div>

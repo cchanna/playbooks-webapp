@@ -177,7 +177,7 @@ textarea {
 	font-family: "icon";
 	white-space: nowrap;
 	letter-spacing: -0.3rem;
-	a {
+	&.active a {
 		color: black;
 		text-decoration: none;
 		display: inline-block;
@@ -610,29 +610,32 @@ input {
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	cursor: pointer;
 }
 
-.i-circle-o {
-	position: relative;
-	&:before {
+.unprepared-bubble {
+	.i-circle-o {
 		position: relative;
-		// top: 0.1rem;
-		content: "o";
-		z-index: 1;
+		&:before {
+			position: relative;
+			// top: 0.1rem;
+			content: "o";
+			z-index: 1;
+		}
 	}
-	&:hover {
+	&.active .i-circle-o:hover {
 		color: #9999FF;
 	}
-}
-.i-circle {
-	position: relative;
-	&:before {
+	.i-circle {
 		position: relative;
-		// top: 0.1rem;
-		content: "O";
-		z-index: 0;
+		&:before {
+			position: relative;
+			// top: 0.1rem;
+			content: "O";
+			z-index: 1;
+		}
 	}
-	&:hover {
+	&.active .i-circle:hover {
 		color: #9999FF;
 	}
 }
