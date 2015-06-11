@@ -8,6 +8,9 @@ $(document).ready(function(){
 	$(document).on('change', '.awesome-checkbox', function(){
 		$('label[for="'+ $(this).attr('id') +'"]').html(get_awesome_checkbox_icon(this));
 	});
+	$(document).on('change', '.exp-bubble', function(){
+		$('label[for="'+ $(this).attr('id') +'"]').html(get_awesome_checkbox_icon(this));
+	});
 });
 
 function initialize_awesome_checkbox(){

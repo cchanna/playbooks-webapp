@@ -19,3 +19,4 @@
 $(document).on('change', '.submittable', function() {
 $(this).parents('form:first').submit();
 });
+

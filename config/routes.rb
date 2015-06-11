@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get    'demo'    => 'users#show'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :characters, param: :slug
+  resources :characters, param: :slug do
+    get 'minus_experience', on: :member
+    get 'plus_experience', on: :member
+  end 
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

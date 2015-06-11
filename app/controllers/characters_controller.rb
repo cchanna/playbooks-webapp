@@ -27,9 +27,26 @@ class CharactersController < ApplicationController
     # end
   end
 
+  def minus_experience
+    @character = Character.find_by(slug: params[:slug])
+    @character.decrement!(:experience)
+    
+    respond_to do |f|
+      f.js
+    end
+  end
+
+  def plus_experience
+    @character = Character.find_by(slug: params[:slug])
+    @character.increment!(:experience)
+    respond_to do |f|
+      f.js
+    end
+  end
+
   private
   	def character_params
-      params.require(:character).permit(:unprepared)
+      params.require(:character).permit(:experience, :unprepared)
   	end
 
 end
