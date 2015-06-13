@@ -29,8 +29,7 @@ class CharactersController < ApplicationController
 
   def minus_experience
     @character = Character.find_by(slug: params[:slug])
-    @character.decrement!(:experience)
-    
+    @character.decrement!(:experience) if @character.experience > 0
     respond_to do |f|
       f.js
     end
@@ -38,7 +37,7 @@ class CharactersController < ApplicationController
 
   def plus_experience
     @character = Character.find_by(slug: params[:slug])
-    @character.increment!(:experience)
+    @character.increment!(:experience) if @character.experience < 5
     respond_to do |f|
       f.js
     end

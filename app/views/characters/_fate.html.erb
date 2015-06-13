@@ -1,17 +1,30 @@
 <h1>Fate</h1>
 <div class="row row-centered">
 <% @character.fates.each do |fate| %>
-	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered fate center">
+	<% @fate = fate %>
+	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered center fate-center" id="fate<%=fate.id%>">
 		<div class="row thin">
-			<span class="fate-name"><%= fate.name %></span>
-			<% (1..fate.value).each do |n| %>
-				<i class="fate">*</i>
+			<% if logged_in? && @character.owned_by?(current_user) %>
+				<span class="fate-name"><%= fate.name %></span>
+				<span class="fate active">
+					<% (1..fate.value).each do |n| %>
+						<% @fateN = n %>
+						<%= link_to "*", use_fate_path(fate), remote: true, id: "fate"+fate.id.to_s+"_#{n}"%>
+					<% end %>
+					<%= link_to "+", plus_fate_path(fate), remote: true, class: "plus", id: "fate"+fate.id.to_s+"_plus" %>
+				</span>
+			<% else %>
+				<span class="fate-name"><%= fate.name %></span>
+				<span class="fate">
+					<% (1..fate.value).each do |n| %>
+						<span id="fate<%=fate.id%>_<%=n%>">*</span>
+					<% end %>
+				</span>
 			<% end %>
-			<i class="fate-plus">+</i>
 		</div>
 	</div>
 <% end %>
-<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered fate center">
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered center fate-center">
 	<div class="row thin">
 		<i class="fate-plus">+</i>
 	</div>

@@ -11,6 +11,8 @@ $clever: #0094cf;
 $strange: #dd780f;
 $background: #060020;
 
+$hover: #428bca;
+
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -244,7 +246,7 @@ textarea {
 }
 
 /* fate panel */
-div.fate {
+div.fate-center {
 	// min-width: 7rem;
 	text-align: center;
 	white-space: nowrap;
@@ -256,14 +258,31 @@ div.fate {
 	text-align: center;
 }
 
-i.fate {
-	font-size: 1.25rem;
+.fate {
+	a {
+		font-family: "icon";
+		font-size: 1.25rem;
+		color: black;
+		text-decoration: none;
+		&:hover {
+			color: $hover;
+		}
+	}
+	.plus {
+		font-size: 1rem;
+		vertical-align: 0.1rem;
+		line-height: 1;
+	}
+	span {
+		font-family: "icon";
+		font-size: 1.25rem;
+		color: black;
+		text-decoration: none;
+	}
 }
 
 i.fate-plus {
 	font-size: 1rem;
-	// display: inline-block;
-	// vertical-align: middle;
 	vertical-align: 0.1rem;
 	line-height: 1;
 }

@@ -62,8 +62,8 @@ end
 
 
 # Users
-User.create!(name:  "Cerisa",
-             email: "cerisa@strangerelics.com",
+User.create!(name:  "Test",
+             email: "test@example.com",
              password:              "password",
              password_confirmation: "password",
              admin:     true,

@@ -1,0 +1,1 @@
+$("#fate<%=@fate.id%>_plus").before(' <%= escape_javascript link_to "*", use_fate_path(@fate), remote: true, id: "fate"+@fate.id.to_s+"_"+@fate.value.to_s %> ');

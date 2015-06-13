@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     get 'minus_experience', on: :member
     get 'plus_experience', on: :member
   end 
+
+  resources :fate do
+    get 'use', on: :member
+    get 'plus', on: :member
+  end
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
