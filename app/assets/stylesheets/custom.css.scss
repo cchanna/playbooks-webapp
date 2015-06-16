@@ -214,16 +214,55 @@ textarea {
 /* loss panel */
 
 #losses {
-	.loss {
-		font-size: 1.2rem;
-		position: relative;
-		&.lost::after {
-			border-bottom: 2px solid black;
-			content: "";
-			left: 0;
-			position: absolute;
-			right: 0;
-			top: 50%;
+	div.loss {
+		padding-top: 0.5rem;
+		i.loss {
+			color: black;
+			position: relative;
+			&.lost::after {
+				border-bottom: 2px solid black;
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 50%;
+			}
+			&.loss:before {
+				position: relative;
+				font-size: 1.2rem;
+				font-family: Crimson;
+			}
+			&.pride:before {
+				content: "my pride";
+			}
+			&.health:before {
+				content: "my health";
+			}
+			&.strength:before {
+				content: "my strength";
+			}
+			&.hope:before {
+				content: "my hope";
+			}
+			&.life:before {
+				content: "my life";
+			}
+			&:hover {
+				color: $hover;
+				text-decoration: none;
+				text-decoration-color: $hover;
+				&.lost::after {
+					border-color: $hover;
+				}
+			}
+			&:focus {
+				text-decoration: none;
+				color: $hover;
+				text-decoration-color: $hover;
+				&.lost::after {
+					border-color: $hover;
+				}
+			}
 		}
 	}
 }

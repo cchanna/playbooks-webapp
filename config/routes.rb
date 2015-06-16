@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :characters, param: :slug do
     get 'minus_experience', on: :member
     get 'plus_experience', on: :member
+    get 'toggle_loss', on: :member
   end 
 
   resources :fate do

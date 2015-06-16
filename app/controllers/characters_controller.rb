@@ -43,9 +43,28 @@ class CharactersController < ApplicationController
     end
   end
 
+  def toggle_loss
+    @character = Character.find_by(slug: params[:slug])
+    case params[:loss]
+    when "pride"
+      @character.toggle!(:pride)
+    when "health"
+      @character.toggle!(:health)
+    when "strength"
+      @character.toggle!(:strength)
+    when "hope"
+      @character.toggle!(:hope)
+    when "life"
+      @character.toggle!(:life)
+    end
+    respond_to do |f|
+      f.js
+    end
+  end
+
   private
   	def character_params
-      params.require(:character).permit(:experience, :unprepared)
+      params.require(:character).permit(:experience, :unprepared, :pride, :health, :strength, :hope, :life)
   	end
 
 end

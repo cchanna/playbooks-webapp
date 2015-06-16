@@ -1,0 +1,14 @@
+<% @loss = loss %>
+<div class="centered loss">
+	<% if active %>
+		<%= form_for @character, :remote => true do |f| %>
+			<%= f.check_box loss, :class => 'submittable awesome-checkbox loss' , id: loss, :data => {'icon-checked' => 'i  ' + loss + ' loss lost', 'icon-unchecked' => 'i ' + loss + ' loss'}%>
+		<% end %>
+	<% else %>
+		<% if lost %>
+			<span class="loss lost">my <%= loss %></span>
+		<% else %>
+			<span class="loss">my <%= loss %></span>
+		<% end %>
+	<% end %>
+</div>
