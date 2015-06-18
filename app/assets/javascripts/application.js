@@ -17,6 +17,19 @@
 //= require_tree .
 
 $(document).on('change', '.submittable', function() {
-$(this).parents('form:first').submit();
+	$(this).parents('form:first').submit();
 });
 
+function save_data(form, text) {
+	$('#overlay').css("display", "none");
+	$(text).css("display", "block");
+	$(text).text($(form).text());
+	$(form).parents('form:first').submit();
+	$(form).remove();
+}
+
+// $(document).ready(function() {
+// 	$("#test").click(function() {
+// 		$('#overlay').css("display", "block");
+// 	});
+// });

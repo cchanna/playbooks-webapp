@@ -1,0 +1,5 @@
+$("#test").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area "posessions", :class => "well well-sm edit", id: "posessions" } %> ');
+$("#test").css("display","none");
+autosize($('textarea'));
+$('#overlay').css("display", "block");
+$('#overlay').click( function() {save_data("#posessions", "#test")});

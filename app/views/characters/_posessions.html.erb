@@ -1,9 +1,17 @@
 <h3>Posessions</h3>
-<div class="well well-sm">
+<% if logged_in? && @character.owned_by?(current_user) %>
+	<% items = "" %>
 	<% @character.posessions.split("\n").each do |text| %>
-		<p><%= text %></p>
+		<% items += '<p>' + text + '</p>' %>
 	<% end %>
-</div>
+	<%= link_to raw(items), open_text_character_path(@character, field: "posessions"), :remote => true, class: 'well well-sm active', id: "test" %>
+<% else %>
+	<div class="well well-sm">
+		<% @character.posessions.split("\n").each do |text| %>
+			<p><%= text %></p>
+		<% end %>
+	</div>
+<% end %>
 <div class="container-fluid unprepared">
 	<div class="row row-centered">
 		<div class="unprepared">

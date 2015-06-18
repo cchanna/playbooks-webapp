@@ -11,7 +11,8 @@ $clever: #0094cf;
 $strange: #dd780f;
 $background: #060020;
 
-$hover: #428bca;
+// $hover: #428bca;
+$hover: #9999FF;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -20,6 +21,18 @@ $hover: #428bca;
 }
 
 /* universal */
+
+#overlay {
+	background-color: $background;
+	opacity: 0.9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: none;
+}
 
 html {
 	font-size: 18px;
@@ -107,9 +120,34 @@ textarea {
 }
 
 .well {
+	background-color: #EEEEFF;
+	display: block;
 	margin: 0;
 	text-align: left;
+	font-size: 1rem;
+	color: black;
 	p {
+		margin: 0.25rem;
+	}
+	&.active {
+		cursor: pointer;
+		&:hover {
+			background-color: $hover;
+			text-decoration: none;
+			color: black;
+		}
+		&:focus {
+			background-color: $hover;
+			text-decoration: none;
+			color: black;
+		}
+	}
+	&.edit {
+		background-color: white;
+		position: relative;
+		z-index: 5;
+	}
+	textarea {
 		margin: 0.25rem;
 	}
 }
@@ -678,7 +716,6 @@ input {
 			position: relative;
 			// top: 0.1rem;
 			content: "o";
-			z-index: 1;
 		}
 	}
 	&.active .i-circle-o:hover {
@@ -690,7 +727,6 @@ input {
 			position: relative;
 			// top: 0.1rem;
 			content: "O";
-			z-index: 1;
 		}
 	}
 	&.active .i-circle:hover {

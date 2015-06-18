@@ -62,9 +62,14 @@ class CharactersController < ApplicationController
     end
   end
 
+  def open_text
+    @character = Character.find_by(slug: params[:slug])
+    @field = params[:field]
+  end
+
   private
   	def character_params
-      params.require(:character).permit(:experience, :unprepared, :pride, :health, :strength, :hope, :life)
+      params.require(:character).permit(:experience, :unprepared, :pride, :health, :strength, :hope, :life, :posessions)
   	end
 
 end
