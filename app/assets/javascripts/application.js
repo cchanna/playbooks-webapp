@@ -25,8 +25,8 @@ function save_data(form, text) {
 	$(text).show();
 	var value = $(form).val().split("\n");
 	var result = "";
-	for (var line of value) {
-		result += "<p>" + line + "</p>";
+	for (var line in value) {
+		result += "<p>" + value[line] + "</p>";
 	}
 	$(text).html(result);
 
