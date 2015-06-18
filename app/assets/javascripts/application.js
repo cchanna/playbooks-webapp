@@ -21,15 +21,16 @@ $(document).on('change', '.submittable', function() {
 });
 
 function save_data(form, text) {
-	$('#overlay').css("display", "none");
-	$(text).css("display", "block");
-	$(text).text($(form).text());
-	$(form).parents('form:first').submit();
-	$(form).remove();
-}
+	$('#overlay').hide();
+	$(text).show();
+	var value = $(form).val().split("\n");
+	var result = "";
+	for (var line of value) {
+		result += "<p>" + line + "</p>";
+	}
+	$(text).html(result);
 
-// $(document).ready(function() {
-// 	$("#test").click(function() {
-// 		$('#overlay').css("display", "block");
-// 	});
-// });
+
+	$(form).parents('form:first').submit();
+	$(form).parents('form:first').remove();
+}

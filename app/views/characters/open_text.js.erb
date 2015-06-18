@@ -1,5 +1,8 @@
-$("#test").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area "posessions", :class => "well well-sm edit", id: "posessions" } %> ');
-$("#test").css("display","none");
+$("#<%=@field%>").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area @field, :class => "well well-sm edit", id: @field + "-field" } %> ');
+$("#<%=@field%>").hide()
 autosize($('textarea'));
-$('#overlay').css("display", "block");
-$('#overlay').click( function() {save_data("#posessions", "#test")});
+$('#overlay').show()
+$('#overlay').click( function() {
+	save_data("#<%=@field%>-field", "#<%=@field%>");
+	$('#overlay').off("click");
+});
