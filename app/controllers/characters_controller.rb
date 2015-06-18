@@ -69,7 +69,7 @@ class CharactersController < ApplicationController
 
   private
   	def character_params
-      params.require(:character).permit(:experience, :losses, :pride, :health, :strength, :hope, :life, :posessions, :unprepared,)
+      params.require(:character).permit(:experience, :losses, :pride, :health, :strength, :hope, :life, :posessions, :unprepared, :notes, :look)
   	end
 
 end

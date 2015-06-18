@@ -1,6 +1,2 @@
 <h1 class="gap">Notes</h1>
-<div class="well">
-	<% @character.notes.split("\n").each do |text| %>
-		<p><%= text %></p>
-	<% end %>
-</div>
+<%= render partial: "well", locals: {name: "notes", field: @character.notes} %>

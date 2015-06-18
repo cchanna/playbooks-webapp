@@ -2,24 +2,12 @@
 	<div class="centered">
 		<h3>Losses</h3>
 		<p><em>I have lost...</em></p>
-		<% if logged_in? && @character.owned_by?(current_user) %> 
-			<% result = "" %>
-			<% @character.losses.split("\n").each do |line| %>
-				<% result += '<p>' + line + '</p>' %>
-			<% end %>
-			<%= link_to raw(result), open_text_character_path(@character, field: "losses"), :remote => true, class: 'well well-sm active', id: "losses" %>
-		<% else %>
-			<div class="well well-sm">
-				<% @character.losses.split("\n").each do |text| %>
-					<p><%= text %></p>
-				<% end %>
-			</div>
-		<% end %>
+		<%= render partial: "well", locals: {name: "losses", field: @character.losses} %>
 		<p><em>but I still have...</em></p>
 	</div>
-	<%= render partial: "loss", locals: {loss: "pride", lost: @character.pride, active: (logged_in? && @character.owned_by?(current_user))} %>
-	<%= render partial: "loss", locals: {loss: "health", lost: @character.health, active: (logged_in? && @character.owned_by?(current_user))} %>
-	<%= render partial: "loss", locals: {loss: "strength", lost: @character.strength, active: (logged_in? && @character.owned_by?(current_user))} %>
-	<%= render partial: "loss", locals: {loss: "hope", lost: @character.hope, active: (logged_in? && @character.owned_by?(current_user))} %>
-	<%= render partial: "loss", locals: {loss: "life", lost: @character.life, active: (logged_in? && @character.owned_by?(current_user))} %>
+	<%= render partial: "loss", locals: {loss: "pride", lost: @character.pride} %>
+	<%= render partial: "loss", locals: {loss: "health", lost: @character.health} %>
+	<%= render partial: "loss", locals: {loss: "strength", lost: @character.strength} %>
+	<%= render partial: "loss", locals: {loss: "hope", lost: @character.hope} %>
+	<%= render partial: "loss", locals: {loss: "life", lost: @character.life} %>
 </div>

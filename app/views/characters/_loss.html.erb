@@ -1,6 +1,6 @@
 <% @loss = loss %>
 <div class="centered loss">
-	<% if active %>
+	<% if logged_in? && @character.owned_by?(current_user) %>
 		<%= form_for @character, :remote => true do |f| %>
 			<%= f.check_box loss, :class => 'submittable awesome-checkbox loss' , id: loss, :data => {'icon-checked' => 'i  ' + loss + ' loss lost', 'icon-unchecked' => 'i ' + loss + ' loss'}%>
 		<% end %>

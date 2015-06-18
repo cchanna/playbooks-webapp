@@ -130,6 +130,8 @@ textarea {
 		margin: 0.25rem;
 	}
 	&.active {
+		-webkit-transition: background-color 0.15s;
+		transition: background-color 0.15s;
 		cursor: pointer;
 		&:hover {
 			background-color: $hover;
@@ -377,6 +379,8 @@ i.fate-plus {
 }
 
 button.btn-circle {
+	-webkit-transition: color 0.1s;
+	transition: color 0.1s;
   	&:hover {
   		background-color: #AAAAFF;
   		border-color: #000077;
@@ -718,8 +722,10 @@ input {
 			content: "o";
 		}
 	}
-	&.active .i-circle-o:hover {
-		color: #9999FF;
+	&.active .i-circle-o {
+		&:hover {
+			color: #9999FF;
+		}
 	}
 	.i-circle {
 		position: relative;
@@ -729,8 +735,10 @@ input {
 			content: "O";
 		}
 	}
-	&.active .i-circle:hover {
-		color: #9999FF;
+	&.active .i-circle {
+		&:hover {
+			color: #9999FF;
+		}
 	}
 }
 

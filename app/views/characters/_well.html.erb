@@ -1,0 +1,9 @@
+<% if logged_in? && @character.owned_by?(current_user) %>
+	<%= link_to raw(filter_text(field)), open_text_character_path(@character, field: name), :remote => true, class: 'well well-sm active', id: name %>
+<% else %>
+	<div class="well well-sm">
+		<% field.split("\n").each do |text| %>
+			<p><%= text %></p>
+		<% end %>
+	</div>
+<% end %>
