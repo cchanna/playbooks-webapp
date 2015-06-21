@@ -4,13 +4,6 @@ $("#<%=@field%>").hide()
 autosize($('textarea'));
 $('#overlay').show()
 
-var value = $("#<%=@field%>").val().split("\n");
-var result = "";
-for (var line in value) {
-	result += "<p>" + value[line] + "</p>";
-}
-$("#<%=@field%>-field").html(result);
-
 $('#<%=@field%>-field').focus();
 $('#<%=@field%>-field').select();
 $('#overlay').click( function() {
