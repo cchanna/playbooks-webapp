@@ -150,8 +150,12 @@ textarea {
 		z-index: 5;
 	}
 	textarea {
-		margin: 0.25rem;
+		margin: 0.25rem; 
 	}
+}
+
+textarea.well.edit {
+	display: none;
 }
 
 /* stat colors */

@@ -32,5 +32,5 @@ function save_data(form, text) {
 
 
 	$(form).parents('form:first').submit();
-	$(form).parents('form:first').remove();
+	$(form).hide();
 }

@@ -1,7 +1,16 @@
-$("#<%=@field%>").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area @field, :class => "well well-sm edit", id: @field + "-field" } %> ');
+// $("#<%=@field%>").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area @field, :class => "well well-sm edit", id: @field + "-field" } %> ');
+$("#<%=@field%>-field").show();
 $("#<%=@field%>").hide()
 autosize($('textarea'));
 $('#overlay').show()
+
+var value = $("#<%=@field%>").val().split("\n");
+var result = "";
+for (var line in value) {
+	result += "<p>" + value[line] + "</p>";
+}
+$("#<%=@field%>-field").html(result);
+
 $('#<%=@field%>-field').focus();
 $('#<%=@field%>-field').select();
 $('#overlay').click( function() {
