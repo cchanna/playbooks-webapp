@@ -1,0 +1,11 @@
+$("#move_<%=@move.id.to_s%>_description-field").show();
+$("#move_<%=@move.id.to_s%>_description").hide()
+autosize($('textarea'));
+$('#overlay').show()
+
+$('#move_<%=@move.id.to_s%>_description-field').focus();
+$('#move_<%=@move.id.to_s%>_description-field').select();
+$('#overlay').click( function() {
+	save_data("#move_<%=@move.id.to_s%>_description-field", "#move_<%=@move.id.to_s%>_description");
+	$('#overlay').off("click");
+});

@@ -1,4 +1,3 @@
-// $("#<%=@field%>").after(' <%= escape_javascript form_for(@character, remote: true){ |f| f.text_area @field, :class => "well well-sm edit", id: @field + "-field" } %> ');
 $("#<%=@field%>-field").show();
 $("#<%=@field%>").hide()
 autosize($('textarea'));

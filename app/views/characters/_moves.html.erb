@@ -5,10 +5,6 @@
 	</h3>
 	<%=move.database_move.text.html_safe%>
 	<% if move.database_move.has_description? then %>
-		<div class="well well-sm">
-			<% move.description.split("\n").each do |text| %>
-				<p><%= text %></p>
-			<% end %>
-		</div>
+		<%= render partial: "well_move", locals: {move: move} %>
 	<% end %>
 <% end %>

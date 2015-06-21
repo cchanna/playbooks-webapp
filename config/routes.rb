@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get 'open_text', on: :member
   end 
 
+  resources :moves do
+    get 'open_text', on: :member
+  end 
+
   resources :fate do
     get 'use', on: :member
     get 'plus', on: :member
