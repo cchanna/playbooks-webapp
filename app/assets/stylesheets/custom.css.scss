@@ -332,16 +332,39 @@ textarea.well.edit {
 div.fate-center {
 	// min-width: 7rem;
 	text-align: center;
-	white-space: nowrap;
+	// white-space: nowrap;
 	padding-bottom: 1rem;
 }
 
 .fate-name {
 	font: bold 2rem "Antique";
 	text-align: center;
+	border-radius: 0.5rem;
+	border: 0rem solid white;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	&.active {
+		color: black;
+		&:hover {
+			background-color: $hover;
+			text-decoration: none;
+		}
+		&:focus {
+			background-color: $hover;
+			text-decoration: none;
+		}
+	}
+	&.input {
+		position: relative;
+		z-index: 10;
+		display: none;
+		border: none;
+		background-color: white;
+	}
 }
 
 .fate {
+	white-space: nowrap;
 	a {
 		font-family: "icon";
 		font-size: 1.25rem;

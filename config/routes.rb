@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :fate do
     get 'use', on: :member
     get 'plus', on: :member
+    get 'open_name', on: :member
   end
 
   resources :users
