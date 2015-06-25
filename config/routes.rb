@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'plus_experience', on: :member
     get 'toggle_loss', on: :member
     get 'open_text', on: :member
+    get 'add_fate', on: :member
   end 
 
   resources :moves do

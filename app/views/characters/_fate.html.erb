@@ -1,41 +1,34 @@
-<h1>Fate</h1>
-<div class="row row-centered">
-<% @character.fates.each do |fate| %>
-	<% @fate = fate %>
-	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered center fate-center" id="fate<%=fate.id%>">
-		<div class="row thin">
-			<% if logged_in? && @character.owned_by?(current_user) %>
-				<%= form_for(fate, remote: true) do |f| %>
-					<%= link_to fate.name, open_name_fate_path(fate), :remote => true, class: 'fate-name active', id: "fate"+fate.id.to_s+"_name" %>
-					<!-- <span class="fate-name"><%= fate.name %></span> -->
-					<%= f.text_field "name", class: "fate-name input autogrow", id: "fate"+fate.id.to_s+"_name-field" %>
-				<% end %>
-				<span class="fate active">
-					<% (1..fate.value).each do |n| %>
-						<% @fateN = n %>
-						<%= link_to "*", use_fate_path(fate), remote: true, id: "fate"+fate.id.to_s+"_#{n}"%>
-					<% end %>
-					<%= link_to "+", plus_fate_path(fate), remote: true, class: "plus", id: "fate"+fate.id.to_s+"_plus" %>
-				</span>
-				<script> 
-					$(function(){
-    					$("input.autogrow").autoGrowInput({minWidth:30,comfortZone:30});
-					});
-				</script>
-			<% else %>
-				<span class="fate-name"><%= fate.name %></span>
-				<span class="fate">
-					<% (1..fate.value).each do |n| %>
-						<span id="fate<%=fate.id%>_<%=n%>">*</span>
-					<% end %>
-				</span>
-			<% end %>
-		</div>
-	</div>
-<% end %>
-<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered center fate-center">
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-12 col-centered center fate-center" id="fate<%=fate.id%>">
 	<div class="row thin">
-		<i class="fate-plus">+</i>
+		<% if logged_in? && @character.owned_by?(current_user) %>
+			<%= form_for(fate, remote: true) do |f| %>
+				<% if fate.name == "" %>
+					<% name = "(name)" %>
+				<% else %>
+					<% name = fate.name %>
+				<% end %>
+				<%= link_to name, open_name_fate_path(fate), :remote => true, class: 'fate-name active', id: "fate"+fate.id.to_s+"_name" %>
+				<%= f.text_field "name", class: "fate-name input autogrow", id: "fate"+fate.id.to_s+"_name-field", placeholder: "(name)" %>
+			<% end %>
+			<span class="fate active">
+				<% (1..fate.value).each do |n| %>
+					<% @fateN = n %>
+					<%= link_to "*", use_fate_path(fate), remote: true, id: "fate"+fate.id.to_s+"_#{n}"%>
+				<% end %>
+				<%= link_to "+", plus_fate_path(fate), remote: true, class: "plus", id: "fate"+fate.id.to_s+"_plus" %>
+			</span>
+			<script> 
+				$(function(){
+					$("input.autogrow").autoGrowInput({minWidth:30,comfortZone:30});
+				});
+			</script>
+		<% else %>
+			<span class="fate-name"><%= fate.name %></span>
+			<span class="fate">
+				<% (1..fate.value).each do |n| %>
+					<span id="fate<%=fate.id%>_<%=n%>">*</span>
+				<% end %>
+			</span>
+		<% end %>
 	</div>
 </div>
-<div>

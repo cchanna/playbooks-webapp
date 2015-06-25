@@ -67,6 +67,11 @@ class CharactersController < ApplicationController
     @field = params[:field]
   end
 
+  def add_fate
+    @character = Character.find_by(slug: params[:slug])
+    @fate = Fate.create(character_id: @character.id, value: 0, name: "")
+  end
+
   private
   	def character_params
       params.require(:character).permit(:experience, :losses, :pride, :health, :strength, :hope, :life, :posessions, :unprepared, :notes, :look)

@@ -1,6 +1,11 @@
 class FateController < ApplicationController
 
-	def use
+  def new
+    @fate = Fate.new
+    head 200, content_type: "text/html"
+  end
+
+  def use
     @fate = Fate.find(params[:id])
     @fate.decrement!(:value) if @fate.value > 0
     respond_to do |f|
@@ -9,11 +14,11 @@ class FateController < ApplicationController
   end
 
   def plus
-  	@fate = Fate.find(params[:id])
-  	@fate.increment!(:value)
-  	respond_to do |f|
-  		f.js
-  	end
+    @fate = Fate.find(params[:id])
+    @fate.increment!(:value)
+    respond_to do |f|
+      f.js
+    end
   end
 
   def open_name

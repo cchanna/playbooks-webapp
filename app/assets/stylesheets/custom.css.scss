@@ -374,16 +374,28 @@ div.fate-center {
 			color: $hover;
 		}
 	}
-	.plus {
-		font-size: 1rem;
-		vertical-align: 0.1rem;
-		line-height: 1;
-	}
+	
 	span {
 		font-family: "icon";
 		font-size: 1.25rem;
 		color: black;
 		text-decoration: none;
+	}
+}
+
+.plus {
+	font-family: "icon";
+	color: black;
+	font-size: 1rem;
+	vertical-align: 0.1rem;
+	line-height: 1;
+	&:hover {
+		text-decoration: none;
+		color: $hover;
+	}
+	&:focus {
+		text-decoration: none;
+		color: $hover;
 	}
 }
 

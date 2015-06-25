@@ -11,8 +11,10 @@ $('#overlay').click( function() {
 	$('#overlay').hide();
 	$("#fate<%=@fate.id%>_name").show();
 	var value = $("#fate<%=@fate.id%>_name-field").val();
+	if (value == "") {
+		value = "(name)";
+	}
 	$("#fate<%=@fate.id%>_name").html(value);
-
 
 	$("#fate<%=@fate.id%>_name-field").parents('form:first').submit();
 	$("#fate<%=@fate.id%>_name-field").hide();
