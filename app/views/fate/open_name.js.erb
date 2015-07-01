@@ -12,7 +12,9 @@ $('#overlay').click( function() {
 	$("#fate<%=@fate.id%>_name").show();
 	var value = $("#fate<%=@fate.id%>_name-field").val();
 	if (value == "") {
-		value = "(name)";
+		// value = "(name)";
+		$("#fate<%=@fate.id%>").remove();
+
 	}
 	$("#fate<%=@fate.id%>_name").html(value);
 

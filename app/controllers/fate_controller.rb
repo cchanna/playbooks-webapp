@@ -21,13 +21,23 @@ class FateController < ApplicationController
     end
   end
 
+  def destroy
+    Fate.find(params[:id]).destroy
+    head 200, content_type: "text/html"
+  end
+
   def open_name
     @fate = Fate.find(params[:id])
   end
 
   def update
     @fate = Fate.find(params[:id])
-    @fate.update_attributes(fate_params)
+    if fate_params[:name] == ""
+      puts "*\n*\n*\nDESTROY\n*\n*\n*\n"
+      @fate.destroy
+    else
+      @fate.update_attributes(fate_params)
+    end
     head 200, content_type: "text/html"
   end
 
