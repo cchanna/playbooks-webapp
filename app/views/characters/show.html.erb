@@ -1,6 +1,11 @@
 <% provide(:title, @character.name) %>
 <div class="row">
-	<h1><%=@character.name%></h1>
+	<h1>
+	<%= link_to @character.name, open_name_character_path(@character), :remote => true, class: "header", id: "name" %>
+	<%= form_for(@character, remote: true) do |f| %>
+		<%= f.text_field "name", class: "header-field input autogrow", id: "name-field", placeholder: "(name)" %>
+	<% end %>
+	</h1>
 	<h2>The <%=@character.archetype%></h2>
 </div>
 <div class="row row-centered">

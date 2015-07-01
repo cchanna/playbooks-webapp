@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :characters, param: :slug do
+    get 'open_name', on: :member
     get 'minus_experience', on: :member
     get 'plus_experience', on: :member
     get 'toggle_loss', on: :member

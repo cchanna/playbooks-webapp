@@ -27,6 +27,10 @@ class CharactersController < ApplicationController
     # end
   end
 
+  def open_name
+    @character = Character.find_by(slug: params[:slug])
+  end
+
   def minus_experience
     @character = Character.find_by(slug: params[:slug])
     @character.decrement!(:experience) if @character.experience > 0
@@ -67,6 +71,8 @@ class CharactersController < ApplicationController
     @field = params[:field]
   end
 
+
+
   def add_fate
     @character = Character.find_by(slug: params[:slug])
     @fate = Fate.create(character_id: @character.id, value: 0, name: "")
@@ -74,7 +80,7 @@ class CharactersController < ApplicationController
 
   private
   	def character_params
-      params.require(:character).permit(:experience, :losses, :pride, :health, :strength, :hope, :life, :posessions, :unprepared, :notes, :look)
+      params.require(:character).permit(:name, :experience, :losses, :pride, :health, :strength, :hope, :life, :posessions, :unprepared, :notes, :look)
   	end
 
 end
