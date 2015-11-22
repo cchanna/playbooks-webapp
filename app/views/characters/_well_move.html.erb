@@ -1,12 +1,11 @@
 <% if logged_in? && @character.owned_by?(current_user) %>
-	<%= print("\nTESTTESTTEST\n" + move.id.to_s + "\nTESTTESTTEST\n" ) %>
 	<%= link_to raw(filter_text(move.description)), open_text_move_path(move), :remote => true, class: 'well well-sm active', id: "move_" + move.id.to_s + "_description" %>
 	<%= form_for(move, remote: true) do |f| %>
 		<%= f.text_area "description", :class => "well well-sm edit", id: "move_" + move.id.to_s + "_description-field" %>
 	<% end %>
 <% else %>
 	<div class="well well-sm">
-		<% field.split("\n").each do |text| %>
+		<% move.description.split("\n").each do |text| %>
 			<p><%= text %></p>
 		<% end %>
 	</div>
