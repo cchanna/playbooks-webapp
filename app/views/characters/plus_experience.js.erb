@@ -1,2 +1,0 @@
-$("#exp<%=@character.experience%>").replaceWith('<%= escape_javascript link_to("O", minus_experience_character_path(@character), remote: true, class: "exp", id: "exp#{@character.experience}") %>');
-$(".exp").blur();

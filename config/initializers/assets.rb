@@ -8,6 +8,4 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( awesome-checkbox.js )
-Rails.application.config.assets.precompile += %w( autosize.js )
-Rails.application.config.assets.precompile += %w( autoGrowInput.js )
+# Rails.application.config.assets.precompile += %w( search.js )

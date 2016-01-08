@@ -12,25 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
-
-$(document).on('change', '.submittable', function() {
-	$(this).parents('form:first').submit();
-});
-
-function save_data(form, text) {
-	$('#overlay').hide();
-	$(text).show();
-	var value = $(form).val().split("\n");
-	var result = "";
-	for (var line in value) {
-		result += "<p>" + value[line] + "</p>";
-	}
-	$(text).html(result);
-
-
-	$(form).parents('form:first').submit();
-	$(form).hide();
-}
