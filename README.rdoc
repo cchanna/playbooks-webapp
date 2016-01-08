@@ -1,28 +1,8 @@
-== README
+== STRANGER ROADS WEBAPP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This will be a webapp to manage character sheets for my in-development tabletop
+roleplaying game Stranger Roads.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+An initial version of this app was made as a school project, but I have decided
+to start again from scratch, in the interest of getting a better understanding
+of the way rails works, instead of just piggybacking off of tutorials.
