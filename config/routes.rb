@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 root 'characters#show', defaults: {id: 1}
+get 'characters/:id' => 'characters#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

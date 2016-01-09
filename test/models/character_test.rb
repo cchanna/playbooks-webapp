@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CharacterTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @one = characters(:one)
+  end
 end
