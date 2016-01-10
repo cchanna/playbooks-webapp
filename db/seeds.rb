@@ -18,5 +18,7 @@ Archetype.create(
   setting_other_example3: "... who'd rather you stay gone"
 )
 
-scoundrel = Archetype.find_by(name: "Scoundrel")
-Character.create(name: "Claire", archetype: scoundrel)
+if (Rails.env.development? or Rails.env.test?)
+  scoundrel = Archetype.find_by(name: "Scoundrel")
+  Character.create(name: "Claire", archetype: scoundrel)
+end
