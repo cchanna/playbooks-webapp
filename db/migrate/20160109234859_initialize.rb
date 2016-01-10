@@ -2,6 +2,14 @@ class Initialize < ActiveRecord::Migration
   def change
     create_table :archetypes do |t|
       t.string :name
+      t.string :setting_symbol
+      t.string :setting_symbol_example1
+      t.string :setting_symbol_example2
+      t.string :setting_symbol_example3
+      t.string :setting_other
+      t.string :setting_other_example1
+      t.string :setting_other_example2
+      t.string :setting_other_example3
       t.timestamps null: false
     end
 

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 root 'characters#new'
 
-resources :characters
+resources :characters do
+  member do
+    get 'setting_symbol'
+    get 'setting_other'
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

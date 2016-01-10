@@ -11,9 +11,20 @@ class CharactersController < ApplicationController
   end
 
   def create
-    byebug
     character = Character.create(character_params)
-    redirect_to character
+    redirect_to [:setting_symbol, character]
+  end
+
+  def update
+    character = Character.update(character_params)
+  end
+
+  def setting_symbol
+    @character = Character.find(params[:id])
+  end
+
+  def setting_other
+    @character = Character.find(params[:id])
   end
 
   private

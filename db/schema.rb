@@ -18,8 +18,16 @@ ActiveRecord::Schema.define(version: 20160109234859) do
 
   create_table "archetypes", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "setting_symbol"
+    t.string   "setting_symbol_example1"
+    t.string   "setting_symbol_example2"
+    t.string   "setting_symbol_example3"
+    t.string   "setting_other"
+    t.string   "setting_other_example1"
+    t.string   "setting_other_example2"
+    t.string   "setting_other_example3"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "characters", force: :cascade do |t|
