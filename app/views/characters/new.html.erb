@@ -1,0 +1,9 @@
+<%= link_to 'View Claire', Character.find_by(name: "Claire") %>
+<%= form_for @character do |f| %>
+  <!-- <%= f.collection_select(:archetype_id, Archetype.all, :id, :name) %> -->
+  <%  Archetype.all.each do |a| %>
+    <%= f.radio_button(:archetype_id, a.id) %>
+    <%= f.label(:archetype_name, a.name) %>
+  <%  end %>
+  <%= f.submit "Create" %>
+<% end %>

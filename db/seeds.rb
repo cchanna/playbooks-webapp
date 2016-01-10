@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+archetypes = ["Hero", "Ally", "Scoundrel", "Witch", "Warrior"]
+archetypes.each do |name|
+  Archetype.create(name: name)
+end
+
+scoundrel = Archetype.find_by(name: "Scoundrel")
+Character.create(name: "Claire", archetype: scoundrel)

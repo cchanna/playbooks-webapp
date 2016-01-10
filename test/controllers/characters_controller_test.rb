@@ -6,17 +6,27 @@ class CharactersControllerTest < ActionController::TestCase
   end
 
   def setup
-    @one = characters(:one)
+    @claire = characters(:claire)
+  end
+
+  test "should show new character page" do
+    get :new
+    assert_response :success
   end
 
   test "should show character" do
-    show @one
+    show @claire
     assert_response :success
     assert_not_nil assigns(:character)
   end
 
   test "name renders" do
-    show @one
+    show @claire
     assert_select 'div#name', @one.name
+  end
+
+  test "archetype renders" do
+    show @claire
+    assert_select 'div@archetype', "The " + @claire.archetype.name
   end
 end
