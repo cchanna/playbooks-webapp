@@ -27,6 +27,6 @@ class CharactersControllerTest < ActionController::TestCase
 
   test "archetype renders" do
     show @claire
-    assert_select 'div@archetype', "The " + @claire.archetype.name
+    assert_select 'div#archetype', "The " + @claire.archetype.name
   end
 end
