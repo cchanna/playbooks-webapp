@@ -1,6 +1,14 @@
-<%= link_to 'View Claire', Character.find_by(name: "Claire") %>
+<%  Character.all.each do |c| %>
+  <div>
+    <%  if c.name %>
+      <%  link = c.name + ' the ' + c.archetype.name %>
+    <%  else %>
+      <%  link = 'The ' + c.archetype.name %>
+    <%  end %>
+    <%= link_to link, c %>
+  </div>
+<%  end %>
 <%= form_for @character do |f| %>
-  <!-- <%= f.collection_select(:archetype_id, Archetype.all, :id, :name) %> -->
   <%  Archetype.all.each do |a| %>
     <%= f.radio_button(:archetype_id, a.id) %>
     <%= f.label(:archetype_name, a.name) %>

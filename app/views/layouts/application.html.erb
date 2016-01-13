@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Stranger Roads</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div id="content">
-  <%= yield %>
-</div>
-</body>
+  <head>
+    <title>Stranger Roads</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= radio_button_tag(:hello, 'hello') %>
+    <%= radio_button_tag(:hello1, 'hello1') %>
+    <div id="slider">
+      <%= yield %>
+    </div>
+  </body>
 </html>
