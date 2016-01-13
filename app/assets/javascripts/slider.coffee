@@ -1,56 +1,74 @@
-init = (here) ->
+init = ->
+  here = location.pathname
+  console.log("\nINIT: " + here)
+
+  if $('#slider').html().trim() == ""
+    console.log('empty frame')
+    # fadeTo here
+    fade()
+    return
+
   if here == Routes.new_character_path()
+    console.log("new character path")
     submitButton = '#new-character-form #submit-button'
     $('.new-character-form-radio').click ->
+      console.log("click radio")
       $(submitButton).css(display: 'inline')
       $(submitButton).animate {opacity: 1, duration: 300}
-      $('#new-character-form').on 'ajax:success', (e,data,status,xhr) ->
-        fadeTo data, init
-        console.log(e)
-        console.log(data)
-        console.log(status)
-        console.log(xhr)
+    $('#new-character-form').on 'ajax:success', (e,data,status,xhr) ->
+      console.log('ajax: success')
+      fadeTo data
 
-$.fn.extend
-  slideTo: (data, url) ->
-    return @each () ->
-      $(this).animate {opacity: 0}, 300, ->
-        $(this).html(data)
-        if url?
-          init(url)
-        $(this).animate(opacity: 1, duration: 300)
+# $.fn.extend
+slideTo = (data) ->
+  # return @each () ->
+  console.log('slide')
+  # console.log('#slider')
+  # console.log(data)
+  $('#slider').animate {opacity: 0}, 300, ->
+    $('#slider').html(data)
+    # console.log($('#slider').html())
+    init()
+    $('#slider').animate(opacity: 1, duration: 300)
+
+fade = ->
+  console.log('fade')
+  $.ajax(url: location.pathname, dataType: "script").always (data) =>
+    # $('#slider').slideTo data.responseText
+    slideTo data.responseText
 
 fadeTo = (url) ->
+  console.log('fade to ' + url)
   $.ajax(url: url, dataType: "script").always (data) =>
-    history.pushState null, '', url
-    $('#slider').slideTo data.responseText, url
+    console.log('pushState ' + url)
+    history.pushState {}, '', url
+    # $('#slider').slideTo data.responseText
+    slideTo data.responseText
+
+fadeBackTo = (url) ->
+  console.log('fade back to ' + url)
+  $.ajax(url: url, dataType: "script").always (data) =>
+    # $('#slider').slideTo data.responseText
+    slideTo data.responseText
+
 
 
 $ ->
-  here = location.pathname
-
-
-
-
-  postTo = (url) ->
-    $.ajax(type: "POST", url: url, dataType: "script")
-
-  if $('#slider').html().trim() == ""
-    fadeTo here, init
-
   $(window).on 'popstate', (e) ->
-    if e.originalEvent.state == null
+    console.log('popstate')
+    if e.originalEvent.state != null
       e.preventDefault()
-      fadeTo here, init
+      fadeBackTo location.pathname
     else
-      history.back()
+      e.preventDefault()
 
-  # $(document).on 'click', '#slider input[type=submit]', (e) ->
-    # e.preventDefault()
-    # console.log "hello"
-
-  $(document).on 'click', '#slider a', (e) ->
+  $(document).on 'click', 'a.slide', (e) ->
+    console.log('link click')
     href = $(this).attr('href')
     if href.indexOf(document.domain) > -1 or href.indexOf(':') == -1
       e.preventDefault()
       fadeTo href
+  init()
+  # $(document).on 'click', '#slider input[type=submit]', (e) ->
+    # e.preventDefault()
+    # console.log "hello"

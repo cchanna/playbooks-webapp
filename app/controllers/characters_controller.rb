@@ -22,11 +22,9 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.create(character_params)
-    # byebug
-    # render :show
     respond_to do |format|
-      # format.js {render :show}
-      format.js {render :text => character_path(@character.id)}
+      format.html {render :text => character_path(@character.id)}
+      format.json {render :text => character_path(@character.id)}
     end
   end
 
@@ -36,10 +34,18 @@ class CharactersController < ApplicationController
 
   def setting_symbol
     @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render :text => "", :layout => true}
+      format.js
+    end
   end
 
   def setting_other
     @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render :text => "", :layout => true}
+      format.js
+    end
   end
 
   private
