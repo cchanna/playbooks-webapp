@@ -21,8 +21,13 @@ class CharactersController < ApplicationController
   end
 
   def create
-    character = Character.create(character_params)
-    redirect_to [:setting_symbol, character]
+    @character = Character.create(character_params)
+    # byebug
+    # render :show
+    respond_to do |format|
+      # format.js {render :show}
+      format.js {render :text => character_path(@character.id)}
+    end
   end
 
   def update

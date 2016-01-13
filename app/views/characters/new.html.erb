@@ -1,7 +1,7 @@
-<%= form_for @character, html: {id: "character-new-form"} do |f| %>
+<%= form_for @character, remote: true, data: {type: 'html'}, html: {id: "new-character-form"} do |f| %>
   <div>
     <%  Archetype.all.each do |a| %>
-      <%= f.radio_button :archetype_id, a.id, {class: "character-new-form-radio", id: "character-new-form-#{a.name.downcase}"} %>
+      <%= f.radio_button :archetype_id, a.id, {class: "new-character-form-radio", id: "new-character-form-#{a.name.downcase}"} %>
       <%= f.label(:archetype_name, a.name) %>
     <%  end %>
   </div>
