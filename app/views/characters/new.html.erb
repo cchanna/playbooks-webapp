@@ -8,7 +8,7 @@
     <%= link_to link, c %>
   </div>
 <%  end %>
-<%= form_for @character do |f| %>
+<%= form_for @character, html: {id: "character_new_form"} do |f| %>
   <%  Archetype.all.each do |a| %>
     <%= f.radio_button(:archetype_id, a.id) %>
     <%= f.label(:archetype_name, a.name) %>
