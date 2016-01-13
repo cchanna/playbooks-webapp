@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-root 'characters#new'
+root 'main#home'
 
 resources :characters do
   member do

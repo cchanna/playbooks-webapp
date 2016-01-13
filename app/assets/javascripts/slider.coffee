@@ -9,13 +9,13 @@ $ ->
   here = location.pathname
 
   init = ->
-    # page load
+    # if 
 
   fadeTo = (url) ->
-    history.pushState null, '', url
-    init()
     $.ajax(url: url, dataType: "script").always (data) =>
+      history.pushState null, '', url
       $('#slider').slideTo data.responseText
+      init()
 
   if $('#slider').html().trim() == ""
     fadeTo here

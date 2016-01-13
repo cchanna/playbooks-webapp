@@ -1,0 +1,13 @@
+<div>
+  <%= link_to 'New character', new_character_path %>
+</div>
+<%  Character.all.each do |c| %>
+  <div>
+    <%  if c.name %>
+      <%  link = c.name + ' the ' + c.archetype.name %>
+    <%  else %>
+      <%  link = 'The ' + c.archetype.name %>
+    <%  end %>
+    <%= link_to link, c %>
+  </div>
+<%  end %>
