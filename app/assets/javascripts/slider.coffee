@@ -1,21 +1,28 @@
+
 $.fn.extend
-  slideTo: (data) ->
+  slideTo: (data, complete) ->
     return @each () ->
       $(this).animate {opacity: 0}, 300, ->
         $(this).html(data)
+        if complete?
+          complete()
         $(this).animate(opacity: 1, duration: 300)
 
 $ ->
   here = location.pathname
 
   init = ->
-    # if 
+    if here == Routes.new_character_path()
+      submitButton = '#character-new-form #submit-button'
+      $('.character-new-form-radio').click ->
+        console.log 'hello again'
+        $(submitButton).css(display: 'inline')
+        $(submitButton).animate {opacity: 1, duration: 300}
 
   fadeTo = (url) ->
     $.ajax(url: url, dataType: "script").always (data) =>
       history.pushState null, '', url
-      $('#slider').slideTo data.responseText
-      init()
+      $('#slider').slideTo data.responseText, init
 
   if $('#slider').html().trim() == ""
     fadeTo here

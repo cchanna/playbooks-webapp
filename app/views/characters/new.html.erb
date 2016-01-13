@@ -1,7 +1,11 @@
-<%= form_for @character, html: {id: "character_new_form"} do |f| %>
-  <%  Archetype.all.each do |a| %>
-    <%= f.radio_button(:archetype_id, a.id) %>
-    <%= f.label(:archetype_name, a.name) %>
-  <%  end %>
-  <%= f.submit "Create" %>
+<%= form_for @character, html: {id: "character-new-form"} do |f| %>
+  <div>
+    <%  Archetype.all.each do |a| %>
+      <%= f.radio_button :archetype_id, a.id, {class: "character-new-form-radio", id: "character-new-form-#{a.name.downcase}"} %>
+      <%= f.label(:archetype_name, a.name) %>
+    <%  end %>
+  </div>
+  <div id="submit-button">
+    <%= f.submit "Create" %>
+  </div>
 <% end %>
