@@ -1,0 +1,11 @@
+<div>
+  Edit name
+</div>
+<%= form_for @character, remote: true, html: {id: "edit-character-form"} do |f| %>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+  <div id="submit-button">
+    <%= f.submit "Submit", {id: "edit-character-form-submit"}%>
+  </div>
+<% end %>

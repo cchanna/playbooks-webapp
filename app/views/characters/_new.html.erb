@@ -1,0 +1,14 @@
+<div>
+  New Character
+</div>
+<%= form_for @character, remote: true, html: {id: "new-character-form"} do |f| %>
+<% Archetype.all.each do |a| %>
+  <div class="new-character-form-radio">
+    <%= f.radio_button :archetype_id, a.id %>
+    <%= f.label "archetype_id_" + a.id.to_s, a.name %>
+  </div>
+<% end %>
+  <div id="submit-button">
+    <%= f.submit "Submit", {id: "new-character-form-submit"}%>
+  </div>
+<% end %>

@@ -1,12 +1,9 @@
-<div>Take turns with the others building the world.</div>
 <div>
-  On your turn, describe <%=@character.archetype.setting_other%>
+  On your next turn, describe <%=@character.archetype.setting_other%>
+</div>
+<div id="examples">
+  (<%=@character.archetype.setting_other_example1%>,<%=@character.archetype.setting_other_example2%>,<%=@character.archetype.setting_other_example3%>)
 </div>
 <div>
-  (<%=@character.archetype.setting_other_example1%>,
-  <%=@character.archetype.setting_other_example2%>,
-  <%=@character.archetype.setting_other_example3%>)
-</div>
-<div>
-  <!-- <%= link_to 'Continue', [@character] %> -->
+  <%= link_to 'Continue', @character, class: "slide" %>
 </div>

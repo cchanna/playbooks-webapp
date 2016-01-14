@@ -1,10 +1,9 @@
 class CharactersController < ApplicationController
   def show
     @character = Character.find(params[:id])
-
     respond_to do |format|
       format.html {render :text => "", :layout => true}
-      if (params[:partial])
+      if params[:partial]
         format.js {render partial: "#{params[:partial]}", locals: {name: @character.name}}
       else
         format.js
@@ -23,13 +22,30 @@ class CharactersController < ApplicationController
   def create
     @character = Character.create(character_params)
     respond_to do |format|
-      format.html {render :text => character_path(@character.id)}
-      format.json {render :text => character_path(@character.id)}
+      format.html {render :text => setting_symbol_character_path(@character.id)}
     end
   end
 
+  def edit
+    # byebug
+    @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      if params[:field]
+        format.js {render partial: "edit_#{params[:field]}"}
+      else
+        format.js {render partial: "edit_#{params[:field]}"}
+      end
+    end
+  end
+
+
   def update
-    character = Character.update(character_params)
+    @character = Character.find(params[:id])
+    @character.update(character_params)
+    respond_to do |format|
+      format.html {render :text => character_path(@character.id)}
+    end
   end
 
   def setting_symbol

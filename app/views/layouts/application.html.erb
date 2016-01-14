@@ -10,7 +10,7 @@
   <body>
     <%= link_to 'Stranger Roads', root_path, class: 'slide' %>
     <div id="slider">
-      <%= yield %>
+      <%= yield(:additional_javascripts) %>
     </div>
   </body>
 </html>
