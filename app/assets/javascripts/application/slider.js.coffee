@@ -16,15 +16,15 @@ fadeOut = (after) ->
 
 @slideTo = (url, quiet) ->
   console.log 'slide to ' + url
+  unless quiet?
+    console.log 'push state ' + url
+    history.pushState {}, '', url
   fadeOut ->
     $.ajax(url: url, dataType: "script").complete (data, status) =>
       console.log 'ajax:' + status
       unless status == "success"
         # a failure means that we got back html, not javascript
         # so we just render it instead
-        unless quiet?
-          console.log 'push state ' + url
-          history.pushState {}, '', url
         load data.responseText
         fadeIn()
 

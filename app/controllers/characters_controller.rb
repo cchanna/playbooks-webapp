@@ -31,11 +31,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     respond_to do |format|
       format.html {render text: "", layout: true}
-      if params[:field]
-        format.js {render partial: "edit_#{params[:field]}"}
-      else
-        format.js {render partial: "edit_#{params[:field]}"}
-      end
+      format.js
     end
   end
 
