@@ -39,6 +39,12 @@ $ ->
     console.log '\nFORM SUBMIT'
     slideQuietlyTo data
 
+  $('#alternate-form-1').submit (e) ->
+    console.log '\nBEFORE FORM SUBMIT'
+    unless $('input[type=text]').val()
+      console.log 'cancel submit'
+      return false
+
   $('input[type=radio].sample-name').change ->
     console.log 'click sample name'
     hide alternateForm, ->
