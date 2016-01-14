@@ -13,8 +13,6 @@ $ ->
       opacity: 1
       duration: 300
 
-  # $('.new-character-form-radio').click clickRadio
-  # $('.new-character-form-radio-label').click clickRadio
   $('input[type=radio]').change clickRadio
 
   $('#new-character-form').on 'ajax:success', (e, data, status, xhr) ->

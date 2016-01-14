@@ -13,4 +13,4 @@ $ ->
 
   $('#edit-character-form').on 'ajax:success', (e, data, status, xhr) ->
     console.log '\nFORM SUBMIT'
-    slideTo data
+    slideQuietlyTo data

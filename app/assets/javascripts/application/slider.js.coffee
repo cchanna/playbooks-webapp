@@ -28,13 +28,16 @@ fadeOut = (after) ->
         load data.responseText
         fadeIn()
 
+@slideQuietlyTo = (url) ->
+  slideTo url, true
+
 $ ->
   $(window).on 'popstate', (e) ->
     console.log '\nPOPSTATE'
     if e.originalEvent.state != null
       # chrome and ie insert useless popstate calls, so we want to avoid those
       e.preventDefault()
-      slideTo location.pathname, true
+      slideQuietlyTo location.pathname
     else
       e.preventDefault()
 
@@ -55,4 +58,4 @@ $ ->
 
   if $('#slider').html().trim() == ""
     console.log 'empty frame'
-    slideTo here, true
+    slideQuietlyTo here
