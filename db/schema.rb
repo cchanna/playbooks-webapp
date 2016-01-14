@@ -33,9 +33,22 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.integer  "archetype_id"
-    t.string   "creation_step"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "name_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "archetype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "sample_names", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "archetype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

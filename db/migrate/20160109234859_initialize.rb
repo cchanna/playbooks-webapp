@@ -1,5 +1,17 @@
 class Initialize < ActiveRecord::Migration
   def change
+    create_table :sample_names do |t|
+      t.string :name
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
+    create_table :name_categories do |t|
+      t.string :name
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
     create_table :archetypes do |t|
       t.string :name
       t.string :setting_symbol
@@ -16,7 +28,6 @@ class Initialize < ActiveRecord::Migration
     create_table :characters do |t|
       t.string :name
       t.belongs_to :archetype
-      t.string :creation_step
 
       t.timestamps null: false
     end

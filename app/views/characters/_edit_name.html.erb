@@ -1,11 +1,28 @@
 <div>
   Edit name
 </div>
-<%= form_for @character, remote: true, html: {id: "edit-character-form"} do |f| %>
+<%= form_for @character, remote: true, html: {class: "edit-character-form", id:"edit-character-form"} do |f| %>
   <div>
+<% @character.archetype.sample_names.each do |name| %>
+    <%= f.radio_button :name, name.name, class: "sample-name" %>
+    <%= f.label "sample_name_" + name.name, name.name, class: "sample-name-label" %>
+<% end %>
+  </div>
+  <div>
+<% @character.archetype.name_categories.each do |category| %>
+    <%= f.radio_button :name, category.name, class: "name-category" %>
+    <%= f.label "name_category_" + category.name, category.name, class: "name-category-label" %>
+<% end %>
+  </div>
+  <div class="submit-button" id="submit-button-1">
+    <%= f.submit "Submit", {class: "edit-character-form-submit"}%>
+  </div>
+<% end %>
+<%= form_for @character, remote: true, html: {class: "edit-character-form", id: "alternate-form-1"} do |f| %>
+  <div class="custom-name">
     <%= f.text_field :name %>
   </div>
-  <div id="submit-button">
-    <%= f.submit "Submit", {id: "edit-character-form-submit"}%>
+  <div class="submit-button" id="submit-button-2">
+    <%= f.submit "Submit", {class: "edit-character-form-submit"}%>
   </div>
 <% end %>
