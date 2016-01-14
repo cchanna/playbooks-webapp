@@ -7,7 +7,6 @@ $ ->
       escape_javascript render "edit"
     end  %>'
   load data
-  fadeIn()
 
   submitButton = '#edit-character-form .submit-button'
   alternateForm = '#alternate-form-1'
@@ -27,6 +26,14 @@ $ ->
       console.log 'show ' + element
       $(element).css display: 'block'
       $(element).animate opacity: 1, 300
+
+  unless '<%= @character.name %>' == ''
+    if '<%= @character.archetype.sample_names.find_by(name: @character.name) %>' == ''
+      show alternateForm
+      show alternateSubmitButton
+
+  fadeIn()
+
 
   $('.edit-character-form').on 'ajax:success', (e, data, status, xhr) ->
     console.log '\nFORM SUBMIT'
