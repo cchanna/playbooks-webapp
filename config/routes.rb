@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 root 'main#home'
 
-resources :characters do
+resources :characters, except: [:index, :destroy] do
+  resources :relationships, only: [:new, :create]
   member do
     get 'setting_symbol'
     get 'setting_other'
+  end
+end
+
+resources :relationships, only: [:show, :edit, :update, :destroy] do
+  member do
+    post 'increment'
+    post 'decrement'
   end
 end
 

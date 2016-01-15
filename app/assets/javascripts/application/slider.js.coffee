@@ -1,24 +1,42 @@
+@hide = (element, doFollowup) ->
+  if $(element).css("display") == 'none'
+    doFollowup() if doFollowup?
+  else
+    console.log 'hide ' + element
+    $(element).animate opacity: 0, 300, ->
+      $(element).css display: 'none'
+      doFollowup() if doFollowup?
+
+@startHidden = (element) ->
+  console.log 'start with ' + element + ' hidden'
+  $(element).css
+    display: 'none'
+    opacity: 0
+
+@show = (element, doFollowup) ->
+  unless $(element).css("display") == 'block'
+    console.log 'show ' + element
+    $(element).css display: 'initial'
+    $(element).animate opacity: 1, 300, doFollowup
+
 fadeOut = (after) ->
-  console.log 'fade out'
-  $('#slider').animate {opacity: 0}, 300, ->
-    if after?
-      after()
+  hide '#slider', after
 
 @load = (data) ->
   console.log 'load'
   $('#slider').html(data)
 
 @fadeIn = (after) ->
-  console.log 'fade in'
-  $('#slider').animate {opacity: 1}, 300, ->
-    if after?
-      after()
+  show '#slider', after
+
+@pushStateTo = (url) ->
+  console.log 'push state ' + url
+  history.pushState {}, '', url
 
 @slideTo = (url, quiet) ->
   console.log 'slide to ' + url
   unless quiet?
-    console.log 'push state ' + url
-    history.pushState {}, '', url
+    pushStateTo url
   fadeOut ->
     $.ajax(url: url, dataType: "script").complete (data, status) =>
       console.log 'ajax:' + status

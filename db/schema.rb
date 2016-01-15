@@ -44,8 +44,25 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "trust"
+    t.integer  "trust_question_id"
+    t.integer  "character_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "sample_names", force: :cascade do |t|
     t.string   "name"
+    t.integer  "archetype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "trust_questions", force: :cascade do |t|
+    t.string   "question"
+    t.integer  "trust"
     t.integer  "archetype_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

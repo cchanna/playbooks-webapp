@@ -1,39 +1,27 @@
 $ ->
   console.log 'edit character'
   data = '<%=
-    if params[:field] == "name"
+    case params[:field]
+    when "name"
       escape_javascript render "edit_name"
+    when "trust"
+      escape_javascript render "edit_trust"
     else
       escape_javascript render "edit"
     end  %>'
   load data
 
   submitButton = '#edit-character-form .submit-button'
+  startHidden submitButton
   alternateForm = '#alternate-form-1'
+  startHidden alternateForm
   alternateSubmitButton = '#alternate-form-1 .submit-button'
-
-  hide = (element, doFollowup) ->
-    if $(element).css("display") == 'none'
-      doFollowup() if doFollowup?
-    else
-      console.log 'hide ' + element
-      $(element).animate opacity: 0, 300, ->
-        $(element).css display: 'none'
-        doFollowup() if doFollowup?
-
-  show = (element) ->
-    unless $(element).css("display") == 'block'
-      console.log 'show ' + element
-      $(element).css display: 'block'
-      $(element).animate opacity: 1, 300
+  startHidden alternateSubmitButton
 
   unless '<%= @character.name %>' == ''
     if '<%= @character.archetype.sample_names.find_by(name: @character.name) %>' == ''
       show alternateForm
       show alternateSubmitButton
-
-  fadeIn()
-
 
   $('.edit-character-form').on 'ajax:success', (e, data, status, xhr) ->
     console.log '\nFORM SUBMIT'
@@ -60,3 +48,5 @@ $ ->
       show alternateSubmitButton
     else
       hide alternateSubmitButton
+
+  fadeIn()

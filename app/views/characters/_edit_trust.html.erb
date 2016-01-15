@@ -1,0 +1,13 @@
+<div>
+  Edit Trust
+</div>
+<%= form_tag, remote: true, class: "edit-character-form" do |f| %>
+  <% @character.archetype.trust_questions.each do |q| %>
+    <div>
+      <%= f.radio_button_tag :value, q.trust %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.submit "Submit", class="edit-character-form-submit" %>
+  </div>
+<% end %>

@@ -1,5 +1,20 @@
 class Initialize < ActiveRecord::Migration
   def change
+    create_table :trust_questions do |t|
+      t.string :question
+      t.integer :trust
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
+    create_table :relationships do |t|
+      t.string :name
+      t.integer :trust
+      t.belongs_to :trust_question
+      t.belongs_to :character
+      t.timestamps null: false
+    end
+
     create_table :sample_names do |t|
       t.string :name
       t.belongs_to :archetype

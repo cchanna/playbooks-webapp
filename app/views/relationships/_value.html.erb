@@ -1,0 +1,8 @@
+<span class="trust-value" id="trust-value-<%=relationship.id%>">
+  <% amount = relationship.trust.abs.to_s %>
+  <% if relationship.trust >= 0 %>
+    <%= "+" + amount %>
+  <% else %>
+    <%= "−" + amount %>
+  <% end %>
+</span>

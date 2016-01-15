@@ -1,0 +1,8 @@
+<div id="trust">
+  Trust
+  <% relationships.each do |r| %>
+    <%= render partial: "relationships/show", locals: {relationship: r} %>
+    <%= button_to "−", [:decrement, r], remote: true, data: {trust_id: r.id}, form_class: "trust-change" %>
+    <%= button_to "+", [:increment, r], remote: true, data: {trust_id: r.id}, form_class: "trust-change"  %>
+  <% end %>
+</div>

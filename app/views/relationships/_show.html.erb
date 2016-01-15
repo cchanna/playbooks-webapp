@@ -1,0 +1,6 @@
+<div id="trust-<%=relationship.id%>">
+  <span class="trust-name" id="trust-name-<%=relationship.id%>">
+    <%= relationship.name %>
+  </span>
+  <%= render partial: "relationships/value", locals: {relationship: relationship} %>
+</div>

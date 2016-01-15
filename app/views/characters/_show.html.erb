@@ -1,2 +1,3 @@
 <%= render partial: "name", locals: {name: @character.name} %>
 <%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
+<%= render partial: "trust", locals: {relationships: @character.relationships} %>

@@ -3,8 +3,8 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     respond_to do |format|
       format.html {render :text => "", :layout => true}
-      if params[:partial]
-        format.js {render partial: "#{params[:partial]}", locals: {name: @character.name}}
+      if params[:partial] == "relationships/show"
+        format.js {render partial: "relationships/show", locals: {relationship: Relationship.find(params[:relationship_id])}}
       else
         format.js
       end
