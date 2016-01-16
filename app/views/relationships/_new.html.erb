@@ -2,7 +2,7 @@
   New Relationship
 </div>
 <div id="relationship-list">
-  <%= render partial: "characters/relationship_list", locals: {relationships: @character.relationships}%>
+  <%= render partial: "relationships/relationship_list", locals: {relationships: @character.relationships}%>
 </div>
 <%= form_for [@character, @relationship], remote:true do |f|%>
   <div>

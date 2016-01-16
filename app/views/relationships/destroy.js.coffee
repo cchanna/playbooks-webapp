@@ -1,6 +1,6 @@
 $ ->
   console.log '\nDESTROY RELATIONSHIP'
-  data = '<%= escape_javascript render partial: "characters/relationship_list.html.erb", locals: {relationships: @character.relationships} %>'
+  data = '<%= escape_javascript render partial: "relationships/relationship_list.html.erb", locals: {relationships: @character.relationships} %>'
   question_id = '<%=@question_id%>'
   question = '#trust-question-' + question_id
   radio = '#relationship_trust_question_id_' + question_id

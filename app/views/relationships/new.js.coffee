@@ -1,5 +1,5 @@
 $ ->
-  console.log 'new relationship'
+  console.log '\nNEW RELATIONSHIP'
   data = '<%= escape_javascript render "new" %>'
   questions = '<%=
     result = ""

@@ -1,0 +1,5 @@
+<% tools.each do |t| %>
+  <div class="tool">
+    <%= button_to t.name, edit_tool_path(id: t.id), remote: true, form_class: "edit_tool" %>
+  </div>
+<% end %>

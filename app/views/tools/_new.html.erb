@@ -1,0 +1,25 @@
+<div>
+  Choose Tools
+</div>
+<div id="tool-list">
+  <%= render partial: "tools/tool_list", locals: {tools: @character.tools} %>
+</div>
+<%= form_for [@character, @tool], remote: true do |f| %>
+  <% DefTool.all.each do |dt| %>
+    <div>
+      <%= f.radio_button :def_tool_id, dt.id, class: "tool-def" %>
+      <%= label_tag "tool_def_tool_id_#{dt.id}", dt.name, class: "tool-label" %>
+    </div>
+  <% end %>
+  <div>
+    <div>
+      <%= f.text_field :name, id: "tool-name" %>
+    </div>
+    <div>
+      <%= f.text_area :description, id: "tool-description" %>
+    </div>
+    <div>
+      <%= submit_tag "=>", id: "submit-button" %>
+    </div>
+  </div>
+<% end %>

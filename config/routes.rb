@@ -3,11 +3,14 @@ root 'main#home'
 
 resources :characters, except: [:index, :destroy] do
   resources :relationships, only: [:new, :create]
+  resources :tools, only: [:new, :create]
   member do
     get 'setting_symbol'
     get 'setting_other'
   end
 end
+
+resources :tools, only: [:show, :destroy, :edit, :update]
 
 resources :relationships, only: [:show, :destroy] do
   member do
