@@ -1,29 +1,13 @@
 class Initialize < ActiveRecord::Migration
   def change
-    create_table :trust_questions do |t|
-      t.string :question
-      t.integer :trust
-      t.belongs_to :archetype
+    create_table :def_tools do |t|
+      t.string :name
       t.timestamps null: false
     end
 
-    create_table :relationships do |t|
-      t.string :name
-      t.integer :trust
-      t.belongs_to :trust_question
-      t.belongs_to :character
-      t.timestamps null: false
-    end
-
-    create_table :sample_names do |t|
-      t.string :name
-      t.belongs_to :archetype
-      t.timestamps null: false
-    end
-
-    create_table :name_categories do |t|
-      t.string :name
-      t.belongs_to :archetype
+    create_table :example_tools do |t|
+      t.string :example
+      t.belongs_to :def_tool
       t.timestamps null: false
     end
 
@@ -40,11 +24,44 @@ class Initialize < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    create_table :sample_names do |t|
+      t.string :name
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
+    create_table :name_categories do |t|
+      t.string :name
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
+    create_table :trust_questions do |t|
+      t.string :question
+      t.integer :trust
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
     create_table :characters do |t|
       t.string :name
       t.belongs_to :archetype
-
       t.timestamps null: false
+    end
+
+    create_table :relationships do |t|
+      t.string :name
+      t.integer :trust
+      t.belongs_to :trust_question
+      t.belongs_to :character
+      t.timestamps null: false
+    end
+
+    create_table :tools do |t|
+      t.belongs_to :character
+      t.belongs_to :def_tool
+      t.string :name
+      t.text :description
     end
   end
 end

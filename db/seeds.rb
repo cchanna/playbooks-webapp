@@ -43,6 +43,16 @@ Dir["*"].each do |a|
         trust = lines.shift.strip
         TrustQuestion.create(question: question, trust: trust, archetype: archetype)
       end
+    elsif f == "tools.sr"
+      def_tool = DefTool.create(name: lines.shift.strip)
+      while lines.length > 0
+        line = lines.shift
+        if line[0] == "\t"
+          ExampleTool.create(example: line.strip, def_tool: def_tool)
+        else
+          def_tool = DefTool.create(name: line.strip)
+        end
+      end
     end
   end
   archetype.save
