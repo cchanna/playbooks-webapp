@@ -1,4 +1,4 @@
-== STRANGER ROADS WEBAPP
+## STRANGER ROADS WEBAPP
 
 This will be a webapp to manage character sheets for my in-development tabletop
 roleplaying game Stranger Roads.
