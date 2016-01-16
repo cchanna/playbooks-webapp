@@ -7,8 +7,8 @@ Character.all.each do |a|
 end
 
 current_dir = Dir.pwd
-chdir ENV["DATA_PATH"]
-chdir("./archetypes")
+chdir "./db"
+chdir "./archetypes"
 Dir["*"].each do |a|
   chdir('./' + a)
   archetype = Archetype.new(name: a.capitalize)
