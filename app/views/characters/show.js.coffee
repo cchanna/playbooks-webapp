@@ -24,4 +24,4 @@ $ ->
       $(value).html(data)
       show value
 
-  fadeIn()
+  fadeInBody()

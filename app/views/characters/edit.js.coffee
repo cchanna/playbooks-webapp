@@ -49,4 +49,4 @@ $ ->
     else
       hide alternateSubmitButton
 
-  fadeIn()
+  fadeInBody()

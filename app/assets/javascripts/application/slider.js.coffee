@@ -1,11 +1,31 @@
+@fadeOut = (element, doFollowup) ->
+  console.log 'fade out ' + element
+  if $(element).css("opacity") > 0
+    $(element).animate opacity: 0, 300, doFollowup
+  else if doFollowup?
+    doFollowup()
+
+fadeIn = (element, doFollowup) ->
+  # $(element).stop()
+  if $(element).css("opacity") < 1
+    $(element).animate opacity: 1, 300, doFollowup
+  else if doFollowup?
+    doFollowup()
+
+
 @hide = (element, doFollowup) ->
   if $(element).css("display") == 'none'
     doFollowup() if doFollowup?
   else
     console.log 'hide ' + element
-    $(element).animate opacity: 0, 300, ->
+    fadeOut element, ->
       $(element).css display: 'none'
       doFollowup() if doFollowup?
+
+@startFaded = (element) ->
+  console.log 'start with ' + element + ' faded'
+  $(element).css
+    opacity: 0
 
 @startHidden = (element) ->
   console.log 'start with ' + element + ' hidden'
@@ -14,19 +34,19 @@
     opacity: 0
 
 @show = (element, doFollowup) ->
-  unless $(element).css("display") == 'block'
-    console.log 'show ' + element
+  console.log 'show ' + element
+  if $(element).css("display") == 'none'
     $(element).css display: 'initial'
-    $(element).animate opacity: 1, 300, doFollowup
+  fadeIn element, doFollowup
 
-fadeOut = (after) ->
+fadeOutBody = (after) ->
   hide '#slider', after
 
 @load = (data) ->
   console.log 'load'
   $('#slider').html(data)
 
-@fadeIn = (after) ->
+@fadeInBody = (after) ->
   show '#slider', after
 
 @pushStateTo = (url) ->
@@ -37,14 +57,14 @@ fadeOut = (after) ->
   console.log 'slide to ' + url
   unless quiet?
     pushStateTo url
-  fadeOut ->
+  fadeOutBody ->
     $.ajax(url: url, dataType: "script").complete (data, status) =>
       console.log 'ajax:' + status
       unless status == "success"
         # a failure means that we got back html, not javascript
         # so we just render it instead
         load data.responseText
-        fadeIn()
+        fadeInBody()
 
 @slideQuietlyTo = (url) ->
   slideTo url, true

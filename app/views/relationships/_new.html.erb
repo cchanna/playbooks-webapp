@@ -1,24 +1,22 @@
-New Relationship
-<% @character.relationships.each do |r| %>
-  <%= render partial: "show", locals: {relationship: r} %>
-<% end %>
 <div>
-  Which of you...
+  New Relationship
+</div>
+<div id="relationship-list">
+  <%= render partial: "characters/relationship_list", locals: {relationships: @character.relationships}%>
 </div>
 <%= form_for [@character, @relationship], remote:true do |f|%>
-  <% @character.archetype.trust_questions.each do |q| %>
-    <% unless @character.relationships.find_by(trust_question: q) %>
-      <div>
-        <%= f.radio_button :trust_question_id, q.id, class: "trust-question" %>
-        ... <%= f.label "trust_question_" + q.id.to_s, q.question, class: "trust-question-label" %>
-      </div>
-    <% end %>
-  <% end %>
   <div>
-    <%= f.text_field :name, id: "trust-name" %>
+    Which of you...
   </div>
-  <div>
-    <%= f.submit "Submit", id: "submit-button" %>
+  <% @character.archetype.trust_questions.each do |q| %>
+    <div id="trust-question-<%=q.id%>">
+      <%= f.radio_button :trust_question_id, q.id, class: "trust-question"%>
+      ... <%= f.label "trust_question_id_" + q.id.to_s, q.question, class: "trust-question-label" %>
+    </div>
+  <% end %>
+  <div id="trust-enter-name">
+    <%= f.text_field :name, id: "trust-name" %>
+    <%= f.submit "=>", id: "submit-button" %>
   </div>
 <% end %>
-<%= link_to "Continue", @character, class: "slide" %>
+<%= link_to "Continue", @character, class: "slide", id: "relationships-done" %>

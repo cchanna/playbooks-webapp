@@ -14,4 +14,4 @@ $ ->
     console.log '\nFORM SUBMIT'
     slideTo data
 
-  fadeIn()
+  fadeInBody()

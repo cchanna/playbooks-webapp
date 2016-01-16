@@ -9,7 +9,7 @@ resources :characters, except: [:index, :destroy] do
   end
 end
 
-resources :relationships, only: [:show, :edit, :update, :destroy] do
+resources :relationships, only: [:show, :destroy] do
   member do
     post 'increment'
     post 'decrement'

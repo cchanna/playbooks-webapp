@@ -10,15 +10,19 @@ class RelationshipsController < ApplicationController
 
   def create
     trust_question = TrustQuestion.find(params[:relationship][:trust_question_id])
+    @character = Character.find(params[:character_id])
     @relationship = Relationship.create(
       name: params[:relationship][:name],
       trust_question: trust_question,
       trust: trust_question.trust,
-      character_id: params[:character_id]
+      character: @character
     )
     respond_to do |format|
-      format.html {render text: new_character_relationship_path(params[:character_id])}
+      format.js
     end
+    # respond_to do |format|
+    #   format.html {render text: new_character_relationship_path(params[:character_id])}
+    # end
   end
 
   def increment
@@ -35,5 +39,15 @@ class RelationshipsController < ApplicationController
       relationship.update(trust: relationship.trust - 1)
     end
     render partial: "value", locals: {relationship: relationship}
+  end
+
+  def destroy
+    relationship = Relationship.find_by(id: params[:id])
+    @character = relationship.character
+    @question_id = relationship.trust_question.id
+    relationship.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 end
