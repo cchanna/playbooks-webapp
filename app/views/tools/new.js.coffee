@@ -74,6 +74,7 @@ $ ->
     if $(nameField).val() && $(descriptionField).val()
       fadeOut toolList, ->
         faded = true
+        numTools++
         $(form).submit()
       if numTools >= 2
         hide form
