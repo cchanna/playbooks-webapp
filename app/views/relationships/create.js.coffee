@@ -26,3 +26,4 @@ $ ->
   fadeOut textField
   hide submitButton
   show done
+  $(done).focus()

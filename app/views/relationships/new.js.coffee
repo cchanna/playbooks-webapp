@@ -27,6 +27,9 @@ $ ->
   unless canContinue == 'true'
     startHidden done
 
+  $('input[type=text]').prop
+    autocomplete: 'off'
+
   $('#new_relationship').submit (e) ->
     console.log '\nBEFORE FORM SUBMIT'
     unless $(textField).val()
@@ -36,6 +39,7 @@ $ ->
   $('input[type=radio]').change ->
     console.log 'click question'
     show textField
+    $(textField).val ""
     $(textField).focus()
 
   $(textField).keyup ->

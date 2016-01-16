@@ -1,0 +1,3 @@
+<% if character.archetype = Archetype.find_by(name:"Scoundrel") %>
+  <%= render partial: "tools", locals: {tools: character.tools} %>
+<% end %>

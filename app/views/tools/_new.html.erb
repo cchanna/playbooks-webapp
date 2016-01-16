@@ -5,21 +5,27 @@
   <%= render partial: "tools/tool_list", locals: {tools: @character.tools} %>
 </div>
 <%= form_for [@character, @tool], remote: true do |f| %>
-  <% DefTool.all.each do |dt| %>
-    <div>
-      <%= f.radio_button :def_tool_id, dt.id, class: "tool-def" %>
-      <%= label_tag "tool_def_tool_id_#{dt.id}", dt.name, class: "tool-label" %>
-    </div>
-  <% end %>
+  <div id="def-tool-list">
+    <% DefTool.all.each do |dt| %>
+      <div id="def-tool-<%=dt.id%>">
+        <%= f.radio_button :def_tool_id, dt.id, class: "tool-def" %>
+        <%= f.label "def_tool_id_#{dt.id}", dt.name, class: "tool-label" %>
+      </div>
+    <% end %>
+  </div>
   <div>
-    <div>
-      <%= f.text_field :name, id: "tool-name" %>
-    </div>
-    <div>
-      <%= f.text_area :description, id: "tool-description" %>
+    <div id="tool-text">
+      <div>
+        <%= f.text_field :name, id: "tool-name" %>
+      </div>
+      <div>
+        <%= f.text_area :description, id: "tool-description" %>
+      </div>
     </div>
     <div>
       <%= submit_tag "=>", id: "submit-button" %>
     </div>
   </div>
 <% end %>
+<div id="edit-tool-form-slider"></div>
+<%= link_to "Continue", @character, class: "slide", id: "tools-done" %>

@@ -18,6 +18,9 @@ $ ->
   alternateSubmitButton = '#alternate-form-1 .submit-button'
   startHidden alternateSubmitButton
 
+  $('input[type=text]').prop
+    autocomplete: 'off'
+
   unless '<%= @character.name %>' == ''
     if '<%= @character.archetype.sample_names.find_by(name: @character.name) %>' == ''
       show alternateForm

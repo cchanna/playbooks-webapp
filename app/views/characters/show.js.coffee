@@ -11,7 +11,7 @@ $ ->
   console.log redirectUrl
   if redirectUrl
     console.log '\nREDIRECT'
-    slideTo redirectUrl
+    slideQuietlyTo redirectUrl
     return
 
   data = '<%= escape_javascript render "show" %>'

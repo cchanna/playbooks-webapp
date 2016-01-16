@@ -1,0 +1,19 @@
+<%= form_for [tool], remote: true do |f| %>
+  <div id="tool-text">
+    <div>
+      <%= tool.def_tool.name %>
+    </div>
+    <div>
+      <%= f.text_field :name, id: "edit-tool-name" %>
+    </div>
+    <div>
+      <%= f.text_area :description, id: "edit-tool-description" %>
+    </div>
+  </div>
+  <div>
+    <%= button_tag "<=", id: "cancel-button" %>
+    <%= link_to "X", tool_path(id: tool.id), method: :delete, remote: true, id: "delete-tool-button"  %>
+    <%= f.submit "=>", id: "edit-tool-submit-button" %>
+  </div>
+  <div>
+<% end %>

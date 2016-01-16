@@ -12,7 +12,6 @@ fadeIn = (element, doFollowup) ->
   else if doFollowup?
     doFollowup()
 
-
 @hide = (element, doFollowup) ->
   if $(element).css("display") == 'none'
     doFollowup() if doFollowup?
@@ -39,7 +38,7 @@ fadeIn = (element, doFollowup) ->
     $(element).css display: 'initial'
   fadeIn element, doFollowup
 
-fadeOutBody = (after) ->
+@fadeOutBody = (after) ->
   hide '#slider', after
 
 @load = (data) ->
@@ -53,18 +52,29 @@ fadeOutBody = (after) ->
   console.log 'push state ' + url
   history.pushState {}, '', url
 
+replaceStateWith = (url) ->
+  console.log 'replace state with ' + url
+  history.replaceState {}, '', url
+
+@request = (url, dataMethod, doOnFailure) ->
+  $.ajax(url: url, dataType: "script", method: dataMethod).complete (data, status) =>
+    console.log 'ajax:' + status
+    unless status == "success"
+      if doOnFailure
+        doOnFailure(data.responseText)
+
 @slideTo = (url, quiet) ->
   console.log 'slide to ' + url
-  unless quiet?
+  if quiet
+    replaceStateWith url
+  else
     pushStateTo url
   fadeOutBody ->
-    $.ajax(url: url, dataType: "script").complete (data, status) =>
-      console.log 'ajax:' + status
-      unless status == "success"
-        # a failure means that we got back html, not javascript
-        # so we just render it instead
-        load data.responseText
-        fadeInBody()
+    request url, "get", (data) ->
+      # a failure means that we got back html, not javascript
+      # so we just render it instead
+      load data
+      fadeInBody()
 
 @slideQuietlyTo = (url) ->
   slideTo url, true
