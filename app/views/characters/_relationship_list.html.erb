@@ -1,0 +1,11 @@
+<% relationships.each do |r| %>
+  <div class="relationship">
+    <% button_name = r.name + ' ' %>
+    <% if r.trust >= 0 %>
+      <% button_name = button_name + '+' + r.trust.to_s %>
+    <% else %>
+      <% button_name = button_name + '−' + r.trust.abs.to_s %>
+    <% end %>
+    <%= button_to button_name, relationship_path(id: r.id), remote: true, form_class: "delete_relationship", method: :delete %>
+  </div>
+<% end %>
