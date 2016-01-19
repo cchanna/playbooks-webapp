@@ -1,5 +1,6 @@
 $ ->
   console.log '\nNEW RELATIONSHIP'
+
   data = '<%= escape_javascript render "new" %>'
   questions = '<%=
     result = ""
@@ -8,49 +9,73 @@ $ ->
     end
     result.strip!
   %>'.split ' '
-  console.log questions
   hideForm = '<%= @character.relationships.count == @character.archetype.trust_questions.count %>'
   canContinue = '<%= @character.relationships.count > 0%>'
   form = '#new_relationship'
   submitButton = '#submit-button'
   textField = '#trust-name'
+  deleteButton = '.delete_relationship'
   done = '#relationships-done'
   relationshipList = '#relationship-list'
+  trustQuestionsList = '#trust-questions-list'
+
   load data
-  # startFaded q for q in questions
-  if questions[0]
-    $(q + ' input').prop(checked: false, disabled: true) for q in questions
+
   if hideForm == 'true'
     startFaded form
-  startHidden submitButton
-  startHidden textField
+
   unless canContinue == 'true'
     startHidden done
+
+  startHidden submitButton
+  startHidden textField
 
   $('input[type=text]').prop
     autocomplete: 'off'
 
-  $('#new_relationship').submit (e) ->
-    console.log '\nBEFORE FORM SUBMIT'
-    unless $(textField).val()
+  if questions[0]
+    $(q + ' input').prop(checked: false, disabled: true) for q in questions
+
+  beforeSubmit = ->
+    console.log '\nFORM SUBMIT'
+    if $("input[type=radio]").is(':checked') && $(textField).val()
+      hide textField
+      hide submitButton
+      fadeOut relationshipList, ->
+        $(form).submit()
+        $(textField).val("")
+    else
       console.log 'cancel submit'
-      return false
 
-  $('input[type=radio]').change ->
-    console.log 'click question'
-    show textField
-    $(textField).val ""
-    $(textField).focus()
+  $(textField).redirectReturnTo beforeSubmit
+  $(submitButton).redirectButtonTo beforeSubmit
 
-  $(textField).keyup ->
-    if $(this).val()
+  $('input[type=radio]').redirectRadioTo (me) ->
+    console.log '\nCLICK RADIO'
+    if $(me).prop("checked")
+      if $(textField).css('display') == 'none'
+        $(textField).val ""
+        show textField
+        $(textField).focus()
+      else
+        hide submitButton
+        fadeOut textField, ->
+          $(textField).val ""
+          show textField
+    else
+      hide textField
+
+  $(deleteButton).redirectButtonTo (me) ->
+    console.log '\nCLICK DESTROY RELATIONSHIP'
+    fadeOut relationshipList, ->
+      console.log me
+      $(me).submit()
+
+  $(form).keyup (e) ->
+    if $(textField).val()
       if $(submitButton).css('display') == 'none'
         show submitButton
     else
       hide submitButton
 
   fadeInBody()
-  #
-  # $('#new-character-form').on 'ajax:success', (e, data, status, xhr) ->
-  #   console.log '\nFORM SUBMIT'
-  #   slideTo data

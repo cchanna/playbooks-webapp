@@ -79,6 +79,47 @@ replaceStateWith = (url) ->
 @slideQuietlyTo = (url) ->
   slideTo url, true
 
+@redirectClickTo = (action) ->
+
+
+$.fn.extend
+  redirectReturnTo: (action) ->
+    return @each ->
+      $(this).keypress (e) ->
+        if e.which == 13
+          action(this)
+          return false
+
+  redirectButtonTo: (action) ->
+    return @each ->
+      $(this).keypress (e) ->
+        if e.which == 13 || e.which == 32
+          action(this)
+          return false
+      $(this).click ->
+        action(this)
+        return false
+
+  redirectCheckboxTo: (action) ->
+    return @each ->
+      $(this).keypress (e) ->
+        if e.which == 13
+          $(this).prop("checked", !$(this).prop("checked"))
+          action(this)
+          return false
+      $(this).change ->
+        action(this)
+
+  redirectRadioTo: (action) ->
+    return @each ->
+      $(this).keypress (e) ->
+        if e.which == 13
+          $(this).prop("checked", true)
+          action(this)
+          return false
+      $(this).change ->
+        action(this)
+
 $ ->
   $(window).on 'popstate', (e) ->
     console.log '\nPOPSTATE'

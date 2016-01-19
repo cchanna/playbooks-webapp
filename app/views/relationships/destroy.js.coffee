@@ -9,14 +9,20 @@ $ ->
   canContinue = '<%= @character.relationships.count > 0%>'
   done = '#relationships-done'
   textField = '#trust-name'
-  # show question
+  deleteButton = '.delete_relationship'
   show form
   if canContinue == 'false'
     fadeOut done
   unless $(textField).css('opacity') == 0
     $(textField).focus()
-  fadeOut relationshipList, ->
-    $(relationshipList).html(data)
-    show relationshipList
-    $(radio).prop
-      disabled: false
+  $(relationshipList).html(data)
+  $(radio).prop
+    disabled: false
+
+  $(deleteButton).redirectButtonTo (me) ->
+    console.log '\nCLICK DESTROY RELATIONSHIP'
+    fadeOut relationshipList, ->
+      console.log me
+      $(me).submit()
+
+  show relationshipList

@@ -8,12 +8,14 @@
   <div>
     Which of you...
   </div>
-  <% @character.archetype.trust_questions.each do |q| %>
-    <div id="trust-question-<%=q.id%>">
-      <%= f.radio_button :trust_question_id, q.id, class: "trust-question"%>
-      ... <%= f.label "trust_question_id_" + q.id.to_s, q.question, class: "trust-question-label" %>
-    </div>
-  <% end %>
+  <div id="trust-questions-list">
+    <% @character.archetype.trust_questions.each do |q| %>
+      <div id="trust-question-<%=q.id%>">
+        <%= f.radio_button :trust_question_id, q.id, class: "trust-question"%>
+        ... <%= f.label "trust_question_id_" + q.id.to_s, q.question, class: "trust-question-label" %>
+      </div>
+    <% end %>
+  </div>
   <div id="trust-enter-name">
     <%= f.text_field :name, id: "trust-name" %>
     <%= f.submit "=>", id: "submit-button" %>
