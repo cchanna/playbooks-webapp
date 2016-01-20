@@ -22,7 +22,6 @@ $ ->
   $(deleteButton).redirectButtonTo (me) ->
     console.log '\nCLICK DESTROY RELATIONSHIP'
     fadeOut relationshipList, ->
-      console.log me
       $(me).submit()
 
   show relationshipList

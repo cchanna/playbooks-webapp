@@ -12,10 +12,7 @@ $ ->
   submitButton = '#edit-tool-submit-button'
   $(editToolFormSlider).html(data)
 
-
-  $(cancelButton).click (e) ->
-    console.log '\nCANCEL EDIT'
-    e.preventDefault()
+  $(cancelButton).redirectButtonTo ->
     hide editToolFormSlider, ->
       if numTools < 3
         show newToolForm
@@ -24,22 +21,17 @@ $ ->
     console.log '\nBEFORE SUBMIT EDIT TOOL'
     if $(nameField).val() && $(descriptionField).val()
       fadeOutBody =>
-        faded = true
         $(submitButton).submit()
       return false
     else
       console.log 'cancel submit'
       return false
 
-  $(descriptionField).keypress (e) ->
-    if e.which == 13
-      preSubmit()
-      return false
+  $(nameField).redirectReturnTo ->
+    $(descriptionField).select()
 
-  $(nameField).keypress (e) ->
-    if e.which == 13
-      $(descriptionField).select()
-      return false
+  $(descriptionField).redirectReturnTo preSubmit
+  $(submitButton).redirectButtonTo preSubmit
 
   $(editToolForm).keyup (e) ->
     unless e.which == 13
@@ -54,17 +46,12 @@ $ ->
         hide descriptionField
         hide submitButton
 
-
-  $(submitButton).click (e) ->
-    preSubmit
-
-  $(deleteButton).click ->
+  $(deleteButton).redirectButtonTo (me) ->
     console.log '\nCLICK DELETE TOOL'
-    href = $(this).attr('href')
-    dataMethod = $(this).attr('data-method')
+    href = $(me).attr('href')
+    dataMethod = $(me).attr('data-method')
     fadeOutBody ->
       request href, dataMethod
-    return false
 
   show editToolFormSlider
   $(nameField).select()

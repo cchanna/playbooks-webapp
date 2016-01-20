@@ -31,22 +31,27 @@ $ ->
   else
     startHidden done
 
-
-
   if tools[0]
     $(t + ' input').prop(checked: false, disabled: true) for t in tools
 
   $('input[type=text]').prop
     autocomplete: 'off'
 
-  $('input[type=radio]').change ->
+  $('input[type=radio]').redirectRadioTo (me) ->
     console.log '\nCLICK TOOL'
-    show nameField
-    $(nameField).val ""
-    $(descriptionField).val ""
-    hide descriptionField
+    hide descriptionField, ->
+      $(descriptionField).val ""
     hide submitButton
-    $(nameField).focus()
+    if $(me).prop("checked")
+      if $(nameField).css('display') == 'none'
+        show nameField
+        $(nameField).focus()
+      else
+        hide nameField, ->
+          $(nameField).val ""
+          show nameField
+    else
+      hide nameField
 
   $(textFields).keyup (e) ->
     unless e.which == 13
@@ -61,17 +66,16 @@ $ ->
         hide descriptionField
         hide submitButton
 
-  $(editToolLink).click (e) ->
+  $(editToolLink).redirectButtonTo (me) ->
     console.log '\nCLICK EDIT TOOL'
-    href = $(this).attr('href')
+    href = $(me).attr('href')
     hide form, ->
       fadeOut editToolFormSlider, ->
         request href
-    return false
 
   preSubmit = ->
     console.log '\nBEFORE FORM SUBMIT'
-    if $(nameField).val() && $(descriptionField).val()
+    if $("input[type=radio]").is(':checked') && $(nameField).val() && $(descriptionField).val()
       fadeOut toolList, ->
         faded = true
         numTools++
@@ -85,20 +89,12 @@ $ ->
       hide submitButton
     else
       console.log 'cancel submit'
-    return false
 
-  $(descriptionField).keypress (e) ->
-    if e.which == 13
-      preSubmit()
-      return false
+  $(nameField).redirectReturnTo ->
+    $(descriptionField).select()
 
-  $(nameField).keypress (e) ->
-    if e.which == 13
-      $(descriptionField).select()
-      return false
-
-  $(submitButton).click (e) ->
-    preSubmit()
+  $(descriptionField).redirectReturnTo preSubmit
+  $(submitButton).redirectButtonTo preSubmit
 
   fadeInBody()
   if numTools >= 3

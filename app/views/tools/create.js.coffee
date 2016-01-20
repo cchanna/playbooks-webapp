@@ -15,7 +15,6 @@ $ ->
   $(radio).prop
     checked: false
     disabled: true
-  # fadeOut toolList, ->
   $(toolList).html(data)
   $(editToolLink).click (e) ->
     console.log '\nCLICK EDIT TOOL'

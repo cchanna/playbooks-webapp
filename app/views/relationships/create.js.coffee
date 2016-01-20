@@ -17,7 +17,7 @@ $ ->
   $(relationshipList).html(data)
   show relationshipList
   if hideForm == 'true'
-    fadeOut form
+    hide form
   $(textField).val("")
   hide textField
   hide submitButton
@@ -25,7 +25,6 @@ $ ->
   $(deleteButton).redirectButtonTo (me) ->
     console.log '\nCLICK DESTROY RELATIONSHIP'
     fadeOut relationshipList, ->
-      console.log me
       $(me).submit()
 
   show done
