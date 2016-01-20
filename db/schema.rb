@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "def_looks", force: :cascade do |t|
+    t.string   "look"
+    t.integer  "archetype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "def_tools", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -48,6 +55,11 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer  "def_tool_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "looks", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "def_look_id"
   end
 
   create_table "name_categories", force: :cascade do |t|

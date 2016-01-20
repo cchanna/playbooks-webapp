@@ -3,6 +3,8 @@ $ ->
   redirectUrl = '<%=
     if !@character.name?
       edit_character_path(id: @character.id, field: "name")
+    elsif @character.def_looks.count == 0
+      edit_character_path(id: @character.id, field: "look")
     elsif @character.relationships.count == 0
       new_character_relationship_path(character_id: @character.id)
     elsif @character.archetype == Archetype.find_by(name: "Scoundrel") && @character.tools.count == 0

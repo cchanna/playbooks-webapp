@@ -27,14 +27,12 @@ class CharactersController < ApplicationController
   end
 
   def edit
-    # byebug
     @character = Character.find(params[:id])
     respond_to do |format|
       format.html {render text: "", layout: true}
       format.js
     end
   end
-
 
   def update
     @character = Character.find(params[:id])
@@ -43,6 +41,23 @@ class CharactersController < ApplicationController
       format.html {render :text => character_path(@character.id)}
     end
   end
+
+  def update_look
+    @character = Character.find params[:id]
+    @character.archetype.def_looks.each do |dl|
+      is_current_look = @character.def_looks.exists?(id: dl.id)
+      is_new_look = params[:def_look_ids].include?(dl.id.to_s)
+      if !is_current_look && is_new_look
+        Look.create(character: @character, def_look: dl)
+      elsif is_current_look && !is_new_look
+        Look.find_by(character: @character, def_look: dl).destroy
+      end
+    end
+    respond_to do |format|
+      format.html {render :text => character_path(@character.id)}
+    end
+  end
+
 
   def setting_symbol
     @character = Character.find(params[:id])

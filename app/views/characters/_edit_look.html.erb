@@ -1,0 +1,16 @@
+<div>
+  Look
+</div>
+<%= form_for @character, url: {action: "update_look"}, html: {remote: true, id: "edit-look-form", class: "edit-character-form"} do |f| %>
+  <div>
+    <% @character.archetype.def_looks.each do |dl| %>
+      <div id="def-look-<%=dl.id%>">
+        <%= check_box_tag "def_look_ids[]", dl.id, class: "look-checkbox" %>
+        <%= label_tag "def_look_id_#{dl.id}", dl.look, class: "look-lable" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= submit_tag "=>", id: "look-submit-button", class: "edit-character-form-submit" %>
+  </div>
+<% end %>

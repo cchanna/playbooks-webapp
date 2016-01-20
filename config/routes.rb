@@ -7,6 +7,7 @@ resources :characters, except: [:index, :destroy] do
   member do
     get 'setting_symbol'
     get 'setting_other'
+    patch 'update_look'
   end
 end
 

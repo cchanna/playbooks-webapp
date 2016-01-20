@@ -24,6 +24,18 @@ class Initialize < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    create_table :def_looks do |t|
+      t.string :look
+      t.belongs_to :archetype
+      t.timestamps null: false
+    end
+
+    create_table :looks do |t|
+      t.belongs_to :character
+      t.belongs_to :def_look
+      t.timestamps null: false
+    end
+
     create_table :sample_names do |t|
       t.string :name
       t.belongs_to :archetype

@@ -30,6 +30,13 @@ Dir["*"].each do |a|
           SampleName.create(name: l, archetype: archetype)
         end
       end
+    elsif f == "looks.sr"
+      lines.each do |l|
+        l.strip!
+        if l
+          DefLook.create(look: l, archetype: archetype)
+        end
+      end
     elsif f == "name_categories.sr"
       lines.each do |l|
         l.strip!

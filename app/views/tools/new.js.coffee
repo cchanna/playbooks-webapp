@@ -9,7 +9,6 @@ $ ->
     end
     result.strip!
   %>'.split ' '
-  console.log tools
 
   toolList = '#tool-list'
   nameField = '#tool-name'
