@@ -1,0 +1,19 @@
+<div>
+  Moves
+</div>
+<% @moves.each do |m| %>
+  <%= form_for [@character, m], remote: true do |f| %>
+    <div>
+      <% if m.def_move.free %>
+        <%= check_box_tag "def_move", m.def_move.id, true, id: "def_move_#{m.def_move.id}", class: "free-move-checkbox move-checkbox" %>
+      <% else %>
+        <%= check_box_tag "def_move", m.def_move.id, !m.id.nil?, id: "def_move_#{m.def_move.id}", class: "move-checkbox" %>
+      <% end %>
+      <%= label_tag "def_move_#{m.def_move.id}", m.def_move.name %>
+    </div>
+    <div class='move-form-clickable'>
+      <%= m.def_move.body %>
+    </div>
+  <% end %>
+<% end %>
+<%= button_tag "=>", remote: true, id: "submit-button" %>

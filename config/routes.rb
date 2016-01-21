@@ -4,15 +4,17 @@ root 'main#home'
 resources :characters, except: [:index, :destroy] do
   resources :relationships, only: [:new, :create]
   resources :tools, only: [:new, :create]
+  resources :moves, only: [:create, :update]
   member do
     get 'setting_symbol'
     get 'setting_other'
     patch 'update_look'
+    get 'edit_moves'
   end
 end
 
 resources :tools, only: [:show, :destroy, :edit, :update]
-
+resources :moves, only: [:show]
 resources :relationships, only: [:show, :destroy] do
   member do
     post 'increment'

@@ -1,14 +1,13 @@
 class Initialize < ActiveRecord::Migration
   def change
+
     create_table :def_tools do |t|
       t.string :name
-      t.timestamps null: false
     end
 
     create_table :example_tools do |t|
       t.string :example
       t.belongs_to :def_tool
-      t.timestamps null: false
     end
 
     create_table :archetypes do |t|
@@ -21,43 +20,67 @@ class Initialize < ActiveRecord::Migration
       t.string :setting_other_example1
       t.string :setting_other_example2
       t.string :setting_other_example3
-      t.timestamps null: false
+      t.integer :starting_move_count
+    end
+
+    create_table :def_moves do |t|
+      t.string :name
+      t.belongs_to :archetype
+      t.string :stat
+      t.text :body
+      t.boolean :has_description, default: false
+      t.boolean :free, default: false
+      t.integer :options_selectable
+    end
+
+    create_table :def_move_options do |t|
+      t.belongs_to :def_move
+      t.string :option
     end
 
     create_table :def_looks do |t|
       t.string :look
       t.belongs_to :archetype
-      t.timestamps null: false
     end
 
     create_table :looks do |t|
       t.belongs_to :character
       t.belongs_to :def_look
-      t.timestamps null: false
     end
 
     create_table :sample_names do |t|
       t.string :name
       t.belongs_to :archetype
-      t.timestamps null: false
     end
 
     create_table :name_categories do |t|
       t.string :name
       t.belongs_to :archetype
-      t.timestamps null: false
     end
 
     create_table :trust_questions do |t|
       t.string :question
       t.integer :trust
       t.belongs_to :archetype
-      t.timestamps null: false
     end
 
     create_table :characters do |t|
       t.string :name
       t.belongs_to :archetype
+      t.integer :move_count
+      t.timestamps null: false
+    end
+
+    create_table :moves do |t|
+      t.belongs_to :character
+      t.belongs_to :def_move
+      t.text :description
+      t.timestamps null: false
+    end
+
+    create_table :move_options do |t|
+      t.belongs_to :move
+      t.belongs_to :def_move_option
       t.timestamps null: false
     end
 
@@ -74,6 +97,7 @@ class Initialize < ActiveRecord::Migration
       t.belongs_to :def_tool
       t.string :name
       t.text :description
+      t.timestamps null: false
     end
   end
 end

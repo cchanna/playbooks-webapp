@@ -21,6 +21,7 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.create(character_params)
+    @character.update(move_count: @character.archetype.starting_move_count)
     respond_to do |format|
       format.html {render :text => setting_symbol_character_path(@character.id)}
     end
@@ -28,6 +29,23 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      format.js
+    end
+  end
+
+  def edit_moves
+    @character = Character.find params[:id]
+    @moves = Array.new
+    @character.archetype.def_moves.each do |dm|
+      move = Move.find_by(character: @character, def_move: dm)
+      if move.nil?
+        @moves.push Move.new(character: @character, def_move: dm)
+      else
+        @moves.push move
+      end
+    end
     respond_to do |format|
       format.html {render text: "", layout: true}
       format.js
@@ -77,6 +95,6 @@ class CharactersController < ApplicationController
 
   private
     def character_params
-      params.require(:character).permit(:name, :archetype_id)
+      params.require(:character).permit(:name, :archetype_id, :move_count)
     end
 end

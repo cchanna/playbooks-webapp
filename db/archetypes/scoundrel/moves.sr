@@ -1,0 +1,60 @@
+3
+
+Use Your Tools
+	stat: clever
+	free: true
+	body:
+		When you use your tools to solve the problem at hand, roll CLEVER. *On a
+		10+, you get it done. Choose 2. *On a 7-9, choose 1 instead:
+		> Quick – it doesn't take a long time
+		> Quiet – it doesn't draw their attention
+		> Clean – it doesn't cause issues later
+		*On a miss, be prepared for the worst.
+
+Evasive
+	body:
+		When you get pinned in a tight spot and need to get out, you can:
+		> get the hell away from them
+		> avoid their attention, for now
+		> mislead or deceive them
+		*If you do, the Narrator holds a twist.
+
+I Know a Guy
+	stat: wary
+	body:
+		When you have a task beyond the capabilities of your crew but know just the
+		right person for the job, give them a name and describe why they're useful
+		and why they're dangerous, then roll WARY. *On a 10+, they're willing to
+		hear out your offer. *On a 7-9, they'll hear you out, but choose 1:
+		> it'll cost you: maybe money, maybe a favor, maybe something else
+		> they're in hiding, and you need to track them down first
+		> it's less "you know them" and more "you know of them"
+		> the last time you parted, it wasn't exactly on friendly terms
+		*On a miss, you still know them, but you probably will end up wishing you
+		didn't.
+
+In the Knick of Time
+	body:
+		When you lay low or slip away as the situation looks hopeless for your
+		friends, you may spend 4 spirit. If you do, you appear – exactly where you
+		need to be, just in the knick of time, and with the perfect solution in
+		hand.
+
+Professional
+	stat: clever
+	body:
+		When you call upon your professional knowledge and experience while you
+		[Use Your Tools](clever), choose an additional option from the list on a
+		hit. Add the following as possible choices:
+		> Concealed – the results of your work won't be immediately apparent
+		> Cruel – you rig the situation to harm someone
+
+Alert
+	stat: clever
+	body:
+		When you [Think Things Through](clever), add the following questions to the
+		list:
+		> what here poses the greatest danger to me?
+		> are they lying to me?
+		> what do they really want?
+		> who can I count on, here?

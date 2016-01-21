@@ -4,4 +4,5 @@ class Archetype < ActiveRecord::Base
   has_many :name_categories
   has_many :def_looks
   has_many :trust_questions
+  has_many :def_moves
 end

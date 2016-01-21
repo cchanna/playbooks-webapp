@@ -4,4 +4,5 @@ class Character < ActiveRecord::Base
   has_many :def_looks, through: :looks
   has_many :relationships
   has_many :tools
+  has_many :moves
 end
