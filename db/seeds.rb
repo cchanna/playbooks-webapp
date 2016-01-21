@@ -61,9 +61,26 @@ Dir["*"].each do |a|
           def_tool = DefTool.create(name: line.squish)
         end
       end
+    when "stats.sr"
+      while lines.length > 0
+        line = lines.shift
+        fields = line.strip.delete(" ").split(":")
+        case fields[0]
+        when "brave"
+          archetype.brave = fields[1].to_i
+        when "fierce"
+          archetype.fierce = fields[1].to_i
+        when "wary"
+          archetype.wary = fields[1].to_i
+        when "clever"
+          archetype.clever = fields[1].to_i
+        when "strange"
+          archetype.strange = fields[1].to_i
+        when "move_count"
+          archetype.starting_move_count = fields[1].to_i
+        end
+      end
     when "moves.sr"
-      archetype.starting_move_count = lines.shift.squish.to_i
-      lines.shift
       def_move = DefMove.new(name: lines.shift.squish, archetype: archetype)
       in_body = false
       options = Array.new

@@ -21,6 +21,11 @@ class Initialize < ActiveRecord::Migration
       t.string :setting_other_example2
       t.string :setting_other_example3
       t.integer :starting_move_count
+      t.integer :brave
+      t.integer :fierce
+      t.integer :wary
+      t.integer :clever
+      t.integer :strange
     end
 
     create_table :def_moves do |t|
@@ -68,6 +73,11 @@ class Initialize < ActiveRecord::Migration
       t.string :name
       t.belongs_to :archetype
       t.integer :move_count
+      t.integer :brave
+      t.integer :fierce
+      t.integer :wary
+      t.integer :clever
+      t.integer :strange
       t.timestamps null: false
     end
 

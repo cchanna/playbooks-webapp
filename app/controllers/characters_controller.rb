@@ -21,7 +21,14 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.create(character_params)
-    @character.update(move_count: @character.archetype.starting_move_count)
+    @character.update(
+      move_count: @character.archetype.starting_move_count,
+      brave: @character.archetype.brave,
+      fierce: @character.archetype.fierce,
+      wary: @character.archetype.wary,
+      clever: @character.archetype.clever,
+      strange: @character.archetype.strange
+    )
     respond_to do |format|
       format.html {render :text => setting_symbol_character_path(@character.id)}
     end

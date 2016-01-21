@@ -27,12 +27,22 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.string  "setting_other_example2"
     t.string  "setting_other_example3"
     t.integer "starting_move_count"
+    t.integer "brave"
+    t.integer "fierce"
+    t.integer "wary"
+    t.integer "clever"
+    t.integer "strange"
   end
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.integer  "archetype_id"
     t.integer  "move_count"
+    t.integer  "brave"
+    t.integer  "fierce"
+    t.integer  "wary"
+    t.integer  "clever"
+    t.integer  "strange"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

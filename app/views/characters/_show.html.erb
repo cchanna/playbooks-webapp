@@ -1,6 +1,13 @@
 <%= render partial: "name", locals: {name: @character.name} %>
 <%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
 <%= render partial: "look", locals: {looks: @character.looks} %>
+<%= render partial: "stats", locals: {
+  brave: @character.brave,
+  fierce: @character.fierce,
+  wary: @character.wary,
+  clever: @character.clever,
+  strange: @character.strange,
+} %>
 <%= render partial: "trust", locals: {relationships: @character.relationships} %>
 <%= render partial: "class_feature", locals: {character: @character} %>
 <%= render partial: "moves", locals: {moves: @character.moves} %>
