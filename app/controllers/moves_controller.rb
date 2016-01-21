@@ -1,9 +1,4 @@
 class MovesController < ApplicationController
-  # def show
-  #   @move = Move.find params[:id]
-  #   render partial: :show
-  # end
-
   def update
     @move = Move.find params[:id]
     if params[:def_move] || @move.def_move.free
