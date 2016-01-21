@@ -1,48 +1,8 @@
 <div>
   Stats
 </div>
-<div>
-  Brave:
-  <% amount = brave.abs.to_s %>
-  <% if brave >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
-</div>
-<div>
-  Fierce:
-  <% amount = fierce.abs.to_s %>
-  <% if fierce >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
-</div>
-<div>
-  Wary:
-  <% amount = wary.abs.to_s %>
-  <% if wary >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
-</div>
-<div>
-  Clever:
-  <% amount = clever.abs.to_s %>
-  <% if clever >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
-</div>
-<div>
-  Strange:
-  <% amount = strange.abs.to_s %>
-  <% if strange >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
-</div>
+<%= render partial: "stat", locals: {name: "brave", value: brave} %>
+<%= render partial: "stat", locals: {name: "fierce", value: fierce} %>
+<%= render partial: "stat", locals: {name: "wary", value: wary} %>
+<%= render partial: "stat", locals: {name: "clever", value: clever} %>
+<%= render partial: "stat", locals: {name: "strange", value: strange} %>
