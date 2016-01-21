@@ -5,13 +5,13 @@
   <div>
 <% @character.archetype.sample_names.each do |name| %>
     <%= f.radio_button :name, name.name, class: "sample-name" %>
-    <%= f.label "sample_name_" + name.name, name.name, class: "sample-name-label" %>
+    <%= f.label "name_" + name.name.squish.downcase.tr(" ","_"), name.name, class: "sample-name-label" %>
 <% end %>
   </div>
   <div>
 <% @character.archetype.name_categories.each do |category| %>
     <%= f.radio_button :name, category.name, class: "name-category" %>
-    <%= f.label "name_category_" + category.name, category.name, class: "name-category-label" %>
+    <%= f.label "name_" + category.name.squish.downcase.tr(" ","_"), category.name, class: "name-category-label" %>
 <% end %>
   </div>
   <div class="submit-button" id="submit-button-1">

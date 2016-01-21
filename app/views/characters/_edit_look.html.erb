@@ -5,8 +5,8 @@
   <div>
     <% @character.archetype.def_looks.each do |dl| %>
       <div id="def-look-<%=dl.id%>">
-        <%= check_box_tag "def_look_ids[]", dl.id, class: "look-checkbox" %>
-        <%= label_tag "def_look_id_#{dl.id}", dl.look, class: "look-lable" %>
+        <%= check_box_tag "def_look_ids[#{dl.id}]", dl.id, class: "look-checkbox" %>
+        <%= label_tag "def_look_ids_#{dl.id}", dl.look, class: "look-lable" %>
       </div>
     <% end %>
   </div>
