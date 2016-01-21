@@ -55,12 +55,8 @@ $ ->
   $(textFields).keyup (e) ->
     unless e.which == 13
       if $(nameField).val()
-        if $(descriptionField).css('display') == 'none'
-          show descriptionField
-        else if $(descriptionField).val()
-          show submitButton
-        else
-          hide submitButton
+        show descriptionField
+        show submitButton
       else
         hide descriptionField
         hide submitButton
@@ -74,7 +70,7 @@ $ ->
 
   preSubmit = ->
     console.log '\nBEFORE FORM SUBMIT'
-    if $("input[type=radio]").is(':checked') && $(nameField).val() && $(descriptionField).val()
+    if $("input[type=radio]").is(':checked') && $(nameField).val()
       fadeOut toolList, ->
         faded = true
         numTools++
