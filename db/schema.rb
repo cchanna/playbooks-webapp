@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer  "wary"
     t.integer  "clever"
     t.integer  "strange"
+    t.integer  "spirit"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

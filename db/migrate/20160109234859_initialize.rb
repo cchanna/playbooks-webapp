@@ -80,6 +80,7 @@ class Initialize < ActiveRecord::Migration
       t.integer :wary
       t.integer :clever
       t.integer :strange
+      t.integer :spirit
       t.timestamps null: false
     end
 

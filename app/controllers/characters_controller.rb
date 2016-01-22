@@ -27,7 +27,8 @@ class CharactersController < ApplicationController
       fierce: @character.archetype.fierce,
       wary: @character.archetype.wary,
       clever: @character.archetype.clever,
-      strange: @character.archetype.strange
+      strange: @character.archetype.strange,
+      spirit: 2
     )
     respond_to do |format|
       format.html {render :text => setting_symbol_character_path(@character.id)}
@@ -98,6 +99,20 @@ class CharactersController < ApplicationController
       format.html {render :text => "", :layout => true}
       format.js
     end
+  end
+
+  def increment_spirit
+    @character = Character.find params[:id]
+    @character.update(spirit: @character.spirit + 1)
+    render partial: "increment_spirit"
+  end
+
+  def decrement_spirit
+    @character = Character.find params[:id]
+    if @character.spirit > 0
+      @character.update(spirit: @character.spirit - 1)
+    end
+    render nothing: true
   end
 
   private

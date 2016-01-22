@@ -10,6 +10,8 @@ resources :characters, except: [:index, :destroy] do
     get 'setting_other'
     patch 'update_look'
     get 'edit_moves'
+    post 'increment_spirit'
+    post 'decrement_spirit'
   end
   resources :fates, only: [:new, :create]
 end

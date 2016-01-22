@@ -9,6 +9,7 @@
   strange: @character.strange,
 } %>
 <%= render partial: "trust", locals: {relationships: @character.relationships} %>
+<%= render partial: "spirit", locals: {spirit: @character.spirit} %>
 <%= render partial: "class_feature", locals: {character: @character} %>
 <%= render partial: "moves", locals: {moves: @character.moves} %>
 <%= render partial: "fates", locals: {fates: @character.fates} %>

@@ -138,17 +138,11 @@ $ ->
       j++
     if completed
       $(".change-fate-#{id}").prop disabled: true
-      # startHidden "#complete-fate-#{id}"
       changeToUncomplete "#complete-fate-#{id}"
     else
       changeToComplete "#complete-fate-#{id}"
-      # startHidden "#uncomplete-fate-#{id}"
 
   setFate fate for fate in $(".fate")
-
-  # $('.complete-fate').redirectButtonTo (me) ->
-  #
-  # $('.uncomplete-fate').redirectButtonTo (me) ->
 
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
     console.log 'change trust'
@@ -157,6 +151,24 @@ $ ->
     hide value, ->
       $(value).html(data)
       show value
+
+  onDecrementSpirit = (me) ->
+    $(me).submit()
+    hide me, ->
+      $(me).parent().remove()
+
+
+  $(".decrement_spirit").redirectButtonTo onDecrementSpirit
+
+  $(".increment_spirit").redirectButtonTo (me) ->
+    console.log '\nINCREMENT SPIRIT'
+    $(me).submit()
+
+  $(".increment_spirit").parent().on 'ajax:success', (e, data, staus, xhr) ->
+    console.log 'ajax success'
+    newButton = $('#spirit-buttons').append(data)
+    $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
+    # $('div#spirit-buttons').append("<p>Test</p>")
 
 
   $('body').on 'click', 'a.disabled', (event) ->
