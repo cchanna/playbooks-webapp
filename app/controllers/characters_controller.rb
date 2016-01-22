@@ -30,6 +30,9 @@ class CharactersController < ApplicationController
       strange: @character.archetype.strange,
       spirit: 2
     )
+    @character.archetype.def_dire_fates.each do |ddf|
+      DireFate.create(character:@character, def_dire_fate: ddf, checked: false)
+    end
     respond_to do |format|
       format.html {render :text => setting_symbol_character_path(@character.id)}
     end

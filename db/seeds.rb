@@ -18,6 +18,8 @@ NameCategory.destroy_all
 NameCategory.reset_pk_sequence
 TrustQuestion.destroy_all
 TrustQuestion.reset_pk_sequence
+DefDireFate.destroy_all
+DefDireFate.reset_pk_sequence
 
 current_dir = Dir.pwd
 chdir "./db"
@@ -159,6 +161,16 @@ Dir["*"].each do |a|
             line = lines.shift
           end
           fate.save
+        end
+      end
+    when "dire_fates.sr"
+      peril = 1
+      while lines.length > 0
+        line = lines.shift.squish
+        if line.length > 0
+          DefDireFate.create(archetype: archetype, text: line, peril: peril)
+        else
+          peril = peril + 1
         end
       end
     end

@@ -27,6 +27,12 @@ class Initialize < ActiveRecord::Migration
       t.integer :strange
     end
 
+    create_table :def_dire_fates do |t|
+      t.string :text
+      t.integer :peril
+      t.belongs_to :archetype
+    end
+
     create_table :def_fates do |t|
       t.belongs_to :archetype
       t.string :name
@@ -82,6 +88,12 @@ class Initialize < ActiveRecord::Migration
       t.integer :strange
       t.integer :spirit
       t.timestamps null: false
+    end
+
+    create_table :dire_fates do |t|
+      t.belongs_to :character
+      t.belongs_to :def_dire_fate
+      t.boolean :checked
     end
 
     create_table :looks do |t|

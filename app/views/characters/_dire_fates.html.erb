@@ -1,0 +1,26 @@
+<div>
+  Dire Fates
+</div>
+First Peril:
+<% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 1}).order(:id).each do |df| %>
+  <%= render df %>
+<% end %>
+Second Peril:
+<% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 2}).order(:id).each do |df| %>
+  <%= render df %>
+<% end %>
+<% if @character.archetype = Archetype.find_by(name: "Warrior") %>
+  Third Peril:
+  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order(:id).each do |df| %>
+    <%= render df %>
+  <% end %>
+  Final Peril:
+  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 4}).order(:id).each do |df| %>
+    <%= render df %>
+  <% end %>
+<% else %>
+  Final Peril:
+  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order(:id).each do |df| %>
+    <%= render df %>
+  <% end %>
+<% end %>

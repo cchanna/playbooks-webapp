@@ -170,6 +170,9 @@ $ ->
     $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
     # $('div#spirit-buttons').append("<p>Test</p>")
 
+  $(".dire-fate-checkbox").change ->
+    console.log $(this).prop("checked")
+    $(this).submit()
 
   $('body').on 'click', 'a.disabled', (event) ->
     event.preventDefault()

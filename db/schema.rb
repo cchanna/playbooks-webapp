@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "def_dire_fates", force: :cascade do |t|
+    t.string  "text"
+    t.integer "peril"
+    t.integer "archetype_id"
+  end
+
   create_table "def_fates", force: :cascade do |t|
     t.integer "archetype_id"
     t.string  "name"
@@ -78,6 +84,12 @@ ActiveRecord::Schema.define(version: 20160109234859) do
 
   create_table "def_tools", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "dire_fates", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "def_dire_fate_id"
+    t.boolean "checked"
   end
 
   create_table "example_tools", force: :cascade do |t|

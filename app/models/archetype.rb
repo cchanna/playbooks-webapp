@@ -6,4 +6,5 @@ class Archetype < ActiveRecord::Base
   has_many :trust_questions
   has_many :def_moves
   has_many :def_fates
+  has_many :def_dire_fates
 end

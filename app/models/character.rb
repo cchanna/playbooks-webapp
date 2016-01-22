@@ -6,4 +6,5 @@ class Character < ActiveRecord::Base
   has_many :tools
   has_many :moves
   has_many :fates
+  has_many :dire_fates
 end
