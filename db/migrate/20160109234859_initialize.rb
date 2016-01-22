@@ -55,11 +55,6 @@ class Initialize < ActiveRecord::Migration
       t.belongs_to :archetype
     end
 
-    create_table :looks do |t|
-      t.belongs_to :character
-      t.belongs_to :def_look
-    end
-
     create_table :sample_names do |t|
       t.string :name
       t.belongs_to :archetype
@@ -86,6 +81,11 @@ class Initialize < ActiveRecord::Migration
       t.integer :clever
       t.integer :strange
       t.timestamps null: false
+    end
+
+    create_table :looks do |t|
+      t.belongs_to :character
+      t.belongs_to :def_look
     end
 
     create_table :fates do |t|

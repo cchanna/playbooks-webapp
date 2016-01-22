@@ -1,10 +1,23 @@
-Archetype.all.each do |a|
-  a.destroy
-end
-
-Character.all.each do |a|
-  a.destroy
-end
+Archetype.destroy_all
+Archetype.reset_pk_sequence
+DefTool.destroy_all
+DefTool.reset_pk_sequence
+ExampleTool.destroy_all
+ExampleTool.reset_pk_sequence
+DefFate.destroy_all
+DefFate.reset_pk_sequence
+DefMove.destroy_all
+DefMove.reset_pk_sequence
+DefMoveOption.destroy_all
+DefMoveOption.reset_pk_sequence
+DefLook.destroy_all
+DefLook.reset_pk_sequence
+SampleName.destroy_all
+SampleName.reset_pk_sequence
+NameCategory.destroy_all
+NameCategory.reset_pk_sequence
+TrustQuestion.destroy_all
+TrustQuestion.reset_pk_sequence
 
 current_dir = Dir.pwd
 chdir "./db"
