@@ -1,28 +1,27 @@
 $ ->
   console.log 'show character'
-  redirectUrl = '<%=
+  redirectURL = '<%=
     if !@character.name?
       edit_character_path(id: @character.id, field: "name")
-    elsif @character.fates.count == 0
-      new_character_fate_path(character_id: @character.id)
     elsif @character.def_looks.count == 0
       edit_character_path(id: @character.id, field: "look")
     elsif @character.relationships.count == 0
       new_character_relationship_path(character_id: @character.id)
+    elsif @character.fates.count == 0
+      new_character_fate_path(character_id: @character.id)
     elsif @character.archetype == Archetype.find_by(name: "Scoundrel") && @character.tools.count == 0
       new_character_tool_path(character_id: @character.id)
     elsif @character.moves.count == 0
       edit_moves_character_path(id: @character.id)
     end %>'
-  if redirectUrl
+  if redirectURL
     console.log '\nREDIRECT TO ' + redirectURL
-    slideQuietlyTo redirectUrl
+    slideQuietlyTo redirectURL
     return
 
   data = '<%= escape_javascript render "show" %>'
   incrementFate = '.increment-fate'
   decrementFate = '.decrement-fate'
-  i=0
 
   load data
 
@@ -38,7 +37,7 @@ $ ->
       tag = "#change-fate-#{id}-#{value}"
       changeToDecrement tag
     if value == 5
-      show "#complete-fate-#{id}"
+      $("#complete-fate-#{id}").prop disabled: false
 
   onDecrement = (me) ->
     console.log '\nDECREMENT FATE'
@@ -52,7 +51,8 @@ $ ->
       $(parent).data(value: value)
       changeToIncrement tag
     if value < 5
-      hide "#complete-fate-#{id}"
+      # hide "#complete-fate-#{id}"
+      $("#complete-fate-#{id}").prop disabled: true
 
   changeToIncrement = (button) ->
     console.log 'change ' + button + ' to increment'
@@ -76,6 +76,46 @@ $ ->
     $(button).off()
     $(button).redirectButtonTo onDecrement
 
+  onComplete = (me) ->
+    fate = $(me).closest(".fate")
+    id = $(fate).attr('id').split("-")[1]
+    console.log '\nCOMPLETE ' + id
+    if $(fate).data("value") == 5 && $(fate).data("completed") == false
+      $(fate).data(completed: true)
+      $(".change-fate-#{id}").prop disabled: true
+      $(me).submit()
+      changeToUncomplete me
+
+  onUncomplete = (me) ->
+    fate = $(me).closest(".fate")
+    id = $(fate).attr('id').split("-")[1]
+    console.log '\nUNCOMPLETE ' + id
+    if $(fate).data("completed") == true
+      $(fate).data(completed: false)
+      $(me).submit()
+      $(".change-fate-#{id}").prop disabled: false
+      changeToComplete me
+
+  changeToComplete = (button) ->
+    console.log 'change to complete'
+    buttonClass = $(button).attr("class").replace "uncomplete", "complete"
+    console.log buttonClass
+    $(button).attr(class: buttonClass)
+    action = $(button).parent().attr("action").replace "uncomplete", "complete"
+    $(button).parent().attr(action: action)
+    $(button).off()
+    $(button).redirectButtonTo onComplete
+
+  changeToUncomplete = (button) ->
+    console.log 'change to uncomplete'
+    buttonClass = $(button).attr("class").replace "complete", "uncomplete"
+    console.log buttonClass
+    $(button).attr(class: buttonClass)
+    action = $(button).parent().attr("action").replace "complete", "uncomplete"
+    $(button).parent().attr(action: action)
+    $(button).off()
+    $(button).redirectButtonTo onUncomplete
+
   setFate = (fate) ->
     console.log fate
     advancement = $(fate).find(".fate-advancement")
@@ -87,39 +127,28 @@ $ ->
     console.log completed
     tag = "#change-fate-#{id}"
     j = 1
+    $(tag).redirectButtonTo onIncrement
     while j <= value
       changeToDecrement "#{tag}-#{j}"
       j++
     if j < 5
-      startHidden "#complete-fate-#{id}"
+      $("#complete-fate-#{id}").prop disabled: true
     while j <= 5
       changeToIncrement "#{tag}-#{j}"
       j++
     if completed
       $(".change-fate-#{id}").prop disabled: true
-      startHidden "#complete-fate-#{id}"
+      # startHidden "#complete-fate-#{id}"
+      changeToUncomplete "#complete-fate-#{id}"
     else
-      startHidden "#uncomplete-fate-#{id}"
+      changeToComplete "#complete-fate-#{id}"
+      # startHidden "#uncomplete-fate-#{id}"
 
   setFate fate for fate in $(".fate")
 
-  $('.complete-fate').redirectButtonTo (me) ->
-    fate = $(me).closest(".fate")
-    id = $(fate).attr('id').split("-")[1]
-    if $(fate).data("value") == 5
-      $(".change-fate-#{id}").prop disabled: true
-      $(me).submit()
-      hide me, ->
-        show "#uncomplete-fate-#{id}"
-
-  $('.uncomplete-fate').redirectButtonTo (me) ->
-    fate = $(me).closest(".fate")
-    id = $(fate).attr('id').split("-")[1]
-    $(me).submit()
-    $(".change-fate-#{id}").prop disabled: false
-    hide me, ->
-      show "#fate-advancement-#{id}"
-      show "#complete-fate-#{id}"
+  # $('.complete-fate').redirectButtonTo (me) ->
+  #
+  # $('.uncomplete-fate').redirectButtonTo (me) ->
 
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
     console.log 'change trust'
@@ -130,7 +159,7 @@ $ ->
       show value
 
 
-  # $('body').on 'click', 'a.disabled', (event) ->
-  #   event.preventDefault()
+  $('body').on 'click', 'a.disabled', (event) ->
+    event.preventDefault()
 
   fadeInBody()
