@@ -1,0 +1,21 @@
+<div class="fate" id="fate-<%=fate.id%>" data-value="<%=fate.advancement%>" data-completed="<%=fate.completed%>">
+  <div>
+    <%= fate.def_fate.name %>
+  </div>
+  <div>
+    <%= fate.def_fate.description %>
+  </div>
+  <div>
+    <%= fate.def_fate.advance %>, advance this fate.
+  </div>
+  <div>
+    <div id="fate-advancement-<%=fate.id%>" class="fate-advancement">
+      <% for i in 1..5 %>
+        <%= button_to "O", [:increment, fate], remote: true, class: "increment-fate change-fate-#{fate.id}", id: "change-fate-#{fate.id}-#{i}" %>
+      <% end %>
+    </div>
+    <%= fate.def_fate.complete %>, complete this fate and improve.
+    <%= button_to "=>", [:complete, fate], remote: true, class: "complete-fate", id: "complete-fate-#{fate.id}" %>
+    <%= button_to "<=", [:uncomplete, fate], remote: true, class: "uncomplete-fate", id: "uncomplete-fate-#{fate.id}" %>
+  </div>
+</div>

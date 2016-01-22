@@ -111,7 +111,7 @@ Dir["*"].each do |a|
               def_move.options_selectable = fields[1].to_i
             end
           end
-        1elsif line.squish.length > 0
+        elsif line.squish.length > 0
           in_body = false
           def_move.save
           options.each do |o|
@@ -121,6 +121,33 @@ Dir["*"].each do |a|
         end
       end
       def_move.save
+    when "fates.sr"
+      while lines.length > 0
+        line = lines.shift
+        if line.length > 0
+          fate = DefFate.new(archetype: archetype, name: line.squish)
+          line = lines.shift
+          fate.description = line.squish
+          line = lines.shift
+          while line[0] != "*"
+            fate.description += " " + line.squish
+            line = lines.shift
+          end
+          fate.advance = line[2..-1].squish
+          line = lines.shift
+          while line[0] != ">"
+            fate.advance += " " + line.squish
+            line = lines.shift
+          end
+          fate.complete = line[2..-1].squish
+          line = lines.shift
+          while !line.nil? && line.squish.length > 0
+            fate.complete += " " + line.squish
+            line = lines.shift
+          end
+          fate.save
+        end
+      end
     end
   end
   archetype.save

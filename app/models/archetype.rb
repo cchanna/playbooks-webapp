@@ -5,4 +5,5 @@ class Archetype < ActiveRecord::Base
   has_many :def_looks
   has_many :trust_questions
   has_many :def_moves
+  has_many :def_fates
 end

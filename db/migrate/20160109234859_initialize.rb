@@ -1,6 +1,5 @@
 class Initialize < ActiveRecord::Migration
   def change
-
     create_table :def_tools do |t|
       t.string :name
     end
@@ -26,6 +25,14 @@ class Initialize < ActiveRecord::Migration
       t.integer :wary
       t.integer :clever
       t.integer :strange
+    end
+
+    create_table :def_fates do |t|
+      t.belongs_to :archetype
+      t.string :name
+      t.text :description
+      t.string :advance
+      t.string :complete
     end
 
     create_table :def_moves do |t|
@@ -79,6 +86,13 @@ class Initialize < ActiveRecord::Migration
       t.integer :clever
       t.integer :strange
       t.timestamps null: false
+    end
+
+    create_table :fates do |t|
+      t.belongs_to :character
+      t.belongs_to :def_fate
+      t.integer :advancement
+      t.boolean :completed
     end
 
     create_table :moves do |t|

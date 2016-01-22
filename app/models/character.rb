@@ -5,4 +5,5 @@ class Character < ActiveRecord::Base
   has_many :relationships
   has_many :tools
   has_many :moves
+  has_many :fates
 end

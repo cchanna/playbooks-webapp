@@ -15,7 +15,7 @@
 <% end %>
   </div>
   <div class="submit-button" id="submit-button-1">
-    <%= f.submit "Submit", {class: "edit-character-form-submit"}%>
+    <%= f.submit "=>", {class: "edit-character-form-submit"}%>
   </div>
 <% end %>
 <%= form_for @character, remote: true, html: {class: "edit-character-form", id: "alternate-form-1"} do |f| %>
@@ -23,6 +23,6 @@
     <%= f.text_field :name %>
   </div>
   <div class="submit-button" id="submit-button-2">
-    <%= f.submit "Submit", {class: "edit-character-form-submit"}%>
+    <%= f.submit "=>", {class: "edit-character-form-submit"}%>
   </div>
 <% end %>

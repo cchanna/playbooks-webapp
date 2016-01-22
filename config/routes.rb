@@ -11,10 +11,19 @@ resources :characters, except: [:index, :destroy] do
     patch 'update_look'
     get 'edit_moves'
   end
+  resources :fates, only: [:new, :create]
 end
 
 resources :tools, only: [:show, :destroy, :edit, :update]
-resources :moves, only: [:show]
+resources :fates do
+  member do
+    post 'increment'
+    post 'decrement'
+    post 'complete'
+    post 'uncomplete'
+  end
+end
+
 resources :relationships, only: [:show, :destroy] do
   member do
     post 'increment'
