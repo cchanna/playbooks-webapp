@@ -5,4 +5,9 @@
   <div>
     <%= move.def_move.body %>
   </div>
+  <% move.move_fields.each do |f| %>
+    <div>
+      <%= f.text %>
+    </div>
+  <% end %>
 <div>

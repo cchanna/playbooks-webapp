@@ -51,6 +51,12 @@ class Initialize < ActiveRecord::Migration
       t.integer :options_selectable
     end
 
+    create_table :def_move_fields do |t|
+      t.belongs_to :def_move
+      t.string :name
+      t.boolean :creatable, default: false
+    end
+
     create_table :def_move_options do |t|
       t.belongs_to :def_move
       t.string :option
@@ -93,25 +99,35 @@ class Initialize < ActiveRecord::Migration
     create_table :dire_fates do |t|
       t.belongs_to :character
       t.belongs_to :def_dire_fate
-      t.boolean :checked
+      t.boolean :checked, default: false
+      t.timestamps null: false
     end
 
     create_table :looks do |t|
       t.belongs_to :character
       t.belongs_to :def_look
+      t.timestamps null: false
     end
 
     create_table :fates do |t|
       t.belongs_to :character
       t.belongs_to :def_fate
       t.integer :advancement
-      t.boolean :completed
+      t.boolean :completed, default: false
+      t.timestamps null: false
     end
 
     create_table :moves do |t|
       t.belongs_to :character
       t.belongs_to :def_move
       t.text :description
+      t.timestamps null: false
+    end
+
+    create_table :move_fields do |t|
+      t.belongs_to :move
+      t.belongs_to :def_move_field
+      t.string :text
       t.timestamps null: false
     end
 

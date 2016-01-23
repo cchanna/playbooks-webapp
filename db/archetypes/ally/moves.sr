@@ -1,0 +1,37 @@
+Distract Something Dangerous
+	stat: brave
+	body:
+		When you distract something dangerous to keep it away from your friends, by
+		shouting provocations, being the bait for a trap, or otherwise, roll BRAVE.
+		*On a hit, you draw its attention alright – maybe you should have planned
+		this a little better. *On a 10+, you're holding out, for now. *On a 7-9, you
+		suffer peril.
+		*On a miss, be prepared for the worst
+
+Unassuming
+	body:
+		Others often underestimate your capabilities – as long as you don't do
+		anything to draw attention to yourself, you will tend to be the last person
+		anyone notices. It's your job to remind the Narrator of this when it comes
+		up.
+
+Friendship
+	field: name
+	body:
+		Name another player's character as your closest friend (or lover, guardian,
+		or other close relation). You may spend spirit to add 2 to your closest
+		friend's rolls.
+
+Appeal
+	body:
+		When you make a sincere but naive appeal to the hearts of those who will not
+		listen, roll BRAVE. *On a 10+, your words affect them deeply, moving them to
+		act (not necessarily in the manner you wanted or expected). *On a 7-9, your
+		words move them, but they will not act on them until there is a greater
+		motivation.
+
+Strong-Hearted
+	stat: brave
+	body:
+		You may [Hold Your Own](fierce) with BRAVE instead of FIERCE. If you do,
+		you may not choose to put up a fight and inflict peril.

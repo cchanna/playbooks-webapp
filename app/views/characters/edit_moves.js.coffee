@@ -14,6 +14,9 @@ $ ->
   else
     startHidden submitButton
 
+  $(checkbox + ':not(:checked)').closest('form').children(".options").children("input").prop
+    disabled: true
+
   $(freeCheckbox).change ->
     console.log '\nCHANGE FREE CHECKBOX'
     $(this).prop(checked: true)
@@ -21,6 +24,16 @@ $ ->
   $(checkbox).change ->
     console.log '\nCHANGE CHECKBOX'
     console.log $('input[type=checkbox]:checked').length
+
+    if $(this).is(":checked")
+      console.log "checked"
+      $(this).closest('form').children(".options").children("input").prop
+        disabled: false
+    else
+      console.log "unchecked"
+      $(this).closest('form').children(".options").children("input").prop
+        disabled: true
+
     if $(checkbox + ':checked').length >= moveCount
       $(checkbox + ':not(:checked)').prop
         disabled: true

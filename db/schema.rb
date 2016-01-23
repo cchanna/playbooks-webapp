@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer "archetype_id"
   end
 
+  create_table "def_move_fields", force: :cascade do |t|
+    t.integer "def_move_id"
+    t.string  "name"
+    t.boolean "creatable"
+  end
+
   create_table "def_move_options", force: :cascade do |t|
     t.integer "def_move_id"
     t.string  "option"
@@ -87,9 +93,11 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   end
 
   create_table "dire_fates", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "def_dire_fate_id"
-    t.boolean "checked"
+    t.integer  "character_id"
+    t.integer  "def_dire_fate_id"
+    t.boolean  "checked"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "example_tools", force: :cascade do |t|
@@ -98,15 +106,27 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   end
 
   create_table "fates", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "def_fate_id"
-    t.integer "advancement"
-    t.boolean "completed"
+    t.integer  "character_id"
+    t.integer  "def_fate_id"
+    t.integer  "advancement"
+    t.boolean  "completed"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "looks", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "def_look_id"
+    t.integer  "character_id"
+    t.integer  "def_look_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "move_fields", force: :cascade do |t|
+    t.integer  "move_id"
+    t.integer  "def_move_field_id"
+    t.string   "text"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "move_options", force: :cascade do |t|

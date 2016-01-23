@@ -52,7 +52,15 @@ class CharactersController < ApplicationController
     @character.archetype.def_moves.each do |dm|
       move = Move.find_by(character: @character, def_move: dm)
       if move.nil?
-        @moves.push Move.new(character: @character, def_move: dm)
+        @move = Move.new(character: @character, def_move: dm)
+        fields = Array.new
+        puts "\n\n#{@move.def_move.def_move_fields.count}\n\n"
+        @move.def_move.def_move_fields.each do |dmf|
+          puts "\n\nhi\n\n"
+          @move.move_fields.build(def_move_field: dmf)
+          puts "\n\n#{@move.move_fields}\n\n"
+        end
+        @moves.push @move
       else
         @moves.push move
       end

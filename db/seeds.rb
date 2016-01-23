@@ -1,25 +1,4 @@
 Archetype.destroy_all
-Archetype.reset_pk_sequence
-DefTool.destroy_all
-DefTool.reset_pk_sequence
-ExampleTool.destroy_all
-ExampleTool.reset_pk_sequence
-DefFate.destroy_all
-DefFate.reset_pk_sequence
-DefMove.destroy_all
-DefMove.reset_pk_sequence
-DefMoveOption.destroy_all
-DefMoveOption.reset_pk_sequence
-DefLook.destroy_all
-DefLook.reset_pk_sequence
-SampleName.destroy_all
-SampleName.reset_pk_sequence
-NameCategory.destroy_all
-NameCategory.reset_pk_sequence
-TrustQuestion.destroy_all
-TrustQuestion.reset_pk_sequence
-DefDireFate.destroy_all
-DefDireFate.reset_pk_sequence
 
 current_dir = Dir.pwd
 chdir "./db"
@@ -99,22 +78,24 @@ Dir["*"].each do |a|
       def_move = DefMove.new(name: lines.shift.squish, archetype: archetype)
       in_body = false
       options = Array.new
+      move_fields = Array.new
+      move_fields_creatable = Array.new
       while lines.length > 0
         line = lines.shift
         if line[0] == "\t"
           if line[1] == "\t" && in_body
             def_move.body += line.squish + "\n"
           else
-            fields = line.strip.delete(" ").split(":")
-            case fields[0]
+            fields = line.strip.split(":")
+            case fields[0].squish
             when "stat"
-              def_move.stat = fields[1]
+              def_move.stat = fields[1].squish
               in_body = false
             when "has_description"
-              def_move.has_description = fields[1] == "true"
+              def_move.has_description = fields[1].squish == "true"
               in_body = false
             when "free"
-              def_move.free = fields[1] == "true"
+              def_move.free = fields[1].squish == "true"
               in_body = false
             when "body"
               def_move.body = ""
@@ -123,16 +104,29 @@ Dir["*"].each do |a|
               options.push fields[1].squish
               in_body = false
             when "options_selectable"
-              def_move.options_selectable = fields[1].to_i
+              def_move.options_selectable = fields[1].squish.to_i
+            when "field"
+              move_fields.push fields[1].squish
+            when "field_creatable"
+              move_fields_creatable.push fields[1].squish
             end
           end
         elsif line.squish.length > 0
           in_body = false
           def_move.save
           options.each do |o|
-            DefMoveOption.new(def_move: def_move, option: o)
+            DefMoveOption.create(def_move: def_move, option: o)
+          end
+          move_fields.each do |f|
+            DefMoveField.create(def_move: def_move, name: f, creatable: false)
+          end
+          move_fields_creatable.each do |f|
+            DefMoveField.create(def_move: def_move, name: f, creatable: true)
           end
           def_move = DefMove.new(name: line.squish, archetype: archetype)
+          options = Array.new
+          move_fields = Array.new
+          move_fields_creatable = Array.new
         end
       end
       def_move.save
