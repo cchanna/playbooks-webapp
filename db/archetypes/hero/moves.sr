@@ -1,0 +1,30 @@
+Power Manifest
+	stat: strange
+	field_creatable: power
+	body:
+		When you pick this move, note a simple but interesting thing your gift
+		allows you to do (like 'shoot lightning' or 'turn invisible').
+		# You may spend spirit to use one of your gift's powers.
+		# When you tap deeper into your gift's power, roll STRANGE. *On a 10+, write
+		down a new, more powerful thing your gift can do. *On a 7-9, something
+		surprising happens that is (mostly) in your favor.
+
+Awe
+	body:
+		When you stand in the shadow of something Foreboding and Great (the
+		tower, the colossus, the stormy sea), ask the Narrator "what must I do?".
+		*If you commit yourself to this task, gain spirit.
+
+Inspiring
+	body:
+		You may spend spirit to add 1 to another players' roll.
+
+Lucky
+	body:
+		When you suffer peril for the first time in a scene, ignore it – you got a
+		lucky break. The next time will be First Peril.
+
+Savior
+	stat: brave
+	body:
+		When you [Rescue Someone](trust), you may roll BRAVE instead of TRUST.

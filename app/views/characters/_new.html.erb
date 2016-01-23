@@ -2,7 +2,7 @@
   New Character
 </div>
 <%= form_for @character, remote: true, html: {id: "new-character-form"} do |f| %>
-<% Archetype.all.each do |a| %>
+<% Archetype.all.order(:name).each do |a| %>
   <div>
     <%= f.radio_button :archetype_id, a.id, class: "new-character-form-radio" %>
     <%= f.label "archetype_id_" + a.id.to_s, a.name, class: "new-character-form-radio-label" %>

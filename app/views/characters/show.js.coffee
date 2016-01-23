@@ -164,17 +164,62 @@ $ ->
     console.log '\nINCREMENT SPIRIT'
     $(me).submit()
 
-  $(".increment_spirit").parent().on 'ajax:success', (e, data, staus, xhr) ->
+  $(".increment_spirit").parent().on 'ajax:success', (e, data, status, xhr) ->
     console.log 'ajax success'
     newButton = $('#spirit-buttons').append(data)
     $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
-    # $('div#spirit-buttons').append("<p>Test</p>")
 
   $(".dire-fate-checkbox").change ->
     console.log $(this).prop("checked")
     $(this).submit()
 
-  $('body').on 'click', 'a.disabled', (event) ->
-    event.preventDefault()
+  onMoveFieldDelete = (me) ->
+    moveField = $(me).closest(".move-field")
+    deleteForm = $(me).parent()
+    hide moveField, ->
+      deleteForm.submit()
+      moveField.remove()
+
+  $(".move-field-delete").redirectButtonTo onMoveFieldDelete
+
+
+  $(".move-field-add").parent().on 'ajax:success', (e, data, status, xhr ) ->
+    addButton = $(this)
+    addButton.prop
+      disabled: true
+    fields = $(this).parent()
+    hide addButton, ->
+      fieldForm = fields.find(".move-fields").append(data).children().last()
+      fieldSubmit = fieldForm.find(".move-field-add-submit")
+      fieldCancel = fieldForm.find(".move-field-add-cancel")
+      fieldInput = fieldForm.find(".move-field-add-input")
+      startHidden fieldForm
+      startHidden fieldSubmit
+      show fieldForm
+      fieldInput.keyup (e) ->
+        if e.which != 13
+          if fieldInput.val()
+            hide fieldCancel, ->
+              show fieldSubmit
+          else
+            hide fieldSubmit, ->
+              show fieldCancel
+      fieldCancel.redirectButtonTo ->
+        hide fieldForm, ->
+          fieldForm.remove()
+          show addButton
+      fieldSubmit.redirectButtonTo ->
+        fadeOut fieldForm, ->
+          fieldForm.submit()
+      fieldForm.on 'ajax:success', (e, data, status, xhr) ->
+        fieldForm.remove()
+        console.log 'HI!'
+        newField = fields.find(".move-fields").append(data).children().last()
+        newField.find(".move-field-delete").redirectButtonTo onMoveFieldDelete
+        startHidden newField
+        show newField
+        show addButton
+
+
 
   fadeInBody()

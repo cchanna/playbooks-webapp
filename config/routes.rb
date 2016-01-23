@@ -15,8 +15,14 @@ resources :characters, except: [:index, :destroy] do
   end
   resources :fates, only: [:new, :create]
 end
-
 resources :dire_fates, only: [:update]
+
+resources :moves, only: [] do
+  resources :move_fields, only: [:new, :create]
+end
+
+resources :move_fields, only: [:destroy]
+
 resources :tools, only: [:show, :destroy, :edit, :update]
 resources :fates do
   member do

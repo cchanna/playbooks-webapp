@@ -5,9 +5,23 @@
   <div>
     <%= move.def_move.body %>
   </div>
+  <% move.def_move.def_move_fields.each do |dmf| %>
+    <% if dmf.creatable %>
+      <div>
+        <div class="move-fields">
+          <% MoveField.where(move: move, def_move_field: dmf).all.each do |f| %>
+            <%= render f %>
+          <% end %>
+        </div>
+        <%= button_to "+", new_move_move_field_path(move_id: move.id, def_move_field: dmf), method: :get, remote: true, class: "move-field-add" %>
+      </div>
+    <% end %>
+  <% end %>
   <% move.move_fields.each do |f| %>
-    <div>
-      <%= f.text %>
-    </div>
+    <% unless f.def_move_field.creatable %>
+      <div>
+        <%= f.text %>
+      </div>
+    <% end %>
   <% end %>
 <div>
