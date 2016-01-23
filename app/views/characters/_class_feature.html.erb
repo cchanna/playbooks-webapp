@@ -1,3 +1,6 @@
-<% if character.archetype = Archetype.find_by(name:"Scoundrel") %>
-  <%= render partial: "tools", locals: {tools: character.tools} %>
+<% case @character.archetype.name %>
+<% when "Scoundrel" %>
+  <%= render "tools", locals: {tools: @character.tools} %>
+<% when "Hero" %>
+  <%= render "gift" %>
 <% end %>

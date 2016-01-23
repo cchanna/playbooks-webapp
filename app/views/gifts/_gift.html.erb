@@ -1,0 +1,11 @@
+<div>
+  <div>
+    <%= gift.description %>
+  </div>
+  <div>
+    Type: <%= gift.gift_type.name %>
+  </div>
+  <div>
+    Curse: <%= gift.gift_curse.name.gsub("_",gift.detail) %>
+  </div>
+</div>

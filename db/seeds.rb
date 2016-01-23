@@ -55,6 +55,20 @@ Dir["*"].each do |a|
           def_tool = DefTool.create(name: line.squish)
         end
       end
+    when "gifts.sr"
+      while lines.length > 0
+        line = lines.shift.squish
+        if line.length > 0
+          GiftType.create(name: line)
+        end
+      end
+    when "curses.sr"
+      while lines.length > 0
+        line = lines.shift.squish
+        if line.length > 0
+          GiftCurse.create(name: line)
+        end
+      end
     when "stats.sr"
       while lines.length > 0
         line = lines.shift

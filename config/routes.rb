@@ -23,6 +23,8 @@ end
 
 resources :move_fields, only: [:destroy]
 
+resources :gifts, only: [:edit, :update]
+
 resources :tools, only: [:show, :destroy, :edit, :update]
 resources :fates do
   member do

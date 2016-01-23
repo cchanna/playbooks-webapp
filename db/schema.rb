@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   create_table "def_move_fields", force: :cascade do |t|
     t.integer "def_move_id"
     t.string  "name"
-    t.boolean "creatable"
+    t.boolean "creatable",   default: false
   end
 
   create_table "def_move_options", force: :cascade do |t|
@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   create_table "dire_fates", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "def_dire_fate_id"
-    t.boolean  "checked"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.boolean  "checked",          default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "example_tools", force: :cascade do |t|
@@ -109,9 +109,27 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer  "character_id"
     t.integer  "def_fate_id"
     t.integer  "advancement"
-    t.boolean  "completed"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "completed",    default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "gift_curses", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "gift_types", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "gift_type_id"
+    t.integer  "gift_curse_id"
+    t.text     "description"
+    t.string   "detail"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "looks", force: :cascade do |t|

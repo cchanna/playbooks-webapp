@@ -1,5 +1,13 @@
 class Initialize < ActiveRecord::Migration
   def change
+    create_table :gift_types do |t|
+      t.string :name
+    end
+
+    create_table :gift_curses do |t|
+      t.string :name
+    end
+
     create_table :def_tools do |t|
       t.string :name
     end
@@ -93,6 +101,15 @@ class Initialize < ActiveRecord::Migration
       t.integer :clever
       t.integer :strange
       t.integer :spirit
+      t.timestamps null: false
+    end
+
+    create_table :gifts do |t|
+      t.belongs_to :character
+      t.belongs_to :gift_type
+      t.belongs_to :gift_curse
+      t.text :description
+      t.string :detail
       t.timestamps null: false
     end
 
