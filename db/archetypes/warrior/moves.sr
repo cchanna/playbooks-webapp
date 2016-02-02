@@ -1,0 +1,36 @@
+Duel
+	free: true
+	stat: fierce
+	body:
+		When you duel, when it is your turn to ask a leading question, you may
+		instead spend spirit and make an advance:
+		> I launch a sudden and sustained attack. Do you push back and risk peril,
+		or let me lead you to a precarious position?
+		> Seeing an opportunity, I lunge for a mortal blow. Do you defend yourself
+		and risk peril, or flee to fight another day?
+		> I lose ground to your attacks, and in a moment of courage leap to _____, a
+		precarious position. Do you follow and risk peril, or falter in cowardice?
+
+Mighty:
+	body:
+		You may spend spirit to ignore peril
+
+Leadership
+	body:
+		You are accompanied by a small handful of like-minded individuals who look
+		to you as a leader. Choose 2:
+	option: they're all armed and trained for battle
+	option: they trust you to lead them into danger
+	option: they're skilled and professional
+	option: there are 15 or so of them instead
+
+Merciless
+	stat: fierce
+	body:
+		When you [Hold Your Own](fierce) against foes unworthy of your power and
+		roll a 7+, you automatically get "you put up a fight and inflict peril", and
+		can choose a second option in addition.
+
+Driven
+	body:
+		When you suffer second peril, gain spirit.
