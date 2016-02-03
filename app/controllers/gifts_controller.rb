@@ -8,7 +8,6 @@ class GiftsController < ApplicationController
   end
 
   def update
-    byebug
     @gift = Gift.find params[:id]
     @gift.update(gift_params)
     render nothing: true

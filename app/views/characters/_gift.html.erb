@@ -1,4 +1,8 @@
-<div>
-  Gift
-</div>
-<%= render @character.gift %>
+<% puts "\n\n\n" %>
+<% unless @character.gift.gift_type.nil? %>
+<% puts "\n\n\n" %>
+  <div>
+    Gift
+  </div>
+  <%= render @character.gift %>
+<% end %>

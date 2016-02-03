@@ -23,6 +23,7 @@ Leadership
 	option: they trust you to lead them into danger
 	option: they're skilled and professional
 	option: there are 15 or so of them instead
+	has_description: true
 
 Merciless
 	stat: fierce

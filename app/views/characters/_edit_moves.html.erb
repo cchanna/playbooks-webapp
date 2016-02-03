@@ -14,14 +14,14 @@
     <div class='move-form-clickable'>
       <%= m.def_move.body %>
     </div>
-    <% #m.move_fields.each do |field| %>
+    <% m.move_fields.each do |field| %>
       <div class='options'>
         <%= f.fields_for :move_fields, m.move_fields do |ff| %>
           <%= ff.hidden_field :def_move_field_id, value: ff.object.def_move_field_id %>
           <%= ff.text_field :text, placeholder: ff.object.def_move_field.name %>
         <% end %>
       </div>
-    <% #end %>
+    <% end %>
   <% end %>
 <% end %>
 <%= button_tag "=>", remote: true, id: "submit-button" %>
