@@ -184,7 +184,6 @@ $ ->
 
   $(".move-field-delete").redirectButtonTo onMoveFieldDelete
 
-
   $(".move-field-add").parent().on 'ajax:success', (e, data, status, xhr ) ->
     addButton = $(this)
     addButton.prop
@@ -198,6 +197,7 @@ $ ->
       startHidden fieldForm
       startHidden fieldSubmit
       show fieldForm
+      fieldInput.select()
       fieldInput.keyup (e) ->
         if e.which != 13
           if fieldInput.val()
@@ -213,6 +213,17 @@ $ ->
       fieldSubmit.redirectButtonTo ->
         fadeOut fieldForm, ->
           fieldForm.submit()
+      $(".move-field-add-input").on 'keypress', (e) ->
+        if e.which == 13
+          console.log fieldCancel.css("display")
+          if fieldCancel.css("display") == "none"
+            fadeOut fieldForm, ->
+              fieldForm.submit()
+          else
+            hide fieldForm, ->
+              fieldForm.remove()
+              show addButton
+
       fieldForm.on 'ajax:success', (e, data, status, xhr) ->
         fieldForm.remove()
         console.log 'HI!'

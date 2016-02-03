@@ -6,7 +6,6 @@
     doFollowup()
 
 fadeIn = (element, doFollowup) ->
-  # $(element).stop()
   if $(element).css("opacity") < 1
     $(element).animate opacity: 1, 300, doFollowup
   else if doFollowup?
