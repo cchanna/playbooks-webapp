@@ -1,0 +1,19 @@
+<div class="narrow">
+  <h1>
+    Edit
+  </h1>
+  <% if @character.name? %>
+    <%= link_to "Name: #{@character.name}", [:edit_name, @character], class: "slide under complete" %>
+  <% else %>
+    <%= link_to "Name", [:edit_name, @character], class: "slide under" %>
+  <% end %>
+  <% if @character.name? &&
+        @character.def_looks.count > 0 &&
+        @character.relationships.count > 0 &&
+        @character.fates.count > 0 &&
+        (@character.archetype != Archetype.find_by(name: "Scoundrel") || @character.tools.count > 0) &&
+        (!@character.gift.nil? && !@character.gift.gift_type.nil?) &&
+        @character.moves.count > 0 && %>
+    <div>test</div>
+  <% end %>
+</div>

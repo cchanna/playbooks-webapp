@@ -74,6 +74,14 @@ class CharactersController < ApplicationController
     end
   end
 
+  def edit_name
+    @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      format.js
+    end
+  end
+
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)

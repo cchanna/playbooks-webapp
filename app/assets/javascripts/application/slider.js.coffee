@@ -1,13 +1,13 @@
 @fadeOut = (element, doFollowup) ->
   console.log 'fade out ' + element
   if $(element).css("opacity") > 0
-    $(element).animate opacity: 0, 300, doFollowup
+    $(element).animate opacity: 0, 500, doFollowup
   else if doFollowup?
     doFollowup()
 
 fadeIn = (element, doFollowup) ->
   if $(element).css("opacity") < 1
-    $(element).animate opacity: 1, 300, doFollowup
+    $(element).animate opacity: 1, 500, doFollowup
   else if doFollowup?
     doFollowup()
 
@@ -34,7 +34,7 @@ fadeIn = (element, doFollowup) ->
 @show = (element, doFollowup) ->
   console.log 'show ' + element
   if $(element).css("display") == 'none'
-    $(element).css display: 'initial'
+    $(element).show()
   fadeIn element, doFollowup
 
 @fadeOutBody = (after) ->

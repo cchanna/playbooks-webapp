@@ -1,12 +1,6 @@
 $ ->
   console.log '\nEDIT CHARACTER'
-  data = '<%=
-    case params[:field]
-    when "name"
-      escape_javascript render "edit_name"
-    when "look"
-      escape_javascript render "edit_look"
-    end  %>'
+  data = '<%= escape_javascript render "edit" %>'
   load data
 
   looks = '<%=

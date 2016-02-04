@@ -2,7 +2,7 @@ $ ->
   console.log 'show character'
   redirectURL = '<%=
     if !@character.name?
-      edit_character_path(id: @character.id, field: "name")
+      edit_character_path(id: @character.id)
     elsif @character.def_looks.count == 0
       edit_character_path(id: @character.id, field: "look")
     elsif @character.relationships.count == 0
