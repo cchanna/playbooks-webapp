@@ -36,6 +36,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-star:before {
+    content: "\f005";
+}
 .icon-check:before {
     content: "\f00c";
 }
@@ -47,4 +50,10 @@
 }
 .icon-times:before {
     content: "\f00d";
+}
+.icon-arrow-left:before {
+    content: "\f060";
+}
+.icon-arrow-right:before {
+    content: "\f061";
 }

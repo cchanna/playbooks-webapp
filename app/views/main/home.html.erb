@@ -1,6 +1,7 @@
 <div>
   <%= link_to 'New character', new_character_path, class: 'slide under' %>
 </div>
+<br>
 <%  Character.all.each do |c| %>
   <div>
     <%  if c.name %>
