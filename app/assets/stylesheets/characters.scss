@@ -42,6 +42,7 @@ h1 {
 .narrow {
   margin: auto;
   max-width: 40rem;
+  font-family: "Crimson Text", serif;
 }
 
 a {
@@ -221,4 +222,17 @@ form {
     text-shadow: none;
     background: #333;
     color: #fff;
+}
+
+#setting {
+  p {
+    margin-bottom: 0.3rem;
+  }
+  #symbol, #other {
+    color: $red_link;
+  }
+  #examples {
+    font-style: italic;
+    color: $gray_light;
+  }
 }

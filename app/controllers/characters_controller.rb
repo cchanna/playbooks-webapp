@@ -37,7 +37,7 @@ class CharactersController < ApplicationController
       Gift.create(character: @character)
     end
     respond_to do |format|
-      format.html {render :text => setting_symbol_character_path(@character.id)}
+      format.html {render :text => character_path(@character.id)}
     end
   end
 
@@ -117,6 +117,7 @@ class CharactersController < ApplicationController
 
   def setting_other
     @character = Character.find(params[:id])
+    @character.update(setting: true)
     respond_to do |format|
       format.html {render :text => "", :layout => true}
       format.js

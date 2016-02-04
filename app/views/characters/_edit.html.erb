@@ -2,11 +2,16 @@
   <h1>
     Edit
   </h1>
-  <% if @character.name? %>
-    <%= link_to "Name: #{@character.name}", [:edit_name, @character], class: "slide under complete" %>
-  <% else %>
-    <%= link_to "Name", [:edit_name, @character], class: "slide under" %>
-  <% end %>
+  <div>
+    <%= link_to "Setting", [:setting_symbol, @character], class: @character.setting ? "slide under complete" : "slide under" %>
+  </div>
+  <div>
+    <% if @character.name? %>
+      <%= link_to "Name: #{@character.name}", [:edit_name, @character], class: "slide under complete" %>
+    <% else %>
+      <%= link_to "Name", [:edit_name, @character], class: "slide under" %>
+    <% end %>
+  </div>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&
         @character.relationships.count > 0 &&

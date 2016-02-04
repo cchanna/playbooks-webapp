@@ -1,9 +1,15 @@
-<div>
-  On your next turn, describe <%=@character.archetype.setting_other%>
-</div>
-<div id="examples">
-  (<%=@character.archetype.setting_other_example1%>, <%=@character.archetype.setting_other_example2%>, <%=@character.archetype.setting_other_example3%>)
-</div>
-<div>
-  <%= link_to 'Continue', @character, class: "slide under" %>
+<div id="setting" class="narrow">
+  <h1>
+    Setting
+  </h1>
+  <p>
+    On your next turn, describe <span id="other">
+    <%=@character.archetype.setting_other%></span>
+  </p>
+  <p id="examples">
+    <%=@character.archetype.setting_other_example1%>, <%=@character.archetype.setting_other_example2%>, <%=@character.archetype.setting_other_example3%>
+  </p>
+  <p>
+    <%= link_to 'Continue', @character, class: "slide under" %>
+  </p>
 </div>

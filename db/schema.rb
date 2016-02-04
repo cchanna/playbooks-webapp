@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.integer  "archetype_id"
+    t.boolean  "setting",      default: false
     t.integer  "move_count"
     t.integer  "brave"
     t.integer  "fierce"
@@ -44,8 +45,8 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer  "clever"
     t.integer  "strange"
     t.integer  "spirit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "def_dire_fates", force: :cascade do |t|

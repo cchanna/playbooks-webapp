@@ -94,6 +94,7 @@ class Initialize < ActiveRecord::Migration
     create_table :characters do |t|
       t.string :name
       t.belongs_to :archetype
+      t.boolean :setting, default: false
       t.integer :move_count
       t.integer :brave
       t.integer :fierce
