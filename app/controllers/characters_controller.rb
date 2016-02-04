@@ -3,11 +3,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     respond_to do |format|
       format.html {render :text => "", :layout => true}
-      if params[:partial] == "relationships/show"
-        format.js {render partial: "relationships/show", locals: {relationship: Relationship.find(params[:relationship_id])}}
-      else
-        format.js
-      end
+      format.js
     end
   end
 
@@ -49,6 +45,22 @@ class CharactersController < ApplicationController
     end
   end
 
+  def edit_name
+    @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      format.js
+    end
+  end
+
+  def edit_look
+    @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      format.js
+    end
+  end
+
   def edit_moves
     @character = Character.find params[:id]
     @moves = Array.new
@@ -68,14 +80,6 @@ class CharactersController < ApplicationController
         @moves.push move
       end
     end
-    respond_to do |format|
-      format.html {render text: "", layout: true}
-      format.js
-    end
-  end
-
-  def edit_name
-    @character = Character.find(params[:id])
     respond_to do |format|
       format.html {render text: "", layout: true}
       format.js

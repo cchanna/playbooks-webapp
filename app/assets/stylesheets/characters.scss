@@ -26,7 +26,7 @@ body {
 
 #slider {
   // border: none;
-  padding: 1rem;
+  padding: 2rem;
   display: block;
 }
 
@@ -41,7 +41,7 @@ h1 {
 
 .narrow {
   margin: auto;
-  max-width: 40rem;
+  max-width: 30rem;
   font-family: "Crimson Text", serif;
 }
 
@@ -54,7 +54,7 @@ a {
   }
 }
 
-.under {
+.under, .under-check {
   text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
@@ -66,13 +66,6 @@ a {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  &:hover, &:focus {
-    &:before {
-      right: 0;
-      background-color: $red_link_hover;
-    }
-    color: $red_link_hover;
-  }
   &:before {
     background: $red_link;
     content: "";
@@ -91,6 +84,30 @@ a {
   }
 }
 
+.under {
+  &:hover, &:focus {
+    &:before {
+      right: 0;
+      background-color: $red_link_hover;
+    }
+    color: $red_link_hover;
+  }
+}
+
+.under-check {
+  &:hover, &:focus {
+    &:before {
+      background-color: $red_link_hover;
+    }
+    color: $red_link_hover;
+  }
+  &:checked {
+    &:before {
+      right: 0;
+    }
+  }
+}
+
 #slider a {
   text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
   color: $red_link;
@@ -99,7 +116,7 @@ a {
   }
   &.complete {
     &:after {
-      content: "\f00c";
+      content: "c";
       position: absolute;
       left: -1.25rem;
       font-family: 'icomoon';
@@ -150,7 +167,7 @@ a {
 .checklist {
   text-align: center;
   padding: 1rem 0 1rem 0;
-  input[type="radio"] {
+  input[type="radio"], input[type="checkbox"] {
     display: none;
     &:checked+label {
       color: $red_link;
@@ -170,46 +187,77 @@ a {
   }
 }
 
-.submit-button {
+.submit-wrapper {
   display: inline-block;
-  width: 2.6rem;
-  height: 3.5rem;
-  vertical-align: middle;
-  input[type="submit"] {
-    border: none;
-    background: none;
-    font-family: "Spartan", sans-serif;
-    font-size: 2rem;
-    top: .55rem;
-    position: relative;
-    // height: 1.5rem;
-    color: $red_link;
-    -webkit-transition: color 0.25s;
-    transition: color 0.25s;
-    &:hover, &:focus, &:active {
-      color: $red_link_hover;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: top;
+}
 
-    }
+.submit {
+  // position: absolute;
+  // left: -1.25rem;
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  padding: .2rem .35rem .2rem .35rem;
+  border-radius: .2rem;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: $red_link;
+  position: relative;
+  -webkit-transition: color 0.3s, transform 0.3s, background-color 0.3s;
+  transition: color 0.3s, transform 0.3s, background-color 0.3s;
+
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  &:focus {
+    color: $red_link_hover;
   }
-  &:before {
-    bottom: 1rem;
-    left: .3rem;
+  &:hover {
+    color: white;
+    background-color: $red_link_hover;
   }
 }
 
-
-input[type="text"] {
-  font-family: "Crimson Text", serif;
-  border-width: 0px;
-  border-radius: .25rem;
-  display: inline-block;
-  // padding: 0rem 1rem 0 1rem;
-  text-align: center;
-  vertical-align: middle;
+#edit-name {
+  .text-field {
+    // border: 1px dashed blue;
+    height: 2rem;
+  }
 }
+
 
 form {
   text-align: center;
+
+  input[type="text"] {
+    font-family: "Crimson Text", serif;
+    border-width: 0px;
+    border-radius: .25rem;
+    // border: 1px dashed green;
+    display: inline-block;
+    height: 2rem;
+    // padding: 0rem 1rem 0 1rem;
+    text-align: center;
+    vertical-align: top;
+    // vertical-align: middle;
+  }
 }
 
 ::-moz-selection
@@ -227,6 +275,9 @@ form {
 #setting {
   p {
     margin-bottom: 0.3rem;
+    color: $gray;
+    text-align: center;
+    font-size: 1rem;
   }
   #symbol, #other {
     color: $red_link;

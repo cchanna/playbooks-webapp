@@ -7,9 +7,21 @@
   </div>
   <div>
     <% if @character.name? %>
-      <%= link_to "Name: #{@character.name}", [:edit_name, @character], class: "slide under complete" %>
+      <%= link_to "Name: #{@character.name}", [:name, :edit, @character], class: "slide under complete" %>
     <% else %>
-      <%= link_to "Name", [:edit_name, @character], class: "slide under" %>
+      <%= link_to "Name", [:name, :edit, @character], class: "slide under" %>
+    <% end %>
+  </div>
+  <div>
+    <% if @character.looks.count > 0 %>
+      <% result = "" %>
+      <% @character.looks.order(:def_look_id).each do |l| %>
+        <% result += " • #{l.def_look.look}" %>
+      <% end %>
+      <% link = result[3..-1] %>
+      <%= link_to "Look: #{link}", [:look, :edit, @character], class: "slide under complete" %>
+    <% else %>
+      <%= link_to "Look", [:look, :edit, @character], class: "slide under" %>
     <% end %>
   </div>
   <% if @character.name? &&

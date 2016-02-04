@@ -1,4 +1,4 @@
-<div class="narrow">
+<div id="edit-name" class="narrow">
   <h1>
     Edit name
   </h1>
@@ -6,17 +6,17 @@
     <div class="checklist">
       <% @character.archetype.sample_names.each do |name| %>
         <%= f.radio_button :name, name.name, class: "sample-name" %>
-        <%= f.label "name_" + name.name.squish.downcase.tr(" ","_").encode(Encoding.find("ASCII"), undef: :replace, replace: ""), name.name, class: "sample-name-label under" %>
+        <%= f.label "name_" + name.name.squish.downcase.tr(" ","_").gsub(/[^0-9a-zA-Z_]/i,""), name.name, class: "sample-name-label under-check" %>
       <% end %>
     </div>
     <div class="checklist">
       <% @character.archetype.name_categories.each do |category| %>
         <%= f.radio_button :name, category.name, class: "name-category" %>
-        <%= f.label "name_" + category.name.squish.downcase.tr(" ","_"), category.name, class: "name-category-label under" %>
+        <%= f.label "name_" + category.name.squish.downcase.tr(" ","_"), category.name, class: "name-category-label under-check" %>
       <% end %>
     </div>
-    <div class="submit-button under", id="submit-button">
-      <%= f.submit "=>", {class: "edit-character-form-submit"}%>
+    <div class="submit-wrapper", id="submit-button">
+      <%= f.submit ">", {class: "submit edit-character-form-submit"}%>
     </div>
   <% end %>
   <%= form_for @character, remote: true, html: {class: "edit-character-form", id: "alternate-form-1"} do |f| %>
@@ -24,8 +24,8 @@
     <!-- </div> -->
     <div class="text-field">
       <%= f.text_field :name, class: "custom-name" %>
-      <div class="submit-button under" id="submit-button-2">
-        <%= f.submit "=>", {class: "edit-character-form-submit"}%>
+      <div class="submit-wrapper" id="submit-button-2">
+        <%= f.submit ">", {class: "submit edit-character-form-submit"}%>
       </div>
     </div>
   <% end %>

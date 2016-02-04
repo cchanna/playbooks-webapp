@@ -1,16 +1,18 @@
-<div>
-  Look
+<div class="narrow">
+  <h1>
+    Look
+  </h1>
+  <%= form_for @character, url: {action: "update_look"}, html: {remote: true, id: "edit-look-form", class: "edit-character-form"} do |f| %>
+    <div class="checklist">
+      <% @character.archetype.def_looks.each do |dl| %>
+        <span id="def-look-<%=dl.id%>">
+          <%= check_box_tag "def_look_ids[#{dl.id}]", dl.id, class: "look-checkbox" %>
+          <%= label_tag "def_look_ids_#{dl.id}", dl.look, class: "look-lable under-check" %>
+        </span>
+      <% end %>
+    </div>
+    <div>
+      <%= submit_tag ">", id: "look-submit-button", class: "submit edit-character-form-submit" %>
+    </div>
+  <% end %>
 </div>
-<%= form_for @character, url: {action: "update_look"}, html: {remote: true, id: "edit-look-form", class: "edit-character-form"} do |f| %>
-  <div>
-    <% @character.archetype.def_looks.each do |dl| %>
-      <div id="def-look-<%=dl.id%>">
-        <%= check_box_tag "def_look_ids[#{dl.id}]", dl.id, class: "look-checkbox" %>
-        <%= label_tag "def_look_ids_#{dl.id}", dl.look, class: "look-lable" %>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= submit_tag "=>", id: "look-submit-button", class: "edit-character-form-submit" %>
-  </div>
-<% end %>

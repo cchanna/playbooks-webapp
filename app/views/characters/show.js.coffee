@@ -1,12 +1,9 @@
 $ ->
   console.log 'show character'
   redirectURL = '<%=
-    if !@character.name?
+    if !@character.name? || @character.def_looks.count == 0 ||
+                            @character.relationships.count == 0
       edit_character_path(id: @character.id)
-    elsif @character.def_looks.count == 0
-      edit_character_path(id: @character.id, field: "look")
-    elsif @character.relationships.count == 0
-      new_character_relationship_path(character_id: @character.id)
     elsif @character.fates.count == 0
       new_character_fate_path(character_id: @character.id)
     elsif @character.archetype == Archetype.find_by(name: "Scoundrel") && @character.tools.count == 0
