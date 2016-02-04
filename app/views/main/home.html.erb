@@ -2,7 +2,7 @@
   <%= link_to 'New character', new_character_path, class: 'slide under' %>
 </div>
 <br>
-<%  Character.all.each do |c| %>
+<%  Character.all.order(:name).each do |c| %>
   <div>
     <%  if c.name %>
       <%  link = c.name + ' the ' + c.archetype.name %>
