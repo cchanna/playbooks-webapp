@@ -173,6 +173,33 @@ a {
 .checklist {
   text-align: center;
   padding: 1rem 0 1rem 0;
+  label {
+    margin: 0 .5rem 0 .5rem;
+  }
+}
+
+.check-title {
+  text-align: left;
+  &:hover label {
+    color: $red_link_hover
+  }
+  .body {
+    color: $gray-light;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  input[type="radio"], input[type="checkbox"] {
+    &:checked ~ .body {
+      color: $gray;
+    }
+  }
+  label {
+    margin: 0;
+  }
+}
+
+.checklist, .check-title {
   input[type="radio"], input[type="checkbox"] {
     display: none;
     &:checked+label {
@@ -191,7 +218,6 @@ a {
   }
   label {
     font-family: "Spartan";
-    margin: 0 .5rem 0 .5rem;
     color: $gray_light;
     cursor: pointer;
   }
@@ -345,6 +371,27 @@ form {
         // bottom: 0.2rem;
         // height: 4px;
       }
+    }
+  }
+}
+
+#edit-fate {
+  .fate-body {
+    vertical-align: top;
+    text-align: left;
+    line-height: 1rem;
+    .fate-description {
+      font-style: italic;
+      margin-bottom: .5rem;
+      line-height: 1.2rem;
+    }
+    .fate-advance {
+      line-height: 1.0rem;
+      margin-bottom: .5rem;
+    }
+    .fate-complete {
+      line-height: 1.0rem;
+      margin-bottom: 2rem;
     }
   }
 }

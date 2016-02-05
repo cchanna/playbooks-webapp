@@ -1,27 +1,29 @@
-<div>
-  Fate
-</div>
-<%= form_for [@character, @fate], remote: true do |f| %>
-  <% @character.archetype.def_fates.each do |df| %>
-    <% unless @character.fates.exists?(def_fate: df) %>
-      <div>
-        <div>
+<div class="narrow" id="edit-fate">
+  <h1>
+    Fate
+  </h1>
+  <%= form_for [@character, @fate], remote: true do |f| %>
+    <% @character.archetype.def_fates.each do |df| %>
+      <% unless @character.fates.exists?(def_fate: df) %>
+        <div class="check-title">
           <%= f.radio_button :def_fate_id, df.id, class: "fate-radio" %>
-          <%= f.label "def_fate_id_#{df.id}", df.name %>
+          <%= f.label "def_fate_id_#{df.id}", df.name, class: "under-check" %>
+          <div class="body fate-body">
+            <div class="fate-description">
+              <%= df.description %>
+            </div>
+            <div class="fate-advance">
+              <b><%= df.advance %></b>, advance this fate.
+            </div>
+            <div class="fate-complete">
+              <b><%= df.complete %></b>, complete this fate and improve.
+            </div>
+          </div>
         </div>
-        <div class="fate-body">
-          <div>
-            <%= df.description %>
-          </div>
-          <div>
-            <%= df.advance %>, advance this fate.
-          </div>
-          <div>
-            <%= df.complete %>, complete this fate and improve.
-          </div>
-        </div>
-      </div>
+      <% end %>
     <% end %>
+    <div class="submit-wrapper">
+      <%= f.submit ">", id: "submit-button", class: "submit"%>
+    </div>
   <% end %>
-  <%= f.submit "=>", id: "submit-button" %>
-<% end %>
+</div>

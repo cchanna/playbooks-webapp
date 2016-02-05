@@ -28,6 +28,15 @@
     <% html_class = (@character.relationships.count > 0) ? "slide under complete" : "slide under" %>
     <%= link_to "Trust", [:new, @character, :relationship], class: html_class %>
   </div>
+  <% if @character.relationships.count > 0 %>
+    <div>
+      <% if @character.fates.count > 0 %>
+        <%= link_to "Fate: #{@character.fates.first.def_fate.name}", [:new, @character, :fate], class: "slide under complete" %>
+      <% else %>
+        <%= link_to "Fate", [:new, @character, :fate], class: "slide under" %>
+      <% end %>
+    </div>
+  <% end %>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&
         @character.relationships.count > 0 &&
