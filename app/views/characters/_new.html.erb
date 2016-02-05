@@ -1,14 +1,16 @@
-<div>
-  New Character
+<div id="new-character" class="narrow">
+  <h1>
+    New Character
+  </h1>
+  <%= form_for @character, remote: true, html: {id: "new-character-form"} do |f| %>
+  <div class="checklist">
+  <% Archetype.all.order(:name).each do |a| %>
+      <%= f.radio_button :archetype_id, a.id, class: "new-character-form-radio" %>
+      <%= f.label "archetype_id_" + a.id.to_s, a.name, class: "new-character-form-radio-label under-check" %>
+  <% end %>
 </div>
-<%= form_for @character, remote: true, html: {id: "new-character-form"} do |f| %>
-<% Archetype.all.order(:name).each do |a| %>
-  <div>
-    <%= f.radio_button :archetype_id, a.id, class: "new-character-form-radio" %>
-    <%= f.label "archetype_id_" + a.id.to_s, a.name, class: "new-character-form-radio-label" %>
-  </div>
-<% end %>
-  <div id="submit-button">
-    <%= f.submit "Submit", {id: "new-character-form-submit"}%>
-  </div>
-<% end %>
+    <div class="submit-wrapper" id="submit-button">
+      <%= f.submit ">", {class: "submit", id: "new-character-form-submit"}%>
+    </div>
+  <% end %>
+</div>
