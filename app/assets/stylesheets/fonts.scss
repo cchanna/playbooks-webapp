@@ -1,22 +1,22 @@
 @font-face {
     font-family: 'Spartan';
-    src: url('leaguespartan-bold.eot');
-    src: url('leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
-         url('leaguespartan-bold.woff2') format('woff2'),
-         url('leaguespartan-bold.woff') format('woff'),
-         url('leaguespartan-bold.ttf') format('truetype'),
-         url('leaguespartan-bold.svg#league_spartanbold') format('svg');
+    src: font-url('leaguespartan-bold.eot');
+    src: font-url('leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
+         font-url('leaguespartan-bold.woff2') format('woff2'),
+         font-url('leaguespartan-bold.woff') format('woff'),
+         font-url('leaguespartan-bold.ttf') format('truetype'),
+         font-url('leaguespartan-bold.svg#league_spartanbold') format('svg');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'icomoon';
-    src:    url('icomoon.eot?njnpl7');
-    src:    url('icomoon.eot?njnpl7#iefix') format('embedded-opentype'),
-        url('icomoon.ttf?njnpl7') format('truetype'),
-        url('icomoon.woff?njnpl7') format('woff'),
-        url('icomoon.svg?njnpl7#icomoon') format('svg');
+    src:    font-url('icomoon.eot?njnpl7');
+    src:    font-url('icomoon.eot?njnpl7#iefix') format('embedded-opentype'),
+        font-url('icomoon.ttf?njnpl7') format('truetype'),
+        font-url('icomoon.woff?njnpl7') format('woff'),
+        font-url('icomoon.svg?njnpl7#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
