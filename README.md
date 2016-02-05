@@ -9,6 +9,6 @@ of the way rails works, instead of just piggybacking off of tutorials.
 
 The app is running on **Ruby 2.2.2**, and **Rails 4.2.5**. To run it yourself,
 clone the repository and run `bundle install`. Then run `rake db:setup`. You
-will need to have [PostgreSQL](http://www.postgresql.org/) installed, as well. 
+will need to have [PostgreSQL](http://www.postgresql.org/) installed, as well.
 
 This app is test-deployed [on Heroku](https://stranger-roads.herokuapp.com/).

@@ -21,7 +21,9 @@ $ ->
 
   $(deleteButton).redirectButtonTo (me) ->
     console.log '\nCLICK DESTROY RELATIONSHIP'
+    href = $(me).attr("href")
+    method = $(me).data("method")
     fadeOut relationshipList, ->
-      $(me).submit()
+      request href, method
 
   show relationshipList

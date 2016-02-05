@@ -11,8 +11,9 @@ resources :characters, except: [:index, :destroy] do
     patch 'update_look'
     namespace :edit, module: nil do
       get 'moves', to: "characters#edit_moves"
-      get 'name', to: "characters#edit_name"
-      get 'look', to: "characters#edit_look"
+      get 'name',  to: "characters#edit_name"
+      get 'look',  to: "characters#edit_look"
+      get 'trust', to: "characters#edit_trust"
     end
     post 'increment_spirit'
     post 'decrement_spirit'

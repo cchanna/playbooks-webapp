@@ -6,6 +6,6 @@
     <% else %>
       <% button_name = button_name + '−' + r.trust.abs.to_s %>
     <% end %>
-    <%= button_to button_name, relationship_path(id: r.id), remote: true, form_class: "delete_relationship", method: :delete %>
+    <%= link_to button_name, relationship_path(id: r.id), remote: true, class: "delete_relationship", method: :delete %>
   </div>
 <% end %>

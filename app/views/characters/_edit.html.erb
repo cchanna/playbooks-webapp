@@ -24,6 +24,10 @@
       <%= link_to "Look", [:look, :edit, @character], class: "slide under" %>
     <% end %>
   </div>
+  <div>
+    <% html_class = (@character.relationships.count > 0) ? "slide under complete" : "slide under" %>
+    <%= link_to "Trust", [:new, @character, :relationship], class: html_class %>
+  </div>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&
         @character.relationships.count > 0 &&
@@ -34,3 +38,5 @@
     <div>test</div>
   <% end %>
 </div>
+
+  <!-- new_character_fate_path(character_id: @character.id) -->
