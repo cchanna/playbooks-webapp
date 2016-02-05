@@ -116,6 +116,7 @@ a {
   }
   &.complete {
     &:after {
+      top: 0;
       content: "c";
       position: absolute;
       left: -1.25rem;
