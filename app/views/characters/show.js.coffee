@@ -3,14 +3,13 @@ $ ->
   redirectURL = '<%=
     if !@character.name? || @character.def_looks.count == 0 ||
                             @character.relationships.count == 0 ||
-                            @character.fates.count == 0
+                            @character.fates.count == 0 ||
+                            (@character.archetype == Archetype.find_by(name: "Scoundrel") &&
+                             @character.tools.count == 0) ||
+                            @character.moves.count == 0
       edit_character_path(id: @character.id)
-    elsif @character.archetype == Archetype.find_by(name: "Scoundrel") && @character.tools.count == 0
-      new_character_tool_path(character_id: @character.id)
     elsif !@character.gift.nil? && @character.gift.gift_type.nil?
       edit_gift_path(id: @character.gift.id)
-    elsif @character.moves.count == 0
-      edit_moves_character_path(id: @character.id)
     end %>'
   if redirectURL
     console.log '\nREDIRECT TO ' + redirectURL
