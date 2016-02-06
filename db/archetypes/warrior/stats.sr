@@ -1,6 +1,6 @@
 brave: 1
-fierce: -1
-wary: 1
+fierce: 1
+wary: -1
 clever: 0
 strange: -1
-move_count: 3
+move_count: 2
