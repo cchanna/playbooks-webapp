@@ -323,6 +323,10 @@ form {
 }
 
 #edit-relationships {
+  p {
+    font-style: italic;
+    color: $gray_light;
+  }
   #relationship-list {
     min-height: 2rem;
   }
@@ -349,7 +353,6 @@ form {
         }
       }
       &:before {
-        // background: $red_link;
         -webkit-transition: opacity 2s;
         transition: opacity 2s;
         color: $red_link;
@@ -359,17 +362,10 @@ form {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        // width: 2rem;
-        // height: 2rem;
         content: "x";
         position: absolute;
         font-family: "icomoon";
         z-index: -1;
-        // left: -1rem;
-        // left: 0;
-        // right: 100%;
-        // bottom: 0.2rem;
-        // height: 4px;
       }
     }
   }

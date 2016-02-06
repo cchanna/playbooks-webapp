@@ -7,6 +7,10 @@
   </div>
   <%= form_for [@character, @relationship], remote:true do |f|%>
     <p>
+      Take the turns asking the others questions until you've assigned trust
+      with everyone.
+    </p>
+    <p>
       Which of you...
     </p>
     <div id="trust-questions-list" class="checklist">

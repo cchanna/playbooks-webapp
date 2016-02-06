@@ -62,6 +62,7 @@ $ ->
         fadeOut textField, ->
           $(textField).val ""
           show textField
+          $(textField).focus()
     else
       hide textField
 
