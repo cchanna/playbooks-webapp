@@ -25,6 +25,7 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
     @character = @tool.character
     respond_to do |format|
+      format.html {render :text => "", :layout => true}
       format.js
     end
   end
@@ -34,9 +35,7 @@ class ToolsController < ApplicationController
     tool.update(update_tool_params)
     @character = tool.character
     @tool = Tool.new(character: @character)
-    respond_to do |format|
-      format.js {render "new"}
-    end
+    render nothing: true
   end
 
   def destroy
@@ -53,6 +52,6 @@ class ToolsController < ApplicationController
     # def create_tool_params
       # params.require(:character, :def_tool, :name, :description)
     def update_tool_params
-      params.require(:tool).permit(:name, :description)
+      params.require(:tool).permit(:name, :description, :def_tool_id)
     end
 end

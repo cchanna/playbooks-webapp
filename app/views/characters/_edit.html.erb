@@ -36,6 +36,15 @@
         <%= link_to "Fate", [:new, @character, :fate], class: "slide under" %>
       <% end %>
     </div>
+    <% @character.tools.each do |t| %>
+      <div>
+        <% if t.name %>
+          <%= link_to "Tool: #{t.name}", [:edit, t], class: "slide under complete" %>
+        <% else %>
+          <%= link_to "Tool", [:edit, t], class: "slide under" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&

@@ -29,8 +29,13 @@ class CharactersController < ApplicationController
     @character.archetype.def_dire_fates.each do |ddf|
       DireFate.create(character:@character, def_dire_fate: ddf, checked: false)
     end
-    if @character.archetype == Archetype.find_by(name: "Hero")
+    case @character.archetype.name
+    when "Hero"
       Gift.create(character: @character)
+    when "Scoundrel"
+      3.times do
+        Tool.create(character: @character)
+      end
     end
     respond_to do |format|
       format.html {render :text => character_path(@character.id)}

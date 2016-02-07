@@ -292,6 +292,18 @@ form {
     vertical-align: top;
     // vertical-align: middle;
   }
+  textarea {
+    font-family: "Crimson Text", serif;
+    border-width: 0px;
+    border-radius: .25rem;
+    resize: none;
+    padding: .5rem;
+    max-width: 20rem;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    vertical-align: top;
+    overflow-y: hidden;
+  }
 }
 
 ::-moz-selection
@@ -388,6 +400,23 @@ form {
     .fate-complete {
       line-height: 1.0rem;
       margin-bottom: 2rem;
+    }
+  }
+}
+
+#edit-tool {
+  .tool {
+    cursor: pointer;
+    &:hover {
+      label {
+        color:$red_link_hover;
+      }
+    }
+    .tool-example {
+      font-size: .9rem;
+      font-style: italic;
+      color: $gray-light;
+      margin-bottom: .5rem;
     }
   }
 }

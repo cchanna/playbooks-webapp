@@ -1,19 +1,38 @@
-<%= form_for [tool], remote: true do |f| %>
-  <div id="tool-text">
-    <div>
-      <%= tool.def_tool.name %>
+<div class="narrow" id="edit-tool">
+  <h1>
+    Tools
+  </h1>
+  <%= form_for [@tool], remote: true do |f| %>
+    <div id="def-tool-list" class="checklist">
+      <% DefTool.all.each do |dt| %>
+        <div id="def-tool-<%=dt.id%>" class="tool">
+          <div>
+            <%= f.radio_button :def_tool_id, dt.id, class: "tool-def" %>
+            <%= f.label "def_tool_id_#{dt.id}", dt.name, class: "tool-label under-check" %>
+          </div>
+          <div class="tool-example">
+            <% result = "" %>
+            <% dt.example_tools.each do |et| %>
+              <% result += ", #{et.example}" %>
+            <% end %>
+            <%= "(#{result[2..-1]})" %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <div>
-      <%= f.text_field :name, id: "edit-tool-name" %>
+      <div id="tool-text">
+        <div>
+          <%= f.text_field :name, id: "tool-name",  placeholder: "name" %>
+        </div>
+        <div>
+          <%= f.text_area :description, id: "tool-description", placeholder: "description (optional)" %>
+        </div>
+      </div>
+      <div>
+        <%= submit_tag ">", id: "submit-button", class: "submit" %>
+      </div>
     </div>
-    <div>
-      <%= f.text_area :description, id: "edit-tool-description" %>
-    </div>
-  </div>
-  <div>
-    <%= button_tag "<=", id: "cancel-button" %>
-    <%= link_to "X", tool_path(id: tool.id), method: :delete, remote: true, id: "delete-tool-button"  %>
-    <%= f.submit "=>", id: "edit-tool-submit-button" %>
-  </div>
-  <div>
-<% end %>
+  <% end %>
+  <div id="edit-tool-form-slider"></div>
+</div>

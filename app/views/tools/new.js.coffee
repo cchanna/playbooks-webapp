@@ -15,26 +15,30 @@ $ ->
   descriptionField = '#tool-description'
   textFields = '#tool-text'
   defToolList = '#def-tool-list'
+  textArea = 'textarea'
   done = '#tools-done'
   submitButton = '#submit-button'
   form = '#new_tool'
-  editToolFormSlider = '#edit-tool-form-slider'
   editToolLink = 'a.edit_tool'
   load data
-  startHidden nameField
-  startHidden descriptionField
-  startHidden submitButton
-  startHidden editToolFormSlider
-  if numTools >= 3
-    startHidden form
-  else
-    startHidden done
+  unless $(nameField).val()
+    startHidden descriptionField
+    startHidden submitButton
+
+  if $("input[type=radio]").is(':checked')
+    startHidden nameField
+    if numTools >= 3
+      startHidden form
+    else
+      startHidden done
 
   if tools[0]
     $(t + ' input').prop(checked: false, disabled: true) for t in tools
 
   $('input[type=text]').prop
     autocomplete: 'off'
+
+  $("textarea").autoResize()
 
   $('input[type=radio]').redirectRadioTo (me) ->
     console.log '\nCLICK TOOL'
