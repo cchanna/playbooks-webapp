@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.integer  "character_id"
     t.integer  "gift_type_id"
     t.integer  "gift_curse_id"
+    t.string   "name"
     t.text     "description"
     t.string   "detail"
     t.datetime "created_at",    null: false

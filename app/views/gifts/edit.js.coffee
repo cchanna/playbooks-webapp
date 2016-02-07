@@ -3,15 +3,19 @@ $ ->
   data = '<%= escape_javascript render "edit" %>'
   load data
 
-  detailField = "input[type=text]"
+  detailField = "input[type=text].detail"
   radio = "input[type=radio]"
   curseRadio = "#{radio}.curse-radio"
   typeRadio = "#{radio}.type-radio"
   curse = ".curse"
   submit = "input[type=submit]"
+  name = 'input[type=text].name'
   description = "textarea"
   curses = ".curse-list"
   form = "form"
+
+  $('input[type=text]').prop
+    autocomplete: 'off'
 
   startingDetailField = $("#{curseRadio}:checked").closest(curse).find(detailField)
   unless (startingDetailField.length > 0 && startingDetailField.val())
@@ -20,8 +24,10 @@ $ ->
       startHidden submit
       unless $(description).val()
         startHidden curses
-        unless $(typeRadio).is(":checked")
+        unless $(name).val()
           startHidden description
+          unless $(typeRadio).is(":checked")
+            startHidden name
 
   $(detailField).each ->
     unless $(this).closest(curse).find(radio).is(":checked")
@@ -31,8 +37,10 @@ $ ->
   $(typeRadio).change ->
     hide description, ->
       $(description).val ""
-      show description
-      $(description).select()
+    hide name, ->
+      $(name).val ""
+      show name
+      $(name).select()
     hide curses, ->
       $(curseRadio).prop(checked: false)
     hide submit
@@ -40,17 +48,15 @@ $ ->
       disabled: true
     $(detailField).val ""
 
+  $(name).keyup (e) ->
+    if e.which != 13
+      if $(name).val()
+        show description
+
   $(description).keyup (e) ->
     if e.which != 13
       if $(description).val()
         show curses
-      else
-        hide curses, ->
-          $(curseRadio).prop(checked: false)
-        hide submit
-        $(detailField).prop
-          disabled: true
-        $(detailField).val ""
 
   $(curseRadio).change ->
     $(detailField).prop

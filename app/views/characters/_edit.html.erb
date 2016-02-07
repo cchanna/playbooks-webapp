@@ -45,6 +45,15 @@
         <% end %>
       </div>
     <% end %>
+    <% if @character.gift %>
+      <div>
+        <% if @character.gift.name %>
+          <%= link_to "Gift: #{@character.gift.name}", [:edit, @character.gift], class: "slide under complete" %>
+        <% else %>
+          <%= link_to "Gift", [:edit, @character.gift], class: "slide under" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&

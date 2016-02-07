@@ -1,34 +1,38 @@
-<div>
-  Gift
+<div id="edit-gift" class="narrow">
+  <h1>
+    Gift
+  </h1>
+  <p>
+    You have a gift, something great that has been thrust upon you.
+  </p>
+  <%= form_for @gift, remote: true do |f| %>
+    <div class="checklist">
+      <% GiftType.all.each do |t| %>
+        <%= f.radio_button :gift_type_id, t.id, class: "type-radio" %>
+        <%= f.label "gift_type_id_#{t.id}", t.name, class: "under-check" %>
+      <% end %>
+    </div>
+    <div>
+      <%= f.text_field :name, placeholder: "name", class: "name" %>
+    </div>
+    <div>
+      <%= f.text_area :description, placeholder: "describe the powers and abilities of your gift" %>
+    </div>
+    <div class="curse-list checklist">
+      <% GiftCurse.all.each do |t| %>
+        <div class="curse">
+          <%= f.radio_button :gift_curse_id, t.id, class: "curse-radio" %>
+          <% if t.name.include? "_" %>
+            <% label_text = t.name.gsub('_', f.text_field(:detail, class: "detail")).html_safe %>
+            <%= f.label "gift_curse_id_#{t.id}", label_text, class: "under-check" %>
+          <% else %>
+            <%= f.label "gift_curse_id_#{t.id}", t.name, class: "under-check" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= f.submit ">", class: "submit" %>
+    </div>
+  <% end %>
 </div>
-<div>
-  You have a gift, something great that has been thrust upon you.
-</div>
-<%= form_for @gift, remote: true do |f| %>
-  <div>
-    <% GiftType.all.each do |t| %>
-      <%= f.radio_button :gift_type_id, t.id, class: "type-radio" %>
-      <%= f.label "gift_type_id_#{t.id}", t.name %>
-    <% end %>
-  </div>
-  <div>
-    <%= f.text_area :description, placeholder: "description" %>
-  </div>
-  <div class="curse-list">
-    <% GiftCurse.all.each do |t| %>
-      <div class="curse">
-        <%= f.radio_button :gift_curse_id, t.id, class: "curse-radio" %>
-        <% if t.name.include? "_" %>
-          <% label_text = t.name.gsub('_', f.text_field(:detail)).html_safe %>
-          <%= f.label "gift_curse_id_#{t.id}", label_text %>
-        <% else %>
-          <%= f.label "gift_curse_id_#{t.id}", t.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <%= f.submit "=>" %>
-  </div>
-
-<% end %>

@@ -109,6 +109,7 @@ class Initialize < ActiveRecord::Migration
       t.belongs_to :character
       t.belongs_to :gift_type
       t.belongs_to :gift_curse
+      t.string :name
       t.text :description
       t.string :detail
       t.timestamps null: false
