@@ -1,0 +1,29 @@
+<div class="narrow" id="edit-fate">
+  <h1>
+    Fate
+  </h1>
+  <%= form_for @fate, remote: true do |f| %>
+    <% @character.archetype.def_fates.each do |df| %>
+      <% if @fate.def_fate_id == df.id || !@character.fates.exists?(def_fate: df) %>
+        <div class="check-title">
+          <%= f.radio_button :def_fate_id, df.id, class: "fate-radio" %>
+          <%= f.label "def_fate_id_#{df.id}", df.name, class: "under-check" %>
+          <div class="body fate-body">
+            <div class="fate-description">
+              <%= df.description %>
+            </div>
+            <div class="fate-advance">
+              <b><%= df.advance %></b>, advance this fate.
+            </div>
+            <div class="fate-complete">
+              <b><%= df.complete %></b>, complete this fate and improve.
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="submit-wrapper">
+      <%= f.submit ">", id: "submit-button", class: "submit"%>
+    </div>
+  <% end %>
+</div>

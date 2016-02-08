@@ -30,10 +30,10 @@
   </div>
   <% if @character.relationships.count > 0 %>
     <div>
-      <% if @character.fates.count > 0 %>
-        <%= link_to "Fate: #{@character.fates.first.def_fate.name}", [:new, @character, :fate], class: "slide under complete" %>
-      <% else %>
+      <% if @character.fates.count == 0 %>
         <%= link_to "Fate", [:new, @character, :fate], class: "slide under" %>
+      <% else %>
+        <%= link_to "Fate: #{@character.fates.first.def_fate.name}", [:edit, @character, @character.fates.first], class: "slide under complete" %>
       <% end %>
     </div>
     <% @character.tools.each do |t| %>

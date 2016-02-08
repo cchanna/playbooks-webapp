@@ -8,6 +8,15 @@ class FatesController < ApplicationController
     end
   end
 
+  def edit
+    @fate = Fate.find params[:id]
+    @character = @fate.character
+    respond_to do |format|
+      format.html {render :text => "", :layout => true}
+      format.js
+    end
+  end
+
   def create
     @character = Character.find params[:character_id]
     @fate = Fate.create(
@@ -16,6 +25,12 @@ class FatesController < ApplicationController
       advancement: 0,
       completed: false
     )
+    render nothing: true
+  end
+
+  def update
+    @fate = Fate.find params[:id]
+    @fate.update def_fate_id: params[:fate][:def_fate_id]
     render nothing: true
   end
 
