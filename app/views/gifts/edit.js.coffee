@@ -54,9 +54,8 @@ $ ->
         show description
 
   $(description).keyup (e) ->
-    if e.which != 13
-      if $(description).val()
-        show curses
+    if $(description).val()
+      show curses
 
   $(curseRadio).change ->
     $(detailField).prop
@@ -88,8 +87,10 @@ $ ->
           slideQuietlyTo '<%= character_path(@gift.character.id) %>'
     return false
 
-  $(description).redirectReturnTo ->
-    $(curseRadio).first().focus()
+  # $(description).redirectReturnTo ->
+    # $(curseRadio).first().focus()
+  $(name).redirectReturnTo ->
+    $(description).select()
   $(detailField).redirectReturnTo onSubmit
   $(submit).redirectButtonTo onSubmit
 

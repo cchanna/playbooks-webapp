@@ -85,14 +85,15 @@ $.fn.extend
   redirectReturnTo: (action) ->
     return @each ->
       $(this).keypress (e) ->
-        if e.which == 13
+        console.log e.shiftKey
+        if e.which == 13 && e.shiftKey == false
           action(this)
           return false
 
   redirectButtonTo: (action) ->
     return @each ->
       $(this).keypress (e) ->
-        if e.which == 13 || e.which == 32
+        if (e.which == 13 && e.shiftKey == false) || e.which == 32
           action(this)
           return false
       $(this).click ->
@@ -102,7 +103,7 @@ $.fn.extend
   redirectCheckboxTo: (action) ->
     return @each ->
       $(this).keypress (e) ->
-        if e.which == 13
+        if e.which == 13 && e.shiftKey == false
           $(this).prop("checked", !$(this).prop("checked"))
           action(this)
           return false
@@ -112,7 +113,7 @@ $.fn.extend
   redirectRadioTo: (action) ->
     return @each ->
       $(this).keypress (e) ->
-        if e.which == 13
+        if e.which == 13 && e.shiftKey == false
           $(this).prop("checked", true)
           action(this)
           return false
