@@ -9,4 +9,5 @@ class Character < ActiveRecord::Base
 
   has_many :tools, dependent: :destroy
   has_one :gift, dependent: :destroy
+  has_many :vows, dependent: :destroy
 end

@@ -26,7 +26,6 @@ $ ->
   $(checkbox + ':not(:checked)').closest('form').children(option).children("input").prop
     disabled: true
 
-
   $(freeCheckbox).change ->
     console.log '\nCHANGE FREE CHECKBOX'
     $(this).prop(checked: true)

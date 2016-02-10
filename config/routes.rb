@@ -9,11 +9,13 @@ resources :characters, except: [:index, :destroy] do
     get 'setting_symbol'
     get 'setting_other'
     patch 'update_look'
+    patch 'update_vows'
     namespace :edit, module: nil do
       get 'moves', to: "characters#edit_moves"
       get 'name',  to: "characters#edit_name"
       get 'look',  to: "characters#edit_look"
       get 'trust', to: "characters#edit_trust"
+      get 'vows',  to: "characters#edit_vows"
     end
     post 'increment_spirit'
     post 'decrement_spirit'

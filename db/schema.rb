@@ -93,6 +93,11 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.string "name"
   end
 
+  create_table "def_vows", force: :cascade do |t|
+    t.string "name"
+    t.string "text"
+  end
+
   create_table "dire_fates", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "def_dire_fate_id"
@@ -196,6 +201,14 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.string  "question"
     t.integer "trust"
     t.integer "archetype_id"
+  end
+
+  create_table "vows", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "def_vow_id"
+    t.string   "detail"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

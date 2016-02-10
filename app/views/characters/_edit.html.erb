@@ -54,6 +54,15 @@
         <% end %>
       </div>
     <% end %>
+    <% if @character.archetype.name == "Warrior" %>
+      <div>
+        <% if @character.vows.count == 2 %>
+          <%= link_to "Vows", [:vows, :edit, @character], class: "slide under complete" %>
+        <% else %>
+          <%= link_to "Vows", [:vows, :edit, @character], class: "slide under" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&

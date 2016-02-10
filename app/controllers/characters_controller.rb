@@ -91,6 +91,16 @@ class CharactersController < ApplicationController
     end
   end
 
+  def edit_vows
+    @character = Character.find params[:id]
+    @vows = @character.vows
+    respond_to do |format|
+      format.html {render text: "", layout: true}
+      format.js
+    end
+  end
+
+
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)
@@ -115,6 +125,19 @@ class CharactersController < ApplicationController
     end
   end
 
+  def update_vows
+    @character = Character.find params[:id]
+    DefVow.all.each do |dv|
+      is_current = @character.vows.exists?(def_vow_id: dv.id)
+      is_new = params[:def_vow_ids].include?(dv.id.to_s)
+      if !is_current && is_new
+        Vow.create(character: @character, def_vow: dv)
+      elsif is_current && !is_new
+        Vow.find_by(character: @character, def_vow: dv).destroy
+      end
+    end
+    render nothing: true
+  end
 
   def setting_symbol
     @character = Character.find(params[:id])

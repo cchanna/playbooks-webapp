@@ -1,0 +1,21 @@
+<div class="narrow" id="edit-vows">
+  <h1>
+    Edit Vows
+  </h1>
+  <%= form_for @character, url: {action: "update_vows"}, html: {remote: true, id: "edit-vows-form", class: "edit-character-form"} do |f| %>
+    <div>
+      <% DefVow.all.each do |v| %>
+        <div class="check-title">
+          <%= check_box_tag "def_vow_ids[#{v.id}]", v.id, class: "vow-checkbox" %>
+          <%= label_tag "def_vow_ids_#{v.id}", v.name, class: "under-check" %>
+          <div class="body">
+            <%= v.text %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="submit-wrapper">
+      <%= f.submit ">", class: "submit" %>
+    </div>
+  <% end %>
+</div>

@@ -180,6 +180,17 @@ a {
 
 .check-title {
   text-align: left;
+  input[type="radio"], input[type="checkbox"] {
+    &:checked ~ .body {
+      color: $gray;
+    }
+    &:disabled ~ .body {
+      color: $disabled;
+    }
+  }
+  &:hover {
+    color: blue;
+  }
   &:hover label {
     color: $red_link_hover
   }
@@ -188,11 +199,6 @@ a {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
     cursor: pointer;
-  }
-  input[type="radio"], input[type="checkbox"] {
-    &:checked ~ .body {
-      color: $gray;
-    }
   }
   label {
     margin: 0;
@@ -427,5 +433,11 @@ form {
       color: $gray-light;
       margin-bottom: .5rem;
     }
+  }
+}
+
+#edit-vows {
+  .body {
+    margin-bottom: 1rem;
   }
 }

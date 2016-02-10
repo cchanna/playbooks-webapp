@@ -69,6 +69,14 @@ Dir["*"].each do |a|
           GiftCurse.create(name: line)
         end
       end
+    when "vows.sr"
+      while lines.length > 0
+        line = lines.shift
+        if line.length > 0
+          fields = line.split(":")
+          DefVow.create(name:fields[0].squish, text:fields[1].squish)
+        end
+      end
     when "stats.sr"
       while lines.length > 0
         line = lines.shift

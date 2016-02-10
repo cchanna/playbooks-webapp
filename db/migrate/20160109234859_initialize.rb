@@ -35,6 +35,11 @@ class Initialize < ActiveRecord::Migration
       t.integer :strange
     end
 
+    create_table :def_vows do |t|
+      t.string :name
+      t.string :text
+    end
+
     create_table :def_dire_fates do |t|
       t.string :text
       t.integer :peril
@@ -102,6 +107,13 @@ class Initialize < ActiveRecord::Migration
       t.integer :clever
       t.integer :strange
       t.integer :spirit
+      t.timestamps null: false
+    end
+
+    create_table :vows do |t|
+      t.belongs_to :character
+      t.belongs_to :def_vow
+      t.string :detail
       t.timestamps null: false
     end
 
