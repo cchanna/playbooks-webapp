@@ -221,6 +221,9 @@ a {
       color: $disabled;
       cursor: default;
     }
+    &:disabled ~ .body input[type=text] {
+      background-color: $disabled;
+    }
   }
   label {
     font-family: "Spartan";
@@ -290,18 +293,21 @@ form {
     font-family: "Crimson Text", serif;
     border-width: 0px;
     border-radius: .25rem;
-    // border: 1px dashed green;
     display: inline-block;
     height: 2rem;
-    // padding: 0rem 1rem 0 1rem;
     text-align: center;
     vertical-align: top;
-    // vertical-align: middle;
-    &.detail {
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    &.detail, &.detail-body {
       height: 1.4rem;
-      // color: $gray;
       text-align: center;
+    }
+    &.detail {
       background-color: rgba(255,255,255,0.2);
+    }
+    &.detail-body {
+      background-color: white;
     }
     &:disabled {
       background-color: $gray_light;

@@ -14,6 +14,7 @@ $ ->
 
   checkbox = 'input[type=checkbox]'
   submit = "input[type=submit]"
+  detail = "input[type=text]"
   form = 'form'
 
   $(checkbox).prop
@@ -23,9 +24,32 @@ $ ->
     $(v).prop(checked: true) for v in vows
 
 
+  valid = ->
+    v = true
+    $(checkbox + ':checked').parent().find(detail).each ->
+      console.log $(this).val()
+      unless $(this).val()
+        v = false
+    return v
+
+  setSubmit = ->
+    if $(checkbox + ":checked").length >= 2
+      $(checkbox + ':not(:checked)').prop
+        disabled: true
+      if valid()
+        show submit
+      else
+        hide submit
+    else
+      $(checkbox + ':disabled').prop
+        disabled: false
+      hide submit
+
   if $(checkbox + ":checked").length >= 2
     $(checkbox + ':not(:checked)').prop
       disabled: true
+    unless valid()
+      startHidden submit
   else
     startHidden submit
 
@@ -34,22 +58,26 @@ $ ->
     $(this).parent().find(checkbox).click()
     return false
 
+  $(detail).click ->
+    return false;
+
+  $(detail).keyup ->
+    setSubmit()
+
+
+
+
   $(checkbox).change ->
     console.log '\nCHANGE CHECKBOX'
-    if $(this).is(":checked")
-      disabled = false
-    else
-      disabled = true
 
-    # $(this).closest('form').children(detail)
-    if $(checkbox + ":checked").length >= 2
-      $(checkbox + ':not(:checked)').prop
-        disabled: true
-      show submit
-    else
-      $(checkbox + ':disabled').prop
-        disabled: false
-      hide submit
+    thisDetail = $(this).parent().find(detail)
+    thisDetail.prop
+      disabled: !$(this).is(":checked")
+    thisDetail.val ""
+
+    setSubmit()
+
+    thisDetail.focus()
 
   $(submit).redirectButtonTo ->
     fadeOutBody ->

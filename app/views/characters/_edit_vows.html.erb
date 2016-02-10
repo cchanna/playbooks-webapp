@@ -7,9 +7,12 @@
       <% DefVow.all.each do |v| %>
         <div class="check-title">
           <%= check_box_tag "def_vow_ids[#{v.id}]", v.id, class: "vow-checkbox" %>
+
           <%= label_tag "def_vow_ids_#{v.id}", v.name, class: "under-check" %>
+          <% vow = Vow.find_by(character: @character, def_vow: v) %>
+          <% detail = vow ? vow.detail : nil %>
           <div class="body">
-            <%= v.text %>
+            <%= v.text.gsub('_', text_field_tag("details[#{v.id}]", detail ? detail : "", class: "detail-body")).html_safe %>
           </div>
         </div>
       <% end %>

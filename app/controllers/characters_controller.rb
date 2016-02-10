@@ -130,10 +130,18 @@ class CharactersController < ApplicationController
     DefVow.all.each do |dv|
       is_current = @character.vows.exists?(def_vow_id: dv.id)
       is_new = params[:def_vow_ids].include?(dv.id.to_s)
-      if !is_current && is_new
-        Vow.create(character: @character, def_vow: dv)
-      elsif is_current && !is_new
-        Vow.find_by(character: @character, def_vow: dv).destroy
+      if is_new
+        if is_current
+          vow = Vow.find_by(character: @character, def_vow: dv)
+        else
+          vow = Vow.create(character: @character, def_vow: dv)
+        end
+        if params[:details][dv.id.to_s]
+          vow.update(detail: params[:details][dv.id.to_s])
+        end
+      end
+      if is_current && !is_new
+        vowVow.find_by(character: @character, def_vow: dv).destroy
       end
     end
     render nothing: true
