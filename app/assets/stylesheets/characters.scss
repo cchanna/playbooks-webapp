@@ -2,15 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$red_header: #990000;
-$red_link: rgba(150,25,25,1.0);
-$red_link_hover: rgba(200,50,50,0.8);
-$gray: rgba(85,85,85,1);
-$gray_light: rgba(119,119,119,1);
-$disabled: rgba(119,119,119,.2);
-$background: #F0F0F0;
-$complete: rgba(25,150,25,1.0);
-$complete_hover: rgba(50,200,50,0.8);
+@import "colors";
 
 html {
   font-size: 20px;
@@ -80,12 +72,15 @@ a {
     right: 100%;
     bottom: 0.2rem;
     height: 4px;
-    -webkit-transition-property: right, background-color;
-    transition-property: right, background-color;
+    -webkit-transition-property: right, background-color, opacity;
+    transition-property: right, background-color, opacity;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
+  }
+  &.wary:before {
+    background: $wary;
   }
 }
 
@@ -104,7 +99,56 @@ a {
     &:before {
       background-color: $red_link_hover;
     }
+    &.brave:before {
+      background-color: $brave;
+      opacity: 0.5;
+    }
+    &.fierce:before {
+      background-color: $fierce;
+      opacity: 0.5;
+    }
+    &.wary:before {
+      background-color: $wary;
+      opacity: 0.5;
+    }
+    &.clever:before {
+      background-color: $clever;
+      opacity: 0.5;
+    }
+    &.strange:before {
+      background-color: $strange;
+      opacity: 0.5;
+    }
+    &.trust:before {
+      background-color: $trust;
+      opacity: 0.5;
+    }
+    &.nostat:before {
+      background-color: $nostat;
+      opacity: 0.5;
+    }
     color: $red_link_hover;
+    &.brave {
+      color: rgba($brave, 0.5);
+    }
+    &.fierce {
+      color: rgba($fierce, 0.5);
+    }
+    &.wary {
+      color: rgba($wary, 0.5);
+    }
+    &.clever {
+      color: rgba($clever, 0.5);
+    }
+    &.strange {
+      color: rgba($strange, 0.5);
+    }
+    &.trust {
+      color: rgba($trust, 0.5);
+    }
+    &.nostat {
+      color: rgba($nostat, 0.5);
+    }
   }
   &:checked {
     &:before {
@@ -181,27 +225,47 @@ a {
 .check-title {
   input[type="radio"], input[type="checkbox"] {
   }
-  &:hover {
-    color: blue;
-  }
   &:hover label {
-    color: $red_link_hover
+    color: $red_link_hover;
+    &.brave {
+      color: rgba($brave, 0.5);
+    }
+    &.fierce {
+      color: rgba($fierce, 0.5);
+    }
+    &.wary {
+      color: rgba($wary, 0.5);
+    }
+    &.clever {
+      color: rgba($clever, 0.5);
+    }
+    &.strange {
+      color: rgba($strange, 0.5);
+    }
+    &.trust {
+      color: rgba($trust, 0.5);
+    }
+    &.nostat {
+      color: rgba($nostat, 0.5);
+    }
   }
 }
 
 .check-title, .check-title-free {
   text-align: left;
-  &:checked ~ .body {
-    color: $gray;
-  }
   &:disabled ~ .body {
     color: $disabled;
   }
   .body {
-    color: $gray-light;
-    -webkit-transition: color 0.3s;
-    transition: color 0.3s;
+    color: $gray;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
     cursor: pointer;
+  }
+  :checked ~ .body {
+    // color: $gray;
+    opacity: 1.0;
   }
   label {
     margin: 0;
@@ -216,6 +280,48 @@ a {
       &:before {
         right: 0;
       }
+      &.brave {
+        color: $brave;
+        &:before {
+          background-color: $brave;
+        }
+      }
+      &.fierce {
+        color: $fierce;
+        &:before {
+          background-color: $fierce;
+        }
+      }
+      &.wary {
+        color: $wary;
+        &:before {
+          background-color: $wary;
+        }
+      }
+      &.clever {
+        color: $clever;
+        &:before {
+          background-color: $clever;
+        }
+      }
+      &.strange {
+        color: $strange;
+        &:before {
+          background-color: $strange;
+        }
+      }
+      &.trust {
+        color: $trust;
+        &:before {
+          background-color: $trust;
+        }
+      }
+      &.nostat {
+        color: $nostat;
+        &:before {
+          background-color: $nostat;
+        }
+      }
     }
     &:disabled+label {
       color: $disabled;
@@ -227,7 +333,7 @@ a {
   }
   label {
     font-family: "Spartan";
-    color: $gray_light;
+    color: rgba($gray, 0.4);
     cursor: pointer;
   }
 }
@@ -235,7 +341,28 @@ a {
 .checklist, .check-title {
   input[type="radio"], input[type="checkbox"] {
     &:checked+label:hover {
-      color: $red_link_hover;
+      color: rgba($red_link, 0.5);
+      &.brave {
+        color: rgba($brave, 0.5);
+      }
+      &.fierce {
+        color: rgba($fierce, 0.5);
+      }
+      &.wary {
+        color: rgba($wary, 0.5);
+      }
+      &.clever {
+        color: rgba($clever, 0.5);
+      }
+      &.strange {
+        color: rgba($strange, 0.5);
+      }
+      &.trust {
+        color: rgba($trust, 0.5);
+      }
+      &.nostat {
+        color: rgba($nostat, 0.5);
+      }
     }
   }
 }
@@ -464,6 +591,6 @@ form {
 
 #edit-move {
   .check-title, .check-title-free {
-    margin-bottom : 1rem;
+    margin-bottom : 2rem;
   }
 }

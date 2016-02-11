@@ -106,7 +106,7 @@ Dir["*"].each do |a|
         line = lines.shift
         if line[0] == "\t"
           if line[1] == "\t" && in_body
-            def_move.body += line.squish + "\n"
+            def_move.body += line.squish
           else
             fields = line.strip.split(":")
             case fields[0].squish

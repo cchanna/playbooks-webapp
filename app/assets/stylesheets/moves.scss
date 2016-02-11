@@ -1,0 +1,40 @@
+@import "colors";
+
+span.star {
+  font-family: "icomoon";
+  font-size: .8rem;
+}
+
+span.small-stat {
+  font-variant: small-caps;
+}
+
+span.brave {
+  color: $brave;
+}
+span.fierce {
+  color: $fierce;
+}
+span.wary {
+  color: $wary;
+}
+span.clever {
+  color: $clever;
+}
+span.strange {
+  color: $strange;
+}
+span.trust {
+  color: $trust;
+}
+span.nostat {
+  color: $nostat;
+}
+
+span.move-reference {
+  font-style: italic;
+}
+
+li {
+  font-style: italic;
+}
