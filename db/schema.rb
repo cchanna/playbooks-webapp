@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20160109234859) do
     t.string   "name"
     t.integer  "archetype_id"
     t.boolean  "setting",      default: false
-    t.integer  "move_count"
     t.integer  "brave"
     t.integer  "fierce"
     t.integer  "wary"

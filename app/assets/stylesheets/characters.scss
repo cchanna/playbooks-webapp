@@ -59,7 +59,7 @@ a {
   }
 }
 
-.under, .under-check {
+.under, .under-check, .under-check-free {
   text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
@@ -179,20 +179,23 @@ a {
 }
 
 .check-title {
-  text-align: left;
   input[type="radio"], input[type="checkbox"] {
-    &:checked ~ .body {
-      color: $gray;
-    }
-    &:disabled ~ .body {
-      color: $disabled;
-    }
   }
   &:hover {
     color: blue;
   }
   &:hover label {
     color: $red_link_hover
+  }
+}
+
+.check-title, .check-title-free {
+  text-align: left;
+  &:checked ~ .body {
+    color: $gray;
+  }
+  &:disabled ~ .body {
+    color: $disabled;
   }
   .body {
     color: $gray-light;
@@ -205,14 +208,11 @@ a {
   }
 }
 
-.checklist, .check-title {
+.checklist, .check-title, .check-title-free {
   input[type="radio"], input[type="checkbox"] {
     display: none;
     &:checked+label {
       color: $red_link;
-      &:hover {
-        color: $red_link_hover;
-      }
       &:before {
         right: 0;
       }
@@ -229,6 +229,20 @@ a {
     font-family: "Spartan";
     color: $gray_light;
     cursor: pointer;
+  }
+}
+
+.checklist, .check-title {
+  input[type="radio"], input[type="checkbox"] {
+    &:checked+label:hover {
+      color: $red_link_hover;
+    }
+  }
+}
+
+.check-title-free {
+  .body, label {
+    cursor: default;
   }
 }
 
@@ -445,5 +459,11 @@ form {
 #edit-vows {
   .body {
     margin-bottom: 1rem;
+  }
+}
+
+#edit-move {
+  .check-title, .check-title-free {
+    margin-bottom : 1rem;
   }
 }

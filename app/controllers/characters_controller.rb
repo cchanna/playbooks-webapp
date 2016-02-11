@@ -18,7 +18,6 @@ class CharactersController < ApplicationController
   def create
     @character = Character.create(character_params)
     @character.update(
-      move_count: @character.archetype.starting_move_count,
       brave: @character.archetype.brave,
       fierce: @character.archetype.fierce,
       wary: @character.archetype.wary,
@@ -36,6 +35,12 @@ class CharactersController < ApplicationController
       3.times do
         Tool.create(character: @character)
       end
+    end
+    @character.archetype.def_moves.where(free: true).each do |m|
+      Move.create(character: @character, def_move: m)
+    end
+    while @character.moves.count < @character.archetype.starting_move_count do
+      Move.create(character: @character)
     end
     respond_to do |format|
       format.html {render :text => character_path(@character.id)}

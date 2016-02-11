@@ -63,6 +63,15 @@
         <% end %>
       </div>
     <% end %>
+    <% @character.moves.order(:id).limit(@character.archetype.starting_move_count).each do |m| %>
+      <div>
+        <% if m.def_move %>
+          <%= link_to "Move: #{m.def_move.name}", [:edit, m], class: "slide under complete" %>
+        <% else %>
+          <%= link_to "Move", [:edit, m], class: "slide under" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&

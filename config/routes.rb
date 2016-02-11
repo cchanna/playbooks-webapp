@@ -4,7 +4,6 @@ root 'main#home'
 resources :characters, except: [:index, :destroy] do
   resources :relationships, only: [:new, :create]
   resources :tools, only: [:new, :create]
-  resources :moves, only: [:create, :update]
   member do
     get 'setting_symbol'
     get 'setting_other'
@@ -24,8 +23,8 @@ resources :characters, except: [:index, :destroy] do
 end
 resources :dire_fates, only: [:update]
 
-resources :moves, only: [] do
-  resources :move_fields, only: [:new, :create]
+resources :moves, only: [:edit, :update, :create] do
+  resources :move_fields, only: [:edit, :update]
 end
 
 resources :move_fields, only: [:destroy]

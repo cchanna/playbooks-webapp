@@ -100,7 +100,6 @@ class Initialize < ActiveRecord::Migration
       t.string :name
       t.belongs_to :archetype
       t.boolean :setting, default: false
-      t.integer :move_count
       t.integer :brave
       t.integer :fierce
       t.integer :wary

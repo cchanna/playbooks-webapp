@@ -1,0 +1,29 @@
+<div class="narrow" id="edit-move">
+  <h1>
+    Edit Move
+  </h1>
+  <%= form_for [@move], remote: true do |f| %>
+    <% if @move.def_move && @move.def_move.free %>
+      <div class="check-title-free">
+        <%= f.radio_button "def_move_id", @move.def_move_id %>
+        <%= f.label "def_move_id_#{@move.def_move_id}", @move.def_move.name, class: "under-check-free"%>
+        <div class="body">
+          <%= @move.def_move.body %>
+        </div>
+      </div>
+    <% else %>
+      <% @move.character.archetype.def_moves.where(free: false).each do |dm| %>
+        <% if dm == @move.def_move || !@move.character.moves.exists?(def_move_id: dm.id) %>
+          <div class="check-title">
+            <%= f.radio_button "def_move_id", dm.id %>
+            <%= f.label "def_move_id_#{dm.id}", dm.name, class: "under-check" %>
+            <div class="body">
+              <%= dm.body %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= f.submit ">", class: "submit" %>
+  <% end %>
+</div>
