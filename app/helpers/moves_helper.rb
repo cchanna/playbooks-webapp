@@ -13,11 +13,21 @@ module MovesHelper
   def search_stat(stat, c, chars)
     out = ""
     if c == stat[0].upcase
-      puts chars[0..stat.length - 2].join('')
       if chars[0..(stat.length - 2)].join('') == stat.upcase[1..-1]
-        puts "success"
         out = "<span class=\"small-stat #{stat.downcase}\">#{stat.downcase}</span>"
         (stat.length - 1).times { chars.shift }
+      end
+    end
+    return out
+  end
+
+  def search_when(c, chars, stack)
+    out = ""
+    if c == "W"
+      if chars[0..7].join('') == "hen you "
+        out = "When you <strong>"
+        7.times {chars.shift}
+        stack.push "strong"
       end
     end
     return out
@@ -32,7 +42,6 @@ module MovesHelper
       c = chars.shift
       out = ""
       if c == "*"
-        puts "*"
         out = ""
         new_line = false
         while stack.size > 0
@@ -45,46 +54,39 @@ module MovesHelper
             stack.pop
             new_line = true
             out += "</li>"
-          when "star"
+          when "strong"
             stack.pop
             out += "</strong>"
           else
             break
           end
         end
-        stack.push "star"
+        stack.push "strong"
         if new_line
           out += "\n"
         end
         out += "<span class='star'>*</span><strong>"
-      elsif c == "," && stack.size > 0 && stack.last  == "star"
-        puts ","
+      elsif c == "," && stack.size > 0 && stack.last  == "strong"
         stack.pop
         out = ",</strong>"
       elsif c == ">"
-        puts ">"
         while stack.size > 0
           out = ""
           new_list = true
           case stack.last
           when "p"
-            puts "  /p"
             stack.pop
             out += "</p>"
-          when "star"
-            puts "  /star"
+          when "strong"
             stack.pop
             out += "</strong>"
           when "ul"
-            puts "  /ul"
             new_list = false
             break
           when "li"
-            puts "  /li"
             stack.pop
             out += "</li>"
           else
-            puts "  else"
             stack.pop
           end
         end
@@ -95,7 +97,6 @@ module MovesHelper
         out += "<li>"
         stack.push "li"
       elsif c == "["
-        puts "["
         cc = chars.shift
         out = ""
         while cc != "]"
@@ -119,6 +120,7 @@ module MovesHelper
         out += search_stat "clever", c, chars
         out += search_stat "strange", c, chars
         out += search_stat "trust", c, chars
+        out += search_when c, chars, stack
         if out == ""
           out = c
         end
