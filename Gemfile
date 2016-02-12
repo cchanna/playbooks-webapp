@@ -15,10 +15,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'js-routes'
 # allows for rails routing in javascript
 
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+# gem "therubyracer"
+# gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+# gem "twitter-bootstrap-rails"
 # bootstrap
+gem 'bootstrap', '~> 4.0.0.alpha3'
 
 gem 'puma'
 

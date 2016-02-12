@@ -1,10 +1,10 @@
-<div>
-  <div>
-    <%= move.def_move.name %>
-  </div>
-  <div>
-    <%= move.def_move.body %>
-  </div>
+<div class="move">
+  <p>
+    <span class="move-name <%=move.def_move.stat ? move.def_move.stat : "nostat"%>">
+      <%= move.def_move.name %>:
+    </span>
+    <%= parsemove(move.def_move.body)[3..-1].html_safe %>
+  <!-- </p> %% this is covered by the move body -->
   <% move.def_move.def_move_fields.each do |dmf| %>
     <% if dmf.creatable %>
       <div>
@@ -29,4 +29,4 @@
       <%= move.description %>
     </div>
   <% end %>
-<div>
+</div>

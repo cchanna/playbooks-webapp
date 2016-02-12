@@ -17,6 +17,7 @@ $ ->
   data = '<%= escape_javascript render "show" unless redirect %>'
   incrementFate = '.increment-fate'
   decrementFate = '.decrement-fate'
+  everything = '#spirit-buttons'
 
   load data
 
@@ -124,24 +125,46 @@ $ ->
   setFate fate for fate in $(".fate")
 
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
-    value = '#trust-value-' + $(this).children('input[type=submit]').data('trust-id')
+    value = '#trust-value-' + $(this).data('trust-id')
     hide value, ->
       $(value).html(data)
       show value
 
   onDecrementSpirit = (me) ->
-    $(me).submit()
-    hide me, ->
-      $(me).parent().remove()
+    $(me).prop
+      disabled: true
+    $(me).parent().submit()
+    nextAll = $(me).parent().nextAll()
+    console.log nextAll
+    fadeOut me, ->
+      $(me).parent().css height: 30
+      $(me).parent().animate width: 0, 500, ->
+        $(me).parent().remove()
+    # $(me).hide("slide", {direction: })
+    # fadeOut nextAll, ->
+      # show nextAll
 
 
   $(".decrement_spirit").redirectButtonTo onDecrementSpirit
 
   $(".increment_spirit").redirectButtonTo (me) ->
+    # $(me).prop
+      # disabled: true
+    # hide me, ->
     $(me).submit()
 
   $(".increment_spirit").parent().on 'ajax:success', (e, data, status, xhr) ->
-    newButton = $('#spirit-buttons').append(data)
+    newButton = $('.increment_spirit').parent().before(data).prev()
+    width = newButton.css("width")
+    newButton.css
+      width: 0
+      opacity: 0
+    newButton.animate width: width, 500, ->
+      show newButton
+    # show '.increment_spirit'
+
+    # $('.increment_spirit').prop
+    #   disabled: false
     $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
 
   $(".dire-fate-checkbox").change ->

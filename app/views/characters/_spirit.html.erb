@@ -1,9 +1,13 @@
-<div>
-  Spirit
+<div id="spirit">
+  <h2 class="bar">
+    <span class="title">
+      Spirit
+    </span>
+  </h2>
+  <div id="spirit-buttons">
+    <% for i in 1..spirit %>
+      <%= render partial: "increment_spirit" %>
+    <% end %>
+    <%= button_to "+", [:increment_spirit, @character], method: :post, remote: true, class: "button increment_spirit" %>
+  </div>
 </div>
-<div id="spirit-buttons">
-<% for i in 1..spirit %>
-  <%= render partial: "increment_spirit" %>
-<% end %>
-</div>
-<%= button_to "+", [:increment_spirit, @character], remote: true, class: "increment_spirit" %>

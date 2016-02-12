@@ -1,8 +1,14 @@
 <div id="trust">
-  Trust
-  <% relationships.each do |r| %>
-    <%= render partial: "relationships/show", locals: {relationship: r} %>
-    <%= button_to "−", [:decrement, r], remote: true, data: {trust_id: r.id}, form_class: "trust-change" %>
-    <%= button_to "+", [:increment, r], remote: true, data: {trust_id: r.id}, form_class: "trust-change"  %>
+  <h2 class="bar">
+    <span class="title">
+      Trust
+    </span>
+  </h2>
+  <% relationships.order(:name).each do |r| %>
+    <div class="relationships">
+      <%= link_to "-", [:decrement, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button" %>
+      <%= render partial: "relationships/show", locals: {relationship: r} %>
+      <%= link_to "+", [:increment, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button"  %>
+    </div>
   <% end %>
 </div>

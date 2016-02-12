@@ -1,14 +1,19 @@
-<div>
-  <%= link_to 'New character', new_character_path, class: 'slide under' %>
-</div>
-<br>
-<%  Character.all.order(:name).each do |c| %>
+<div class="narrow">
+  <h1>
+    Stranger Roads
+  </h1>
   <div>
-    <%  if c.name %>
-      <%  link = c.name + ' the ' + c.archetype.name %>
-    <%  else %>
-      <%  link = 'The ' + c.archetype.name %>
-    <%  end %>
-    <%= link_to link, c, class: 'slide under' %>
+    <%= link_to 'New character', new_character_path, class: 'slide under' %>
   </div>
-<%  end %>
+  <br>
+  <%  Character.all.order(:name).each do |c| %>
+    <div>
+      <%  if c.name %>
+        <%  link = c.name + ' the ' + c.archetype.name %>
+      <%  else %>
+        <%  link = 'The ' + c.archetype.name %>
+      <%  end %>
+      <%= link_to link, c, class: 'slide under' %>
+    </div>
+  <%  end %>
+</div>

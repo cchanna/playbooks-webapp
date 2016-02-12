@@ -1,0 +1,15 @@
+html {
+  font-size: 20px;
+  background: $background;
+  font-family: "Crimson Text", serif;
+}
+#slider {
+  max-width: 1800px;
+}
+
+@include media-breakpoint-down(lg) {
+  #slider {
+    max-width: 97.5%; /*this gives it the precise width to match the Bootstrap defaults*/
+    width: 97.5%; /*this gives it the precise width to match the Bootstrap defaults*/
+  }
+}

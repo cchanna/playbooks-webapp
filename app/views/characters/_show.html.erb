@@ -1,17 +1,26 @@
 <div id="sheet">
   <div class="row">
-    <%= render partial: "name", locals: {name: @character.name} %>
-    <%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
-    <%= render partial: "look", locals: {looks: @character.looks} %>
+    <div class="panel col-sm-5 col-md-4 col-lg-3 col-xl-2">
+      <%= render partial: "name", locals: {name: @character.name} %>
+      <%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
+      <%= render partial: "look", locals: {looks: @character.looks} %>
+      <%= render partial: "stats", locals: {
+        brave: @character.brave,
+        fierce: @character.fierce,
+        wary: @character.wary,
+        clever: @character.clever,
+        strange: @character.strange,
+      } %>
+      <%= render partial: "trust", locals: {relationships: @character.relationships} %>
+      <%= render partial: "spirit", locals: {spirit: @character.spirit} %>
+    </div>
+    <div class="panel col-sm-7 col-md-4 col-lg-5 col-xl-5">
+      <%=render partial: "moves", locals: {moves: @character.moves}%>
+    </div>
+    <div class="panel col-sm-12 col-md-4 col-lg-4 col-xl-5">
+      test
+    </div>
   </div>
-  <div class="col-xs-6">
-  <%= render partial: "stats", locals: {
-    brave: @character.brave,
-    fierce: @character.fierce,
-    wary: @character.wary,
-    clever: @character.clever,
-    strange: @character.strange,
-  } %>
   <div>
     <br>
     <%= link_to "Edit Character", edit_character_path(@character), class: "slide under" %>
