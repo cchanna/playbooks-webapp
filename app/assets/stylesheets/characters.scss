@@ -225,7 +225,7 @@ a {
 .check-title {
   input[type="radio"], input[type="checkbox"] {
   }
-  &:hover label {
+  &:hover label.move {
     color: $red_link_hover;
     &.brave {
       color: rgba($brave, 0.5);
@@ -267,7 +267,7 @@ a {
     // color: $gray;
     opacity: 1.0;
   }
-  label {
+  label.move {
     margin: 0;
   }
 }
@@ -335,6 +335,13 @@ a {
     font-family: "Spartan";
     color: rgba($gray, 0.4);
     cursor: pointer;
+    &.option {
+      font-size: 0.8rem;
+      &:before {
+        bottom: 0.15rem;
+        height: 3px;
+      }
+    }
   }
 }
 
@@ -438,8 +445,8 @@ form {
     height: 2rem;
     text-align: center;
     vertical-align: top;
-    -webkit-transition: background-color .3s;
-    transition: background-color .3s;
+    -webkit-transition: background-color .3s, color .3s, opacity .3s;
+    transition: background-color .3s, color .3s, opacity .3s;
     &.detail, &.detail-body {
       height: 1.4rem;
       text-align: center;
@@ -452,6 +459,8 @@ form {
     }
     &:disabled {
       background-color: $gray_light;
+      color: white;
+      opacity: .25;
     }
   }
   textarea {
@@ -465,6 +474,13 @@ form {
     margin: 1rem 0 1rem 0;
     vertical-align: top;
     overflow-y: hidden;
+    -webkit-transition: background-color .3s, color .3s, opacity .3s;
+    transition: background-color .3s, color .3s, opacity .3s;
+    &:disabled {
+      background-color: $gray_light;
+      color: white;
+      opacity: .25;
+    }
   }
 }
 

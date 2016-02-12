@@ -1,16 +1,41 @@
 class MovesController < ApplicationController
   def update
     @move = Move.find params[:id]
-    # byebug
-    if params[:move]
-      if params[:move][:def_move_id]
-        if @move.def_move_id != params[:move][:def_move_id]
-          @move.move_options.destroy_all
-          @move.move_fields.destroy_all
-          @move.update(
-            description: nil,
-            def_move_id: params[:move][:def_move_id]
+    if params[:move] && params[:move][:def_move_id]
+      if @move.def_move_id != params[:move][:def_move_id]
+        @move.move_options.destroy_all
+        @move.move_fields.destroy_all
+        @move.update(
+          description: nil,
+          def_move_id: params[:move][:def_move_id]
+        )
+      end
+      if params[:move_fields]
+        params[:move_fields].keys.each do |k|
+          MoveField.create(
+            move: @move,
+            def_move_field_id: k.to_i,
+            text: params[:move_fields][k]
           )
+        end
+      end
+      if params[:move][:description]
+        @move.update(description: params[:move][:description])
+      end
+      if params[:move_options]
+        options = params[:move_options].collect{|s| s.to_i}
+        @move.def_move.def_move_options.each do |dmo|
+          selected = options.include?(dmo.id)
+          option = @move.move_options.find_by(def_move_option: dmo)
+          if option.nil? && selected
+            MoveOption.create(
+              move: @move,
+              def_move_option: dmo
+            )
+          end
+          if !option.nil? && !selected
+            option.destroy()
+          end
         end
       end
     end

@@ -6,7 +6,7 @@
     <% if @move.def_move && @move.def_move.free %>
       <div class="check-title-free">
         <%= f.radio_button "def_move_id", @move.def_move_id %>
-        <% move_class = "under-check-free #{@move.def_move.stat ? @move.def_move.stat : 'nostat'} "%>
+        <% move_class = "under-check-free move #{@move.def_move.stat ? @move.def_move.stat : 'nostat'} "%>
         <%= f.label "def_move_id_#{@move.def_move_id}", @move.def_move.name, class: move_class %>
         <div class="body">
           <%= parsemove(@move.def_move.body).html_safe %>
@@ -15,13 +15,42 @@
     <% else %>
       <% @move.character.archetype.def_moves.where(free: false).each do |dm| %>
         <% if dm == @move.def_move || !@move.character.moves.exists?(def_move_id: dm.id) %>
-          <div class="check-title">
+        <% if dm.options_selectable %>
+        <% options = dm.options_selectable %>
+        <% else %>
+        <% options = 0 %>
+        <% end %>
+          <div class="check-title move" data-options='<%= options %>'>
             <%= f.radio_button "def_move_id", dm.id %>
-            <% move_class = "under-check #{dm.stat ? dm.stat : 'nostat'} "%>
+            <% move_stat = dm.stat ? dm.stat : 'nostat' %>
+            <% move_class = "under-check move #{move_stat}"%>
             <%= f.label "def_move_id_#{dm.id}", dm.name, class: move_class %>
             <div class="body">
               <%= parsemove(dm.body).html_safe %>
             </div>
+            <% dm.def_move_fields.each do |dmf| %>
+              <div class="field">
+                <% field = MoveField.where(move: @move, def_move_field: dmf).first %>
+                <% value = field ? field.text : "" %>
+                <%= text_field_tag "move_fields[#{dmf.id}]", dmf.id, value: value, placeholder: dmf.name %>
+              </div>
+            <% end %>
+            <% if dm.def_move_options.count > 0 %>
+              <div class='checklist-small'>
+                <% dm.def_move_options.each do |dmo| %>
+                  <div class='option'>
+                    <% value = MoveOption.exists?(move: @move, def_move_option: dmo) %>
+                    <%= check_box_tag "move_options[]", dmo.id, value, id: "move_option_#{dmo.id}" %>
+                    <%= label_tag "move_option_#{dmo.id}", dmo.option, class: "under-check option #{move_stat}" %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <% if dm.has_description %>
+              <div class='description'>
+                <%= f.text_area :description, placeholder: "description (optional)", value: @move.description %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>
