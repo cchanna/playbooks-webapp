@@ -1,4 +1,4 @@
-Research a Spell:
+Research a Spell
 	free: true
 	body:
 		When you research a spell during downtime, describe the desired effect and
@@ -14,7 +14,7 @@ Research a Spell:
 		> the spell has strange side effects
 		> the spell requires _____ as a component
 
-Cast a Spell:
+Cast a Spell
 	free: true
 	body:
 		When you cast a normal spell, it works. You might make a different move in
@@ -25,7 +25,7 @@ Cast a Spell:
 		horribly wrong! Nice! *On a 7-9, you get what you want, but you also lose
 		control. *On a miss, oops. Be prepared for the worst.
 
-Familiar:
+Familiar
 	body:
 		You have a familiar – a small animal bound to your service. It offers help,
 		companionship, or knowledge, as well as temptations, secrets, and lies.
@@ -37,8 +37,9 @@ Familiar:
 	option: you can trust it, for the most part
 	option: it's something stranger than an animal
 	option: it can use a magic of its own
+	options_selectable: 2
 
-Library:
+Library
 	stat: clever
 	body:
 		You have access to a library, study, or other location with resources on
@@ -47,7 +48,7 @@ Library:
 		is always dark and dangerous, along with any number of other complications.
 	has_description: true
 
-Improvised Magic:
+Improvised Magic
 	stat: strange
 	body:
 		When you come up with a new spell as you cast, roll STRANGE. *On a hit, you
@@ -62,6 +63,6 @@ Improvised Magic:
 		> the best you can get is a lesser or temporary version
 		*On a miss, be prepared for the worst.
 
-Vengeful:
+Vengeful
 	body:
 		When you lash out at someone who has wronged you, gain spirit.
