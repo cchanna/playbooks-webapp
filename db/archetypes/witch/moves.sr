@@ -1,0 +1,67 @@
+Research a Spell:
+	free: true
+	body:
+		When you research a spell during downtime, describe the desired effect and
+		roll CLEVER. *On a 10+, you find the desired spell, but the Narrator chooses
+		one or two complications. *On a 7-9, you also choose a complication, first.
+		> the spell is dangerous to cast
+		> the spell invoked a dark power
+		> the spell comes with a cost: _____
+		> the spell requires significant time to cast
+		> the spell requires attention to maintain
+		> the spell is less effective than you hoped
+		> you must spend spirit to cast it
+		> the spell has strange side effects
+		> the spell requires _____ as a component
+
+Cast a Spell:
+	free: true
+	body:
+		When you cast a normal spell, it works. You might make a different move in
+		the process, though.
+		$ When you use dark magic, suffer peril. Such things come at a price that
+		you cannot fully understand until after you have paid in full.
+		$ When you use dangerous magic, roll STRANGE. *On a 10+, nothing goes
+		horribly wrong! Nice! *On a 7-9, you get what you want, but you also lose
+		control. *On a miss, oops. Be prepared for the worst.
+
+Familiar:
+	body:
+		You have a familiar – a small animal bound to your service. It offers help,
+		companionship, or knowledge, as well as temptations, secrets, and lies.
+		Describe its appearance and nature, and choose two of the following:
+	field: name
+	has_description: true
+	option: it is not particularly small
+	option: it can use a strange language to communicate with only you
+	option: you can trust it, for the most part
+	option: it's something stranger than an animal
+	option: it can use a magic of its own
+
+Library:
+	stat: clever
+	body:
+		You have access to a library, study, or other location with resources on
+		magic. When you Research a Spell in your library, add 1 to your roll. *On a
+		miss, the Narrator will instead put a different spell in your spellbook that
+		is always dark and dangerous, along with any number of other complications.
+	has_description: true
+
+Improvised Magic:
+	stat: strange
+	body:
+		When you come up with a new spell as you cast, roll STRANGE. *On a hit, you
+		cast the desired spell, but choose a minor complication:
+		> the spell invokes dark power: suffer peril
+		> the spell comes with a cost: ______
+		> the spell requires significant time to cast
+		> the spell requires attention to maintain
+		*On a 7-9, also choose a major complication:
+		> you lose control as you cast
+		> there are strange side effects
+		> the best you can get is a lesser or temporary version
+		*On a miss, be prepared for the worst.
+
+Vengeful:
+	body:
+		When you lash out at someone who has wronged you, gain spirit.
