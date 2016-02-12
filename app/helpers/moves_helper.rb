@@ -61,6 +61,10 @@ module MovesHelper
             break
           end
         end
+        unless out == ""
+          out += "<p>"
+          stack.push "p"
+        end
         stack.push "strong"
         if new_line
           out += "\n"
@@ -69,6 +73,22 @@ module MovesHelper
       elsif c == "," && stack.size > 0 && stack.last  == "strong"
         stack.pop
         out = ",</strong>"
+      elsif c == "$"
+        while stack.size > 0
+          out = ""
+          case stack.pop
+          when "p"
+            out += "</p>"
+          when "strong"
+            out += "</strong>"
+          when "ul"
+            out += "</ul>"
+          when "li"
+            out += "</li>"
+          end
+        end
+        out += "<p>"
+        stack.push "p"
       elsif c == ">"
         while stack.size > 0
           out = ""
