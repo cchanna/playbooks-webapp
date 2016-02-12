@@ -1,19 +1,19 @@
 <div class="fate" id="fate-<%=fate.id%>" data-value="<%=fate.advancement%>" data-completed="<%=fate.completed%>">
-  <div>
+  <div class="name">
     <%= fate.def_fate.name %>
   </div>
-  <div>
+  <div class="description">
     <%= fate.def_fate.description %>
   </div>
   <div>
-    <%= button_to fate.def_fate.advance + ", advance this fate.", [:increment, fate], remote: true, class: "increment-fate change-fate-#{fate.id}", id: "change-fate-#{fate.id}" %>
+    <%= button_to fate.def_fate.advance + ", advance this fate.", [:increment, fate], method: :post, remote: true, class: "button word-button increment-fate change-fate-#{fate.id}", id: "change-fate-#{fate.id}" %>
   </div>
-  <div>
-    <div id="fate-advancement-<%=fate.id%>" class="fate-advancement">
+  <div class="fate-advancements text-center">
+    <!-- <span id="fate-advancement-<%=fate.id%>" class="fate-advancement"> -->
       <% for i in 1..5 %>
-        <%= button_to "O", [:increment, fate], remote: true, class: "increment-fate change-fate-#{fate.id}", id: "change-fate-#{fate.id}-#{i}" %>
+        <%= button_to "O", [:increment, fate], remote: true, form_class: "fate-advancement-form", class: "button increment-fate change-fate-#{fate.id}", id: "change-fate-#{fate.id}-#{i}" %>
       <% end %>
-    </div>
-    <%= button_to fate.def_fate.complete + ", complete this fate and improve.", [:complete, fate], remote: true, class: "complete-fate", id: "complete-fate-#{fate.id}" %>
+    <!-- </span> -->
   </div>
+  <%= button_to fate.def_fate.complete + ", complete this fate and improve.", [:complete, fate], remote: true, class: "button word-button complete-fate", id: "complete-fate-#{fate.id}" %>
 </div>

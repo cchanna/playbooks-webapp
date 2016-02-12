@@ -32,6 +32,7 @@ $ ->
       tag = "#change-fate-#{id}-#{value}"
       changeToDecrement tag
     if value == 5
+      $("#change-fate-#{id}").prop disabled: true
       $("#complete-fate-#{id}").prop disabled: false
 
   onDecrement = (me) ->
@@ -46,6 +47,7 @@ $ ->
       changeToIncrement tag
     if value < 5
       # hide "#complete-fate-#{id}"
+      $("#change-fate-#{id}").prop disabled: false
       $("#complete-fate-#{id}").prop disabled: true
 
   changeToIncrement = (button) ->
@@ -82,6 +84,7 @@ $ ->
       $(fate).data(completed: false)
       $(me).submit()
       $(".change-fate-#{id}").prop disabled: false
+      $("#change-fate-#{id}").prop disabled: true
       changeToComplete me
 
   changeToComplete = (button) ->
@@ -113,6 +116,8 @@ $ ->
       j++
     if j < 5
       $("#complete-fate-#{id}").prop disabled: true
+    else
+      $("#change-fate-#{id}").prop disabled: true
     while j <= 5
       changeToIncrement "#{tag}-#{j}"
       j++

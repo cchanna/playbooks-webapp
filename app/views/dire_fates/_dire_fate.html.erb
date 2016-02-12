@@ -1,4 +1,6 @@
-<%= form_for dire_fate, remote: true do |f| %>
-  <%= f.check_box :checked, id: "dire_fate_checked_#{dire_fate.id}", class: "dire-fate-checkbox"%>
-  <%= f.label "checked_#{dire_fate.id}", dire_fate.def_dire_fate.text %>
-<% end %>
+<div>
+  <%= form_for dire_fate, remote: true do |f| %>
+    <%= f.check_box :checked, id: "dire_fate_checked_#{dire_fate.id}", class: "dire-fate-checkbox"%>
+    <%= f.label "checked_#{dire_fate.id}", dire_fate.def_dire_fate.text, class: "under-check dire-fate" %>
+  <% end %>
+</div>

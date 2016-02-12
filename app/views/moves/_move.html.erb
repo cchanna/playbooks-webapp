@@ -1,6 +1,6 @@
 <div class="move">
   <p>
-    <span class="move-name <%=move.def_move.stat ? move.def_move.stat : "nostat"%>">
+    <span class="name <%=move.def_move.stat ? move.def_move.stat : "nostat"%>">
       <%= move.def_move.name %>:
     </span>
     <%= parsemove(move.def_move.body)[3..-1].html_safe %>
