@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nDESTROY RELATIONSHIP'
   data = '<%= escape_javascript render partial: "relationships/relationship_list.html.erb", locals: {relationships: @character.relationships} %>'
   question_id = '<%=@question_id%>'
   question = '#trust-question-' + question_id
@@ -20,7 +19,6 @@ $ ->
     disabled: false
 
   $(deleteButton).redirectButtonTo (me) ->
-    console.log '\nCLICK DESTROY RELATIONSHIP'
     href = $(me).attr("href")
     method = $(me).data("method")
     fadeOut relationshipList, ->

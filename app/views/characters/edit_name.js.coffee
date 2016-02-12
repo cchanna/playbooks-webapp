@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nEDIT NAME'
   data = '<%= escape_javascript render "edit_name" %>'
   load data
 
@@ -24,16 +23,13 @@ $ ->
     autocomplete: 'off'
 
   $('.edit-character-form').on 'ajax:success', (e, data, status, xhr) ->
-    console.log '\nFORM SUBMIT'
     slideQuietlyTo '<%= edit_character_path(@character) %>'
 
   preSubmit = ->
-    console.log '\nFORM SUBMIT'
     if $('.sample-name').is ":checked"
       fadeOutBody ->
         $(editForm).submit()
     else if $('.name-category').is ":checked"
-      console.log $(textField).val()
       unless $(textField).val() == ""
         fadeOutBody ->
           $(alternateForm).submit()
@@ -42,7 +38,6 @@ $ ->
   $(textField).redirectReturnTo preSubmit
 
   $('input[type=radio].sample-name').redirectRadioTo ->
-    console.log 'click sample name'
     if $(alternateForm).css("display") == "none"
       hide editSubmitButton, ->
         show editSubmitButton
@@ -53,7 +48,6 @@ $ ->
         $(editSubmitButton).children("input").focus();
 
   $('input[type=radio].name-category').redirectRadioTo ->
-    console.log 'click name category'
     if $(alternateForm).css("display") == "none"
       hide editSubmitButton, ->
         $(textField).val("")

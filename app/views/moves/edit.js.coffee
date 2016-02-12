@@ -29,8 +29,6 @@ $ ->
 
   if $(radio).is(":checked")
     currentMove =  $(radio + ":checked").closest(move)
-    console.log currentMove.find(optionBoxChecked).length
-    console.log currentMove.data("options")
     unless currentMove.find(optionBoxChecked).length == currentMove.data("options")
       startHidden submit
   else
@@ -43,7 +41,6 @@ $ ->
 
 
   $(description).keyup ->
-    console.log this.scrollHeight
     $(this).height(0);
     $(this).height(this.scrollHeight);
 
@@ -77,10 +74,8 @@ $ ->
       hide submit
 
 
-
-
   $(form).on 'ajax:success', ->
-    slideTo '<%= character_path(@move.character) %>'
+    slideTo '<%= edit_character_path(@move.character) %>'
 
   $(body).click ->
     $(this).parent().find(radio).click()

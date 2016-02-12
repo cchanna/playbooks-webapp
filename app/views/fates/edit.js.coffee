@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nCHOOSE FATE'
   data = '<%= escape_javascript render "edit" %>'
   fateBody = '.fate-body'
   radio = 'input[type=radio]'
@@ -11,15 +10,12 @@ $ ->
   startHidden submitButton
 
   $(fateBody).click ->
-    console.log '\nCLICK FATE BODY'
     $(this).parent().find(radio).click()
 
   $(radio).change ->
-    console.log '\nCHANGE RADIO'
     show submitButton
 
   $(submitButton).redirectButtonTo ->
-    console.log '\nSUBMIT'
     fadeOutBody ->
       $(form).submit()
 

@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nEDIT VOWS'
   data = '<%= escape_javascript render "edit_vows"%>'
   load data
 
@@ -10,7 +9,6 @@ $ ->
     end
     result.strip!
   %>'.split ' '
-  console.log vows
 
   checkbox = 'input[type=checkbox]'
   submit = "input[type=submit]"
@@ -27,7 +25,6 @@ $ ->
   valid = ->
     v = true
     $(checkbox + ':checked').parent().find(detail).each ->
-      console.log $(this).val()
       unless $(this).val()
         v = false
     return v
@@ -54,7 +51,6 @@ $ ->
     startHidden submit
 
   $('.body').click ->
-    console.log '\nCLICK FORM'
     $(this).parent().find(checkbox).click()
     return false
 
@@ -68,8 +64,6 @@ $ ->
 
 
   $(checkbox).change ->
-    console.log '\nCHANGE CHECKBOX'
-
     thisDetail = $(this).parent().find(detail)
     thisDetail.prop
       disabled: !$(this).is(":checked")

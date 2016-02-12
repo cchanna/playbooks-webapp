@@ -20,9 +20,6 @@ class RelationshipsController < ApplicationController
     respond_to do |format|
       format.js
     end
-    # respond_to do |format|
-    #   format.html {render text: new_character_relationship_path(params[:character_id])}
-    # end
   end
 
   def increment

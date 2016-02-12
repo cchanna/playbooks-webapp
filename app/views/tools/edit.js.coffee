@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nEDIT TOOL'
   data = '<%= escape_javascript render partial: "tools/edit.html.erb", locals: {tool: @tool} %>'
   load data
   fadeInBody()
@@ -20,7 +19,6 @@ $ ->
     autocomplete: 'off'
 
   $('input[type=radio]').redirectRadioTo (me) ->
-    console.log '\nCLICK TOOL'
     hide descriptionField, ->
       $(descriptionField).val ""
     hide submitButton
@@ -46,7 +44,6 @@ $ ->
         hide submitButton
 
   $("textarea").keyup ->
-    console.log this.scrollHeight
     $(this).height(0);
     $(this).height(this.scrollHeight);
 
@@ -54,12 +51,10 @@ $ ->
     slideTo '<%=edit_character_path(@character)%>'
 
   preSubmit = ->
-    console.log '\nBEFORE FORM SUBMIT'
     if $("input[type=radio]").is(':checked') && $(nameField).val()
       fadeOutBody ->
         $(form).submit()
     else
-      console.log 'cancel submit'
   $(examples).click ->
     $(this).parent().find('input[type=radio]').click()
 

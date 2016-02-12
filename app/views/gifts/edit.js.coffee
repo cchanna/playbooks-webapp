@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nEDIT GIFT'
   data = '<%= escape_javascript render "edit" %>'
   load data
 
@@ -84,11 +83,9 @@ $ ->
       if (df.length == 0 || df.val())
         fadeOutBody ->
           $(form).submit()
-          slideQuietlyTo '<%= character_path(@gift.character.id) %>'
+          slideQuietlyTo '<%= edit_character_path(@gift.character.id) %>'
     return false
 
-  # $(description).redirectReturnTo ->
-    # $(curseRadio).first().focus()
   $(name).redirectReturnTo ->
     $(description).select()
   $(detailField).redirectReturnTo onSubmit

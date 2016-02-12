@@ -25,17 +25,15 @@ $ ->
 
 
   preSubmit = ->
-    console.log '\nFORM SUBMIT'
     if $(lookCheckBoxes).is ":checked"
       fadeOutBody ->
         $(editLookForm).submit()
-        slideTo "<%= character_path(@character.id) %>"
+        slideTo "<%= edit_character_path(@character.id) %>"
 
 
   $(lookSubmitButton).redirectButtonTo preSubmit
 
   $(lookCheckBoxes).redirectCheckboxTo ->
-    console.log 'click look'
     if $(lookCheckBoxes).is ":checked"
       show lookSubmitButton
     else

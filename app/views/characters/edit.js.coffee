@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nEDIT CHARACTER'
   data = '<%= escape_javascript render "edit" %>'
   load data
 
@@ -45,11 +44,9 @@ $ ->
       show editSubmitButton
 
   $('.edit-character-form').on 'ajax:success', (e, data, status, xhr) ->
-    console.log '\nFORM SUBMIT'
     slideQuietlyTo data
 
   preSubmit = ->
-    console.log '\nFORM SUBMIT'
     if $('.sample-name').is ":checked"
       fadeOutBody ->
         $(editForm).submit()
@@ -64,19 +61,16 @@ $ ->
   $(textField).redirectReturnTo preSubmit
 
   $('input[type=radio].sample-name').redirectRadioTo ->
-    console.log 'click sample name'
     hide alternateForm, ->
       show editSubmitButton
 
   $('input[type=radio].name-category').redirectRadioTo ->
-    console.log 'click name category'
     hide editSubmitButton, ->
       show alternateForm
       unless $(textField).val() == ""
         show alternateSubmitButton
 
   $(lookCheckBoxes).redirectCheckboxTo ->
-    console.log 'click look'
     if $(lookCheckBoxes).is ":checked"
       show lookSubmitButton
     else

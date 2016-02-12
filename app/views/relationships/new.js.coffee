@@ -1,6 +1,4 @@
 $ ->
-  console.log '\nNEW RELATIONSHIP'
-
   data = '<%= escape_javascript render "new" %>'
   questions = '<%=
     result = ""
@@ -37,21 +35,17 @@ $ ->
     $(q + ' input').prop(checked: false, disabled: true) for q in questions
 
   beforeSubmit = ->
-    console.log '\nFORM SUBMIT'
     if $("input[type=radio]").is(':checked') && $(textField).val()
       hide textField
       hide submitButton
       fadeOut relationshipList, ->
         $(form).submit()
         $(textField).val("")
-    else
-      console.log 'cancel submit'
 
   $(textField).redirectReturnTo beforeSubmit
   $(submitButton).redirectButtonTo beforeSubmit
 
   $('input[type=radio]').redirectRadioTo (me) ->
-    console.log '\nCLICK RADIO'
     if $(me).prop("checked")
       if $(textField).css('display') == 'none'
         $(textField).val ""
@@ -67,7 +61,6 @@ $ ->
       hide textField
 
   $(deleteButton).redirectButtonTo (me) ->
-    console.log '\nCLICK DESTROY RELATIONSHIP'
     href = $(me).attr("href")
     method = $(me).data("method")
     fadeOut relationshipList, ->

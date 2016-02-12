@@ -1,5 +1,4 @@
 $ ->
-  console.log '\nNEW TOOL'
   numTools = parseInt('<%= @character.tools.count %>')
   data = '<%= escape_javascript render "new" %>'
   tools = '<%=
@@ -41,7 +40,6 @@ $ ->
   $("textarea").autoResize()
 
   $('input[type=radio]').redirectRadioTo (me) ->
-    console.log '\nCLICK TOOL'
     hide descriptionField, ->
       $(descriptionField).val ""
     hide submitButton
@@ -66,14 +64,12 @@ $ ->
         hide submitButton
 
   $(editToolLink).redirectButtonTo (me) ->
-    console.log '\nCLICK EDIT TOOL'
     href = $(me).attr('href')
     hide form, ->
       fadeOut editToolFormSlider, ->
         request href
 
   preSubmit = ->
-    console.log '\nBEFORE FORM SUBMIT'
     if $("input[type=radio]").is(':checked') && $(nameField).val()
       fadeOut toolList, ->
         faded = true
@@ -87,7 +83,6 @@ $ ->
         $(descriptionField).val("")
       hide submitButton
     else
-      console.log 'cancel submit'
 
   $(nameField).redirectReturnTo ->
     $(descriptionField).select()
