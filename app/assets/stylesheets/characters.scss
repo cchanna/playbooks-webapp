@@ -85,6 +85,7 @@ a {
 }
 
 .under {
+  color: $red_link;
   &:hover, &:focus {
     &:before {
       right: 0;
@@ -158,11 +159,6 @@ a {
 }
 
 #slider a {
-  text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
-  color: $red_link;
-  &:hover {
-    color: $red_link_hover;
-  }
   &.complete {
     &:after {
       top: 0;
@@ -388,8 +384,6 @@ a {
 }
 
 .submit {
-  // position: absolute;
-  // left: -1.25rem;
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -399,6 +393,7 @@ a {
   line-height: 1;
   padding: .2rem .35rem .2rem .35rem;
   border-radius: .2rem;
+  text-shadow: none;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;

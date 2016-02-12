@@ -78,9 +78,14 @@
         @character.relationships.count > 0 &&
         @character.fates.count > 0 &&
         (@character.archetype != Archetype.find_by(name: "Scoundrel") || @character.tools.count > 0) &&
-        (!@character.gift.nil? && !@character.gift.gift_type.nil?) &&
-        @character.moves.count > 0 && %>
-    <div>test</div>
+        (@character.gift.nil? || !@character.gift.gift_type.nil?) &&
+        @character.moves.where(def_move_id: nil).count == 0 && %>
+    <br>
+    <div class="text-center">
+      <div class="submit-wrapper">
+        <%= link_to ">", @character, class: "slide submit" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
