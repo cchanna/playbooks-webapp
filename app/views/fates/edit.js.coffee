@@ -24,6 +24,6 @@ $ ->
       $(form).submit()
 
   $(form).on 'ajax:success', ->
-    slideQuietlyTo '<%= character_path(@character.id) %>'
+    slideTo '<%= character_path(@character.id) %>'
 
   fadeInBody()
