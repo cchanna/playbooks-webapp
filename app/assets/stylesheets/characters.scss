@@ -53,6 +53,7 @@ a {
 
 .under, .under-check, .under-check-free {
   text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
+  color: $red_link;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
   display: inline-block;
@@ -85,7 +86,6 @@ a {
 }
 
 .under {
-  color: $red_link;
   &:hover, &:focus {
     &:before {
       right: 0;
@@ -519,6 +519,7 @@ form {
     display: inline-block;
     margin: 0rem .5rem 0rem .5rem;
     a {
+      color: $red_link;
       -webkit-transition: color 0.3s;
       transition: opacity 0.3s;
       text-shadow: none;

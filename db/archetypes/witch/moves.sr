@@ -1,5 +1,6 @@
 Research a Spell
 	free: true
+	stat: clever
 	body:
 		When you research a spell during downtime, describe the desired effect and
 		roll CLEVER. *On a 10+, you find the desired spell, but the Narrator chooses
@@ -16,6 +17,7 @@ Research a Spell
 
 Cast a Spell
 	free: true
+	stat: strange
 	body:
 		When you cast a normal spell, it works. You might make a different move in
 		the process, though.
