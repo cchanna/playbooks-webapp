@@ -29,6 +29,8 @@ $ ->
 
   if $(radio).is(":checked")
     currentMove =  $(radio + ":checked").closest(move)
+    console.log currentMove.find(optionBoxChecked).length
+    console.log currentMove.data("options")
     unless currentMove.find(optionBoxChecked).length == currentMove.data("options")
       startHidden submit
   else
