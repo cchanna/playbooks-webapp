@@ -6,9 +6,9 @@
   </h2>
   <% relationships.order(:name).each do |r| %>
     <div class="relationships">
-      <%= link_to "-", [:decrement, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button" %>
+      <%= link_to "-", [:decrement, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button minus" %>
       <%= render partial: "relationships/show", locals: {relationship: r} %>
-      <%= link_to "+", [:increment, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button"  %>
+      <%= link_to "+", [:increment, r], method: :post, remote: true, data: {trust_id: r.id}, class: "trust-change button plus"  %>
     </div>
   <% end %>
 </div>

@@ -667,16 +667,30 @@ form {
   .relationships {
     text-align: center;
     color: $gray;
+    position: relative;
     .relationship {
       font-family: "Antique", "Crimson Text", serif;
       font-size: 1.2rem;
       vertical-align: bottom;
+      display: inline-block;
+      .trust-value {
+        display: inline-block;
+        width: 1.3rem;
+      }
+    }
+    .button {
+      // position: relative;
+      // &.minus {
+        // right: auto;
+      // }
+      // bottom: 0
     }
   }
   form {
     display: inline-block;
   }
   .trust-change, .button {
+    float: center;
     text-align: center;
     // padding: 0 .5rem 0 .5rem;
     font-size: 1rem;
@@ -686,7 +700,6 @@ form {
     line-height: 1.6rem;
     vertical-align: middle;
     display: inline-block;
-    position: relative;
     bottom: .2rem;
   }
   #spirit {

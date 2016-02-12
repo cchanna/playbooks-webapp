@@ -126,8 +126,11 @@ $ ->
 
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
     value = '#trust-value-' + $(this).data('trust-id')
-    hide value, ->
+    fadeOut value, ->
+      # width = $(value).css "width"
       $(value).html(data)
+      # $(value).css width: width
+      # $(value).animate left: $(value).innerWidth(), 300, ->
       show value
 
   onDecrementSpirit = (me) ->
