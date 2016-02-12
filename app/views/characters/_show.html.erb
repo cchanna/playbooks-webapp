@@ -1,14 +1,19 @@
-<%= render partial: "name", locals: {name: @character.name} %>
-<%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
-<%= render partial: "look", locals: {looks: @character.looks} %>
-<%= render partial: "stats", locals: {
-  brave: @character.brave,
-  fierce: @character.fierce,
-  wary: @character.wary,
-  clever: @character.clever,
-  strange: @character.strange,
-} %>
-<div>
-  <br>
-  <%= link_to "Edit Character", edit_character_path(@character), class: "slide under" %>
+<div id="sheet">
+  <div class="row">
+    <%= render partial: "name", locals: {name: @character.name} %>
+    <%= render partial: "archetype", locals: {archetype: @character.archetype.name} %>
+    <%= render partial: "look", locals: {looks: @character.looks} %>
+  </div>
+  <div class="col-xs-6">
+  <%= render partial: "stats", locals: {
+    brave: @character.brave,
+    fierce: @character.fierce,
+    wary: @character.wary,
+    clever: @character.clever,
+    strange: @character.strange,
+  } %>
+  <div>
+    <br>
+    <%= link_to "Edit Character", edit_character_path(@character), class: "slide under" %>
+  </div>
 </div>

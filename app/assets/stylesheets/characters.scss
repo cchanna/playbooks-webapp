@@ -23,13 +23,19 @@ body {
   display: block;
 }
 
-h1 {
-  font-size: 1.5rem;
+h1, h2 {
   color: $gray;
   text-align: center;
   font-weight: bold;
   margin: 0;
-  font-family: "Crimson Text", serif;
+  font-family: "Caslon Antique", "Crimson Text", serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.2rem;
 }
 
 .narrow {
@@ -604,5 +610,16 @@ form {
 #edit-move {
   .check-title, .check-title-free {
     margin-bottom : 2rem;
+  }
+}
+
+#sheet {
+  .stat {
+    font-weight: bold;
+    font-family: "Antique", serif;
+    font-size: 1.5rem;
+    .name {
+      margin-right: -.4rem;
+    }
   }
 }

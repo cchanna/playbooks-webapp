@@ -1,9 +1,13 @@
-<div>
-  <%=name.capitalize%>
-  <% amount = value.abs.to_s %>
-  <% if value >= 0 %>
-    <%= "+" + amount %>
-  <% else %>
-    <%= "−" + amount %>
-  <% end %>
+<div class="stat">
+  <span class="name <%= name %>">
+    <%=name.capitalize%>
+  </span>
+  <span class="value <%= name %>">
+    <% amount = value.abs.to_s %>
+    <% if value >= 0 %>
+      <%= "+" + amount %>
+    <% else %>
+      <%= "−" + amount %>
+    <% end %>
+  </span>
 </div>
