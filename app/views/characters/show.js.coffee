@@ -6,7 +6,7 @@ $ ->
                             @character.fates.count == 0 ||
                             (@character.archetype == Archetype.find_by(name: "Scoundrel") &&
                              @character.tools.count == 0) ||
-                            @character.moves.count == 0
+                            @character.moves.where(def_move_id: nil).count > 0
       edit_character_path(id: @character.id)
     elsif !@character.gift.nil? && @character.gift.gift_type.nil?
       edit_gift_path(id: @character.gift.id)
