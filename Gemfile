@@ -15,9 +15,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'js-routes'
 # allows for rails routing in javascript
 
-# gem "therubyracer"
-# gem "twitter-bootstrap-rails"
-# bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha3'
 
 gem 'puma'
