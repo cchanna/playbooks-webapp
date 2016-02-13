@@ -653,6 +653,7 @@ form {
       border-radius: 6px;
     }
     .title {
+      z-index: -1;
       background-color: $background;
       color: $gray;
       padding-left: .3rem;
