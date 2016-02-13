@@ -733,8 +733,9 @@ form {
     }
   }
   #spirit {
-    text-align: left;
+    text-align: center;
     .button {
+      // float: left;
       float: left;
       -webkit-transition: left 0.3s;
       transition: left 0.3s;

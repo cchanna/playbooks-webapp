@@ -46,7 +46,6 @@ $ ->
       $(parent).data(value: value)
       changeToIncrement tag
     if value < 5
-      # hide "#complete-fate-#{id}"
       $("#change-fate-#{id}").prop disabled: false
       $("#complete-fate-#{id}").prop disabled: true
 
@@ -132,10 +131,7 @@ $ ->
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
     value = '#trust-value-' + $(this).data('trust-id')
     fadeOut value, ->
-      # width = $(value).css "width"
       $(value).html(data)
-      # $(value).css width: width
-      # $(value).animate left: $(value).innerWidth(), 300, ->
       show value
 
   onDecrementSpirit = (me) ->
@@ -146,19 +142,13 @@ $ ->
     console.log nextAll
     fadeOut me, ->
       $(me).parent().css height: 30
-      $(me).parent().animate width: 0, 500, ->
+      $(me).parent().animate width: 0, 300, ->
         $(me).parent().remove()
-    # $(me).hide("slide", {direction: })
-    # fadeOut nextAll, ->
-      # show nextAll
 
 
   $(".decrement_spirit").redirectButtonTo onDecrementSpirit
 
   $(".increment_spirit").redirectButtonTo (me) ->
-    # $(me).prop
-      # disabled: true
-    # hide me, ->
     $(me).submit()
 
   $(".increment_spirit").parent().on 'ajax:success', (e, data, status, xhr) ->
@@ -167,12 +157,8 @@ $ ->
     newButton.css
       width: 0
       opacity: 0
-    newButton.animate width: width, 500, ->
+    newButton.animate width: width, 300, ->
       show newButton
-    # show '.increment_spirit'
-
-    # $('.increment_spirit').prop
-    #   disabled: false
     $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
 
   $(".dire-fate-checkbox").change ->
