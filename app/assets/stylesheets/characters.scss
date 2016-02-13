@@ -735,17 +735,17 @@ form {
   #spirit {
     text-align: center;
     .button {
-      // float: left;
       float: left;
       -webkit-transition: left 0.3s;
       transition: left 0.3s;
     }
   }
-  .field {
-    // background-color: $gray_light;
-    color: $red_link;
-    margin-top: -1rem;
+  .move-fields {
     margin-left: 2rem;
+    margin-top: -.7rem;
+  }
+  .field {
+    color: $red_link;
   }
   .dire-fates {
     padding-top: 0;
@@ -785,11 +785,7 @@ form {
       width: 100%;
       height: auto;
       white-space: normal;
-      // text-align: left;
       font-size: .8rem;
     }
-    // .button {
-    //   font-family: "icomoon";
-    // }
   }
 }

@@ -24,7 +24,7 @@ end
 resources :dire_fates, only: [:update]
 
 resources :moves, only: [:edit, :update, :create] do
-  resources :move_fields, only: [:edit, :update]
+  resources :move_fields, only: [:create, :new, :edit, :update]
 end
 
 resources :move_fields, only: [:destroy]

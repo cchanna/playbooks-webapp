@@ -165,7 +165,7 @@ $ ->
     $(this).submit()
 
   onMoveFieldDelete = (me) ->
-    moveField = $(me).closest(".move-field")
+    moveField = $(me).closest(".field")
     deleteForm = $(me).parent()
     hide moveField, ->
       deleteForm.submit()
@@ -179,7 +179,7 @@ $ ->
       disabled: true
     fields = $(this).parent()
     hide addButton, ->
-      fieldForm = fields.find(".move-fields").append(data).children().last()
+      fieldForm = fields.append(data).children().last()
       fieldSubmit = fieldForm.find(".move-field-add-submit")
       fieldCancel = fieldForm.find(".move-field-add-cancel")
       fieldInput = fieldForm.find(".move-field-add-input")
@@ -214,7 +214,7 @@ $ ->
 
       fieldForm.on 'ajax:success', (e, data, status, xhr) ->
         fieldForm.remove()
-        newField = fields.find(".move-fields").append(data).children().last()
+        newField = fields.find(".move-field-add").parent().before(data).children().last()
         newField.find(".move-field-delete").redirectButtonTo onMoveFieldDelete
         startHidden newField
         show newField

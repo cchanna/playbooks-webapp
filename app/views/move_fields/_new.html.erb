@@ -1,6 +1,6 @@
 <%= form_for [@move, @move_field], remote: true do |f| %>
   <%= f.hidden_field :def_move_field_id, value: @move_field.def_move_field_id %>
   <%= f.text_field :text, placeholder: @move_field.def_move_field.name, class: "move-field-add-input" %>
-  <%= button_tag "<=", class: "move-field-add-cancel" %>
-  <%= f.submit "=>", class: "move-field-add-submit" %>
+  <%= button_tag "<", class: "submit move-field-add-cancel" %>
+  <%= f.submit ">", class: "submit move-field-add-submit" %>
 <% end %>

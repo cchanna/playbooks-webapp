@@ -12,8 +12,8 @@
           <% MoveField.where(move: move, def_move_field: dmf).all.each do |f| %>
             <%= render f %>
           <% end %>
+          <%= button_to "+", new_move_move_field_path(move_id: move.id, def_move_field: dmf), method: :get, remote: true, class: "field button move-field-add" %>
         </div>
-        <%= button_to "+", new_move_move_field_path(move_id: move.id, def_move_field: dmf), method: :get, remote: true, class: "move-field-add" %>
       </div>
     <% end %>
   <% end %>
