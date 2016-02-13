@@ -152,7 +152,7 @@ $ ->
     $(me).submit()
 
   $(".increment_spirit").parent().on 'ajax:success', (e, data, status, xhr) ->
-    newButton = $('.increment_spirit').parent().before(data).prev()
+    newButton = $('.increment_spirit.plus').parent().before(data).prev()
     width = newButton.css("width")
     newButton.css
       width: 0

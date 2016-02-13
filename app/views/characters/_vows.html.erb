@@ -1,0 +1,13 @@
+<% if vows.count > 0 %>
+  <div id="vows">
+    <h1>
+      Vows
+    </h1>
+    <% vows.each do |v| %>
+      <div class="name">
+        <%= v.def_vow.name %>
+      </div>
+      <%= button_to v.def_vow.text, [:increment_spirit, @character], method: :post, remote: true, class: "increment_spirit button word-button vow" %>
+    <% end %>
+  </div>
+<% end %>

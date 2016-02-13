@@ -16,16 +16,17 @@
         <%= render partial: "spirit", locals: {spirit: @character.spirit} %>
       </div>
       <div class="panel col-sm-7 col-md-12 col-lg-7 col-xl-7">
-        <%=render partial: "dire_fates", locals: {dire_fates: @character.dire_fates} %>
+        <%= render partial: "dire_fates", locals: {dire_fates: @character.dire_fates} %>
       </div>
     </div>
     <div class="outer-panel col-sm-12 col-md-7 col-lg-6 col-xl-7">
       <div class="panel col-sm-12 col-md-12, col-lg-12, col-xl-6">
-        <%=render partial: "moves", locals: {moves: @character.moves}%>
+        <%= render partial: "moves", locals: {moves: @character.moves} %>
       </div>
       <div class="panel col-sm-12 col-md-12, col-lg-12, col-xl-6">
-        <%=render partial: "fates", locals: {fates: @character.fates}%>
-        <%=render partial: "gift", locals: {gift: @character.gift}%>
+        <%= render partial: "fates", locals: {fates: @character.fates} %>
+        <%= render partial: "gift", locals: {gift: @character.gift} %>
+        <%= render partial: "vows", locals: {vows: @character.vows} %>
       </div>
     </div>
   </div>

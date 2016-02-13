@@ -8,6 +8,6 @@
     <% for i in 1..spirit %>
       <%= render partial: "increment_spirit" %>
     <% end %>
-    <%= button_to "+", [:increment_spirit, @character], method: :post, remote: true, class: "button increment_spirit" %>
+    <%= button_to "+", [:increment_spirit, @character], method: :post, remote: true, class: "button increment_spirit plus" %>
   </div>
 </div>
