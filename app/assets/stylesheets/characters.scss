@@ -645,7 +645,7 @@ form {
       content: "";
       position: absolute;
       background-color: $red_link;
-      z-index: -2;
+      z-index: -3;
       bottom: 35%;
       left: 1rem;
       right: 1rem;
@@ -654,9 +654,13 @@ form {
       border-radius: 6px;
     }
     .title {
-      z-index: -1;
+      z-index: -2;
       background-color: $background;
       display: inline-block;
+      // height: 5rem;
+      position: relative;
+      // bottom: 0rem;
+      // padding-top: -4rem;
       color: $gray;
       padding-left: .3rem;
       padding-right: .3rem;
