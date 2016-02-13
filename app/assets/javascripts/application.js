@@ -16,3 +16,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree ./application
+
+alert("test");
