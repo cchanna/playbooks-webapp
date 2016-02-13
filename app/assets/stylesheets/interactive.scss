@@ -1,0 +1,434 @@
+a {
+  font-family: 'Spartan';
+  font-weight: bold;
+  text-decoration: none;
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.under, .under-check, .under-check-free {
+  text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
+  color: $red_link;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visiblity: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  &:before {
+    background: $red_link;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0.2rem;
+    height: 4px;
+    -webkit-transition-property: right, background-color, opacity;
+    transition-property: right, background-color, opacity;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  &.wary:before {
+    background: $wary;
+  }
+}
+
+.under {
+  &:hover, &:focus {
+    &:before {
+      right: 0;
+      background-color: $red_link_hover;
+    }
+    color: $red_link_hover;
+  }
+}
+
+.under-check {
+  &:hover, &:focus {
+    &:before {
+      background-color: $red_link_hover;
+    }
+    &.brave:before {
+      background-color: $brave;
+      opacity: 0.5;
+    }
+    &.fierce:before {
+      background-color: $fierce;
+      opacity: 0.5;
+    }
+    &.wary:before {
+      background-color: $wary;
+      opacity: 0.5;
+    }
+    &.clever:before {
+      background-color: $clever;
+      opacity: 0.5;
+    }
+    &.strange:before {
+      background-color: $strange;
+      opacity: 0.5;
+    }
+    &.trust:before {
+      background-color: $trust;
+      opacity: 0.5;
+    }
+    &.nostat:before {
+      background-color: $nostat;
+      opacity: 0.5;
+    }
+    color: $red_link_hover;
+    &.brave {
+      color: rgba($brave, 0.5);
+    }
+    &.fierce {
+      color: rgba($fierce, 0.5);
+    }
+    &.wary {
+      color: rgba($wary, 0.5);
+    }
+    &.clever {
+      color: rgba($clever, 0.5);
+    }
+    &.strange {
+      color: rgba($strange, 0.5);
+    }
+    &.trust {
+      color: rgba($trust, 0.5);
+    }
+    &.nostat {
+      color: rgba($nostat, 0.5);
+    }
+  }
+  &:checked {
+    &:before {
+      right: 0;
+    }
+  }
+}
+
+#slider a {
+  &.complete {
+    &:after {
+      top: 0;
+      content: "c";
+      position: absolute;
+      left: -1.25rem;
+      font-family: 'icomoon';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    color: $complete;
+    &:before {
+      background-color: $complete;
+    }
+    &:hover {
+      color: $complete_hover;
+      &:before {
+        background-color: $complete_hover;
+      }
+    }
+  }
+}
+
+.checklist {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  label {
+    margin: 0 .5rem 0 .5rem;
+  }
+}
+
+.check-title {
+  input[type="radio"], input[type="checkbox"] {
+  }
+  &:hover label.move {
+    color: $red_link_hover;
+    &.brave {
+      color: rgba($brave, 0.5);
+    }
+    &.fierce {
+      color: rgba($fierce, 0.5);
+    }
+    &.wary {
+      color: rgba($wary, 0.5);
+    }
+    &.clever {
+      color: rgba($clever, 0.5);
+    }
+    &.strange {
+      color: rgba($strange, 0.5);
+    }
+    &.trust {
+      color: rgba($trust, 0.5);
+    }
+    &.nostat {
+      color: rgba($nostat, 0.5);
+    }
+  }
+}
+
+.check-title, .check-title-free {
+  text-align: left;
+  &:disabled ~ .body {
+    color: $disabled;
+  }
+  .body {
+    color: $gray;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    cursor: pointer;
+  }
+  :checked ~ .body {
+    // color: $gray;
+    opacity: 1.0;
+  }
+  label.move {
+    margin: 0;
+  }
+}
+
+.checklist, .check-title, .check-title-free {
+  input[type="radio"], input[type="checkbox"] {
+    display: none;
+    &:checked+label {
+      color: $red_link;
+      &.dire-fate {
+        color: rgba($gray, 0.4);
+        &:hover {
+          color: rgba($gray, 0.5);
+          &:before {
+            background-color: rgba($gray, 0.5);
+          }
+        }
+        &:before {
+          background-color: rgba($gray, 0.4);
+        }
+      }
+      &:before {
+        right: 0;
+      }
+      &.brave {
+        color: $brave;
+        &:before {
+          background-color: $brave;
+        }
+      }
+      &.fierce {
+        color: $fierce;
+        &:before {
+          background-color: $fierce;
+        }
+      }
+      &.wary {
+        color: $wary;
+        &:before {
+          background-color: $wary;
+        }
+      }
+      &.clever {
+        color: $clever;
+        &:before {
+          background-color: $clever;
+        }
+      }
+      &.strange {
+        color: $strange;
+        &:before {
+          background-color: $strange;
+        }
+      }
+      &.trust {
+        color: $trust;
+        &:before {
+          background-color: $trust;
+        }
+      }
+      &.nostat {
+        color: $nostat;
+        &:before {
+          background-color: $nostat;
+        }
+      }
+    }
+    &:disabled+label {
+      color: $disabled;
+      cursor: default;
+    }
+    &:disabled ~ .body input[type=text] {
+      background-color: $disabled;
+    }
+  }
+  label {
+    font-family: "Spartan";
+    color: rgba($gray, 0.4);
+    cursor: pointer;
+    &.option, &.dire-fate {
+      font-size: 0.8rem;
+      &:before {
+        bottom: 0.15rem;
+        height: 3px;
+      }
+    }
+    &.dire-fate {
+      color: $red_link;
+      &:hover {
+        color: rgba($red_link, 0.6);
+      }
+
+    }
+  }
+}
+
+.checklist, .check-title {
+  input[type="radio"], input[type="checkbox"] {
+    &:checked+label:hover {
+      color: rgba($red_link, 0.5);
+      &.brave {
+        color: rgba($brave, 0.5);
+      }
+      &.fierce {
+        color: rgba($fierce, 0.5);
+      }
+      &.wary {
+        color: rgba($wary, 0.5);
+      }
+      &.clever {
+        color: rgba($clever, 0.5);
+      }
+      &.strange {
+        color: rgba($strange, 0.5);
+      }
+      &.trust {
+        color: rgba($trust, 0.5);
+      }
+      &.nostat {
+        color: rgba($nostat, 0.5);
+      }
+    }
+  }
+}
+
+.check-title-free {
+  .body, label {
+    cursor: default;
+  }
+}
+
+.button, .submit {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: none;
+  border: none;
+  color: $red_link;
+  position: relative;
+  -webkit-transition: color 0.3s, transform 0.3s, background-color 0.3s;
+  transition: color 0.3s, transform 0.3s, background-color 0.3s;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  &:focus {
+    color: $red_link_hover;
+  }
+  &:hover {
+    color: white;
+    background-color: $red_link_hover;
+  }
+}
+
+.submit-wrapper {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: top;
+}
+
+.submit {
+  line-height: 1;
+  padding: .2rem .35rem .2rem .35rem;
+  border-radius: .2rem;
+  font-size: 1.6rem;
+}
+
+.text-field {
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+form {
+  text-align: center;
+
+  input[type="text"] {
+    font-family: "Crimson Text", serif;
+    border-width: 0px;
+    border-radius: .25rem;
+    display: inline-block;
+    height: 2rem;
+    text-align: center;
+    vertical-align: top;
+    -webkit-transition: background-color .3s, color .3s, opacity .3s;
+    transition: background-color .3s, color .3s, opacity .3s;
+    &.detail, &.detail-body {
+      height: 1.4rem;
+      text-align: center;
+    }
+    &.detail {
+      background-color: rgba(255,255,255,0.2);
+    }
+    &.detail-body {
+      background-color: white;
+    }
+    &:disabled {
+      background-color: $gray_light;
+      color: white;
+      opacity: .25;
+    }
+  }
+  textarea {
+    font-family: "Crimson Text", serif;
+    border-width: 0px;
+    border-radius: .25rem;
+    resize: none;
+    padding: .5rem;
+    max-width: 20rem;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    vertical-align: top;
+    overflow-y: hidden;
+    -webkit-transition: background-color .3s, color .3s, opacity .3s;
+    transition: background-color .3s, color .3s, opacity .3s;
+    &:disabled {
+      background-color: $gray_light;
+      color: white;
+      opacity: .25;
+    }
+  }
+}

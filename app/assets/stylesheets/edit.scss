@@ -1,0 +1,115 @@
+#setting {
+  p {
+    margin-bottom: 0.3rem;
+    color: $gray;
+    text-align: center;
+    font-size: 1rem;
+  }
+  #symbol, #other {
+    color: $red_link;
+  }
+  #examples {
+    font-style: italic;
+    color: $gray_light;
+  }
+}
+
+#edit-relationships {
+  p {
+    font-style: italic;
+    color: $gray_light;
+  }
+  #relationship-list {
+    min-height: 2rem;
+  }
+  .relationship {
+    display: inline-block;
+    margin: 0rem .5rem 0rem .5rem;
+    a {
+      color: $red_link;
+      -webkit-transition: color 0.3s;
+      transition: opacity 0.3s;
+      text-shadow: none;
+      transition: color 0.3s;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visiblity: hidden;
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      &:hover {
+        color: $disabled;
+        &:before {
+          opacity: 1;
+        }
+      }
+      &:before {
+        -webkit-transition: opacity 2s;
+        transition: opacity 2s;
+        color: $red_link;
+        opacity: 0;
+        font-size: 2rem;
+        text-shadow: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        content: "x";
+        position: absolute;
+        font-family: "icomoon";
+        z-index: -1;
+      }
+    }
+  }
+}
+
+#edit-fate {
+  .fate-body {
+    vertical-align: top;
+    text-align: left;
+    line-height: 1rem;
+    .fate-description {
+      font-style: italic;
+      margin-bottom: .5rem;
+      line-height: 1.2rem;
+    }
+    .fate-advance {
+      line-height: 1.0rem;
+      margin-bottom: .5rem;
+    }
+    .fate-complete {
+      line-height: 1.0rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+#edit-tool {
+  .tool {
+    cursor: pointer;
+    &:hover {
+      label {
+        color:$red_link_hover;
+      }
+    }
+    .tool-example {
+      font-size: .9rem;
+      font-style: italic;
+      color: $gray-light;
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+#edit-vows {
+  .body {
+    margin-bottom: 1rem;
+  }
+}
+
+#edit-move {
+  .check-title, .check-title-free {
+    margin-bottom : 2rem;
+  }
+}
