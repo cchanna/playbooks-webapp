@@ -22,7 +22,7 @@ h1, h2 {
   text-align: center;
   font-weight: bold;
   margin: 0;
-  font-family: "Caslon Antique", "Crimson Text", serif;
+  font-family: "Caslon Antique", serif;
 }
 
 h1 {
@@ -660,7 +660,6 @@ form {
     }
     .title {
       z-index: -2;
-      font-family: "Crimson Text";
       font-size: 1.2rem;
       background-color: $background;
       display: inline-block;
@@ -697,7 +696,7 @@ form {
     padding: 0;
   }
   .name {
-    font-family: "Antique", "Crimson Text", serif;
+    font-family: "Antique", serif;
     font-size: 1.2rem;
   }
   .move {
@@ -709,7 +708,7 @@ form {
     color: $gray;
     position: relative;
     .relationship {
-      font-family: "Antique", "Crimson Text", serif;
+      font-family: "Antique", serif;
       font-size: 1.2rem;
       vertical-align: bottom;
       display: inline-block;
