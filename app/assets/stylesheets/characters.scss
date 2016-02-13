@@ -273,6 +273,18 @@ a {
     display: none;
     &:checked+label {
       color: $red_link;
+      &.dire-fate {
+        color: rgba($gray, 0.4);
+        &:hover {
+          color: rgba($gray, 0.5);
+          &:before {
+            background-color: rgba($gray, 0.5);
+          }
+        }
+        &:before {
+          background-color: rgba($gray, 0.4);
+        }
+      }
       &:before {
         right: 0;
       }
@@ -337,6 +349,13 @@ a {
         bottom: 0.15rem;
         height: 3px;
       }
+    }
+    &.dire-fate {
+      color: $red_link;
+      &:hover {
+        color: rgba($red_link, 0.6);
+      }
+
     }
   }
 }
@@ -609,6 +628,10 @@ form {
 
 #sheet {
   color: $gray;
+  margin-top: -1.5rem;
+  h1 {
+    margin-top: 1.5rem;
+  }
   h2.bar {
     display: block;
     margin: auto;
@@ -653,9 +676,9 @@ form {
   .panel {
     font-family: "Crimson Text", serif;
     font-size: .9rem;
-    background-color: $background;
-    // border: 1px solid white;
-    // margin: -1px;
+    background-color: none;
+    border-left: 1px solid white;
+    margin-left: -1px;
   }
   .outer-panel {
     padding: 0;
