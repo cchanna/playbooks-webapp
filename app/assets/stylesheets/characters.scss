@@ -5,7 +5,7 @@
 @import "colors";
 
 body {
-  background: $background;
+  background: none;
   border: none;
   margin: 0;
   font-size: 1rem;
@@ -639,6 +639,7 @@ form {
     vertical-align: middle;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    z-index: -1;
     // text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
     &:before {
       content: "";
@@ -655,6 +656,7 @@ form {
     .title {
       z-index: -1;
       background-color: $background;
+      display: inline-block;
       color: $gray;
       padding-left: .3rem;
       padding-right: .3rem;
@@ -705,13 +707,6 @@ form {
         display: inline-block;
         width: 1.3rem;
       }
-    }
-    .button {
-      // position: relative;
-      // &.minus {
-        // right: auto;
-      // }
-      // bottom: 0
     }
   }
   form {
