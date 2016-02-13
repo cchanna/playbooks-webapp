@@ -42,6 +42,10 @@ h2 {
   text-align: center;
 }
 
+.description {
+  font-style: italic;
+}
+
 a {
   font-family: 'Spartan';
   font-weight: bold;
@@ -758,9 +762,6 @@ form {
     padding-top: 0;
   }
   .fate {
-    .description {
-      font-style: italic;
-    }
     .button {
       padding: 0;
       position: relative;

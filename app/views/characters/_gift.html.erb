@@ -1,6 +1,6 @@
-<% unless @character.gift.gift_type.nil? %>
-  <div>
+<% unless @character.gift.nil? %>
+  <h1>
     Gift
-  </div>
+  </h1>
   <%= render @character.gift %>
 <% end %>
