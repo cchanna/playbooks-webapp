@@ -19,7 +19,7 @@
   <% end %>
   <% move.move_fields.each do |f| %>
     <% unless f.def_move_field.creatable %>
-      <div class="field">
+      <div class="move-fields field">
         <%= f.def_move_field.name.capitalize%>: <%= f.text %>
       </div>
     <% end %>
