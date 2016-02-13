@@ -1,13 +1,17 @@
-<div id="tools">
-  Tools
-  <% tools.each do |t| %>
-    <div>
-      <div>
-        <%=t.name%>
-      </div>
-      <div>
-        <%=t.description%>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% if tools.count > 0 %>
+  <div id="tools">
+    <h1>
+      Tools
+    </h1>
+    <% tools.order(:def_tool_id).each do |t| %>
+      <p>
+        <div class="name">
+          <%=t.name%>
+        </div>
+        <div class="description">
+          <%=t.description%>
+        </div>
+      </p>
+    <% end %>
+  </div>
+<% end %>
