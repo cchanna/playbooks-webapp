@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -216,7 +215,7 @@ DEPENDENCIES
   pg (~> 0.15)
   puma
   rails (= 4.2.5)
-  rails-assets-tether (>= 1.1.0)!
+  rails-assets-tether
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

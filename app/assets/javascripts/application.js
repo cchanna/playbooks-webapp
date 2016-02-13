@@ -17,4 +17,8 @@
 //= require turbolinks
 //= require_tree ./application
 
-alert("test");
+
+
+
+
+console.log("test");
