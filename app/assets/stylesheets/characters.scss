@@ -22,7 +22,7 @@ h1, h2 {
   text-align: center;
   font-weight: bold;
   margin: 0;
-  font-family: "Caslon Antique", serif;
+  font-family: "Antique", serif;
 }
 
 h1 {
@@ -696,6 +696,7 @@ form {
     padding: 0;
   }
   .name {
+    font-weight: bold;
     font-family: "Antique", serif;
     font-size: 1.2rem;
   }
@@ -708,6 +709,7 @@ form {
     color: $gray;
     position: relative;
     .relationship {
+      font-weight: bold;
       font-family: "Antique", serif;
       font-size: 1.2rem;
       vertical-align: bottom;
