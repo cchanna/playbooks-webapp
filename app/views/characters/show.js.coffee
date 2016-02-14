@@ -21,6 +21,9 @@ $ ->
 
   load data
 
+#######################################################################
+####################   FATES   ########################################
+#######################################################################
   onIncrement = (me) ->
     parent = $(me).closest(".fate")
     id = $(parent).attr('id').split("-")[1]
@@ -128,11 +131,20 @@ $ ->
 
   setFate fate for fate in $(".fate")
 
+#######################################################################
+###################### TRUST ##########################################
+#######################################################################
+
   $(".trust-change").on 'ajax:success', (e, data, status, xhr) ->
     value = '#trust-value-' + $(this).data('trust-id')
     fadeOut value, ->
       $(value).html(data)
       show value
+
+
+#######################################################################
+####################   SPIRIT   #######################################
+#######################################################################
 
   onDecrementSpirit = (me) ->
     $(me).prop
@@ -161,8 +173,18 @@ $ ->
       show newButton
     $(newButton).find(".decrement_spirit").redirectButtonTo onDecrementSpirit
 
+
+#######################################################################
+####################   DIRE FATES   ###################################
+#######################################################################
+
   $(".dire-fate-checkbox").change ->
     $(this).submit()
+
+
+#######################################################################
+####################   MOVE FIELDS   ##################################
+#######################################################################
 
   onMoveFieldDelete = (me) ->
     moveField = $(me).closest(".field")
@@ -221,5 +243,70 @@ $ ->
         show addButton
 
 
+#######################################################################
+####################   SPELLS   #######################################
+#######################################################################
+
+  spellName = ".spell-name"
+  spellEffects = ".spell-effects"
+  newSpell = "#new-spell"
+  spells = ".spells"
+  spell = ".spell"
+  submit = ".spell-submit"
+  complication = ".complication"
+  form = ".edit-spell-form"
+  editSpell = ".edit-spell"
+
+  changeSpell = (thisSpell, html) ->
+    height1 = thisSpell.innerHeight()
+    console.log height1
+    thisSpell.html(html)
+    height2 = thisSpell.innerHeight()
+    console.log height2
+    thisSpell.height(height1)
+    thisSpell.animate height: height2, ->
+      thisSpell.height("auto")
+    show thisSpell
+
+  $(newSpell).parent().on 'ajax:complete', (e, r, s) ->
+    $(spells).append("<div class='spell'></div>")
+    thisSpell = $(spells).find(".spell").last()
+    console.log thisSpell
+    thisSpell.css opacity: 0
+    changeSpell thisSpell, r.responseText
+
+    $(submit).redirectButtonTo onSpellSubmit
+
+  onEditSpell = (me) ->
+    $(editSpell).parent().on 'ajax:complete', (e, r, s) ->
+      thisSpell = $(this).closest(spell)
+      changeSpell thisSpell, r.responseText
+
+      $(submit).redirectButtonTo onSpellSubmit
+
+    fadeOut $(me).closest(spell), ->
+
+      $(me).submit()
+
+
+  $(editSpell).redirectButtonTo onEditSpell
+
+  onSpellSubmit = (me) ->
+    $(".spell-submit").closest("form").on 'ajax:complete', (e,r,s) ->
+      console.log "hello"
+      thisSpell = $(this).closest(".spell")
+      changeSpell thisSpell, r.responseText
+      $(editSpell).redirectButtonTo onEditSpell
+
+    fadeOut $(me).closest(spell), ->
+      $(me).submit()
+
+
+
+
+
+#######################################################################
+####################   FINISH   #######################################
+#######################################################################
 
   fadeInBody()

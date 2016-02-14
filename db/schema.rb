@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109234859) do
+ActiveRecord::Schema.define(version: 20160214015731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,26 @@ ActiveRecord::Schema.define(version: 20160109234859) do
   create_table "sample_names", force: :cascade do |t|
     t.string  "name"
     t.integer "archetype_id"
+  end
+
+  create_table "spellbooks", force: :cascade do |t|
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "spells", force: :cascade do |t|
+    t.integer  "spellbook_id"
+    t.string   "name"
+    t.boolean  "dangerous"
+    t.boolean  "dark"
+    t.boolean  "time"
+    t.boolean  "attention"
+    t.boolean  "spirit"
+    t.string   "cost"
+    t.text     "effects"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "tools", force: :cascade do |t|

@@ -278,7 +278,7 @@ a {
     font-family: "Spartan";
     color: rgba($gray, 0.4);
     cursor: pointer;
-    &.option, &.dire-fate {
+    &.option, &.dire-fate, &.complication-label {
       font-size: 0.8rem;
       &:before {
         bottom: 0.15rem;
@@ -361,6 +361,15 @@ a {
     color: white;
     background-color: $link_hover;
   }
+  &:disabled {
+    color: $gray;
+    &:focus, &:hover {
+      color: $gray;
+      background: none;
+    }
+    opacity: 0.4;
+  }
+
 }
 
 .submit-wrapper {

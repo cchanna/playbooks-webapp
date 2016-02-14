@@ -1,6 +1,0 @@
-<% case @character.archetype.name %>
-<% when "Scoundrel" %>
-  <%= render "tools", locals: {tools: @character.tools} %>
-<% when "Hero" %>
-  <%= render "gift" %>
-<% end %>

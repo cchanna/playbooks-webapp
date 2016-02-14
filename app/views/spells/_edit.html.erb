@@ -1,0 +1,34 @@
+<%= form_for [@character, @spell], remote: true, class: "edit-spell-form" do |f| %>
+  <%= f.text_field :name, placeholder: "name", class: "spell-name" %>
+  <div class="complications checklist">
+    <div class="complication">
+      <%= f.check_box :dangerous %>
+      <%= f.label :dangerous, "<span class='spell-icon'>F</span>Dangerous".html_safe, class: "under-check complication-label" %>
+    </div>
+    <div class="complication">
+      <%= f.check_box :dark %>
+      <%= f.label :dark, "<span class='spell-icon'>M</span>Dark".html_safe, class: "under-check complication-label" %>
+    </div>
+    <div class="complication">
+      <%= f.check_box :time %>
+      <%= f.label :time, "<span class='spell-icon'>C</span>Time".html_safe, class: "under-check complication-label" %>
+    </div>
+    <div class="complication">
+      <%= f.check_box :attention %>
+      <%= f.label :attention, "<span class='spell-icon'>E</span>Attention".html_safe, class: "under-check complication-label" %>
+    </div>
+    <div class="complication">
+      <%= f.check_box :spirit %>
+      <%= f.label :spirit, "<span class='spell-icon'>D</span>spirit".html_safe, class: "under-check complication-label" %>
+    </div>
+  </div>
+  <div>
+    <%= f.text_field :cost, placeholder: "cost or components (optional)" %>
+  </div>
+  <div>
+    <%= f.text_area :effects, placeholder: "effects", class: "spell-effects" %>
+  </div>
+  <div>
+    <%= f.submit ">", class: "spell-submit submit" %>
+  </div>
+<% end %>

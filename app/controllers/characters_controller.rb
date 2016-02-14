@@ -35,6 +35,8 @@ class CharactersController < ApplicationController
       3.times do
         Tool.create(character: @character)
       end
+    when "Witch"
+      Spellbook.create(character: @character)
     end
     @character.archetype.def_moves.where(free: true).each do |m|
       Move.create(character: @character, def_move: m)

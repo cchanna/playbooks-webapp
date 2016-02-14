@@ -1,0 +1,29 @@
+<span class="name">
+  <%= spell.name %>
+</span>
+<% if spell.dangerous %>
+  <span class="spell-icon">F</span>
+<% end %>
+<% if spell.dark %>
+  <span class="spell-icon">M</span>
+<% end %>
+<% if spell.time %>
+  <span class="spell-icon">C</span>
+<% end %>
+<% if spell.attention %>
+  <span class="spell-icon">E</span>
+<% end %>
+<% if spell.spirit %>
+  <span class="spell-icon">D</span>
+<% end %>
+<%= button_to "e", [:edit, spell], method: :get, remote: true, class: "edit-spell button" %>
+<% if spell.cost %>
+<div class="cost">
+  <strong>Cost:</strong> <%= spell.cost %>
+</div>
+<% end %>
+<% if spell.effects %>
+<div class="description">
+  <%= spell.effects %>
+</div>
+<% end %>

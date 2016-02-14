@@ -1,7 +1,7 @@
 <h1>
   Dire Fates
 </h1>
-<h2 id="archetype" class="bar">
+<h2 class="bar">
   <span class="title">
     First Peril
   </span>
@@ -11,7 +11,7 @@
     <%= render df %>
   <% end %>
 </div>
-<h2 id="archetype" class="bar">
+<h2 class="bar">
   <span class="title">
     Second Peril
   </span>
@@ -22,7 +22,7 @@
   <% end %>
 </div>
 <% if @character.archetype == Archetype.find_by(name: "Warrior") %>
-  <h2 id="archetype" class="bar">
+  <h2 class="bar">
     <span class="title">
       Third Peril
     </span>
@@ -32,7 +32,7 @@
       <%= render df %>
     <% end %>
   </div>
-  <h2 id="archetype" class="bar">
+  <h2 class="bar">
     <span class="title">
       Final Peril
     </span>
@@ -43,7 +43,7 @@
     <% end %>
   </div>
 <% else %>
-  <h2 id="archetype" class="bar">
+  <h2 class="bar">
     <span class="title">
       Final Peril
     </span>

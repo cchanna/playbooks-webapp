@@ -20,6 +20,7 @@ resources :characters, except: [:index, :destroy] do
     post 'decrement_spirit'
   end
   resources :fates, only: [:new, :edit, :create]
+  resources :spells, only: [:new, :create]
 end
 resources :dire_fates, only: [:update]
 
@@ -28,10 +29,10 @@ resources :moves, only: [:edit, :update, :create] do
 end
 
 resources :move_fields, only: [:destroy]
-
 resources :gifts, only: [:edit, :update]
-
 resources :tools, only: [:show, :destroy, :edit, :update]
+resources :spells, only: [:edit, :update, :destroy, :show] 
+
 resources :fates, only: [:update] do
   member do
     post 'increment'
@@ -40,6 +41,7 @@ resources :fates, only: [:update] do
     post 'uncomplete'
   end
 end
+
 
 resources :relationships, only: [:show, :destroy] do
   member do

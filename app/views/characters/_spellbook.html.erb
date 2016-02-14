@@ -1,0 +1,17 @@
+<% unless spellbook.nil? %>
+  <div id="spellbook">
+    <h1>
+      Spellbook
+    </h1>
+    <div class="spells">
+      <% spellbook.spells.order(:name).each do |s| %>
+        <div class="spell">
+          <%= render s %>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= button_to "+", [:new, @character, :spell], method: :get, remote: true, id: "new-spell", class: "button" %>
+    </div>
+  </div>
+<% end %>

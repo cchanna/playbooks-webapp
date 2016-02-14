@@ -1,0 +1,42 @@
+#spellbook {
+  text-align: left;
+  .spell {
+    margin-bottom: 1rem;
+
+
+    .spell-icon {
+      font-family: "icomoon";
+      margin-right: .5rem;
+    }
+
+    .cost {
+      margin-top: -.4rem;
+      line-height: 1.1rem;
+    }
+    .complications {
+      &.checklist {
+        padding: 0;
+        // text-align: left;
+      }
+      .complication {
+        margin-right: 1rem;
+        display: inline-block;
+        font-family: "Spartan";
+        font-weight: bold;
+        input[type=checkbox] {
+          display: none;
+          &:checked + label {
+            color: $link;
+          }
+        }
+      }
+    }
+  }
+  form {
+    // text-align: left;
+    input[type=text] {
+      // text-align: left;
+      padding: 0 .5rem 0 .5rem
+    }
+  }
+}
