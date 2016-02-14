@@ -22,8 +22,8 @@
     <strong>Cost:</strong> <%= spell.cost %>
   </div>
 <% end %>
-<% if spell.effects %>
-<div class="description">
-  <%= spell.effects %>
-</div>
+<% unless spell.effects.nil? || spell.effects == ""  %>
+  <div class="description">
+    <%= spell.effects %>
+  </div>
 <% end %>
