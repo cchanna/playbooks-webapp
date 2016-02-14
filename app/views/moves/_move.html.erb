@@ -17,16 +17,23 @@
       </div>
     <% end %>
   <% end %>
-  <% move.move_fields.each do |f| %>
-    <% unless f.def_move_field.creatable %>
-      <div class="move-fields field">
-        <%= f.def_move_field.name.capitalize%>: <%= f.text %>
+  <div class="move-fields">
+    <% move.move_fields.each do |f| %>
+      <% unless f.def_move_field.creatable %>
+        <div class="field">
+          <%= f.def_move_field.name.capitalize%>: <%= f.text %>
+        </div>
+      <% end %>
+    <% end %>
+    <% move.move_options.each do |o| %>
+      <div class="field">
+        <%= o.def_move_option.option %>
       </div>
     <% end %>
-  <% end %>
-  <% if move.def_move.has_description %>
-    <div>
-      <%= move.description %>
-    </div>
-  <% end %>
+    <% if move.def_move.has_description %>
+      <div class="field">
+        <%= move.description %>
+      </div>
+    <% end %>
+  </div>
 </div>
