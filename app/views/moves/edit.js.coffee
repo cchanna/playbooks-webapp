@@ -27,6 +27,11 @@ $ ->
 
 
 
+  $('input[type=text]').prop
+    autocomplete: 'off'
+
+
+
   if $(radio).is(":checked")
     currentMove =  $(radio + ":checked").closest(move)
     unless currentMove.find(optionBoxChecked).length == currentMove.data("options")
