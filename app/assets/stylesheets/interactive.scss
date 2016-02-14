@@ -196,7 +196,6 @@ a {
     cursor: pointer;
   }
   :checked ~ .body {
-    // color: $gray;
     opacity: 1.0;
   }
   label.move {
