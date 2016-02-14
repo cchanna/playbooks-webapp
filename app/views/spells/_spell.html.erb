@@ -17,10 +17,10 @@
   <span class="spell-icon">*</span>
 <% end %>
 <%= button_to "e", [:edit, spell], method: :get, remote: true, class: "edit-spell button" %>
-<% if spell.cost %>
-<div class="cost">
-  <strong>Cost:</strong> <%= spell.cost %>
-</div>
+<% unless spell.cost.nil? || spell.cost == "" %>
+  <div class="cost">
+    <strong>Cost:</strong> <%= spell.cost %>
+  </div>
 <% end %>
 <% if spell.effects %>
 <div class="description">
