@@ -9,7 +9,7 @@ a {
 
 .under, .under-check, .under-check-free {
   text-shadow: 2px 0px 0px $background, -2px 0px 0px $background;
-  color: $red_link;
+  color: $link;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
   display: inline-block;
@@ -21,7 +21,7 @@ a {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   &:before {
-    background: $red_link;
+    background: $link;
     content: "";
     position: absolute;
     z-index: -1;
@@ -45,16 +45,16 @@ a {
   &:hover, &:focus {
     &:before {
       right: 0;
-      background-color: $red_link_hover;
+      background-color: $link_hover;
     }
-    color: $red_link_hover;
+    color: $link_hover;
   }
 }
 
 .under-check {
   &:hover, &:focus {
     &:before {
-      background-color: $red_link_hover;
+      background-color: $link_hover;
     }
     &.brave:before {
       background-color: $brave;
@@ -84,7 +84,7 @@ a {
       background-color: $nostat;
       opacity: 0.5;
     }
-    color: $red_link_hover;
+    color: $link_hover;
     &.brave {
       color: rgba($brave, 0.5);
     }
@@ -158,7 +158,7 @@ a {
   input[type="radio"], input[type="checkbox"] {
   }
   &:hover label.move {
-    color: $red_link_hover;
+    color: $link_hover;
     &.brave {
       color: rgba($brave, 0.5);
     }
@@ -207,7 +207,7 @@ a {
   input[type="radio"], input[type="checkbox"] {
     display: none;
     &:checked+label {
-      color: $red_link;
+      color: $link;
       &.dire-fate {
         color: rgba($gray, 0.4);
         &:hover {
@@ -286,9 +286,9 @@ a {
       }
     }
     &.dire-fate {
-      color: $red_link;
+      color: $link;
       &:hover {
-        color: rgba($red_link, 0.6);
+        color: rgba($link, 0.6);
       }
 
     }
@@ -298,7 +298,7 @@ a {
 .checklist, .check-title {
   input[type="radio"], input[type="checkbox"] {
     &:checked+label:hover {
-      color: rgba($red_link, 0.5);
+      color: rgba($link, 0.5);
       &.brave {
         color: rgba($brave, 0.5);
       }
@@ -342,7 +342,7 @@ a {
   -moz-osx-font-smoothing: grayscale;
   background: none;
   border: none;
-  color: $red_link;
+  color: $link;
   position: relative;
   -webkit-transition: color 0.3s, transform 0.3s, background-color 0.3s;
   transition: color 0.3s, transform 0.3s, background-color 0.3s;
@@ -355,11 +355,11 @@ a {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   &:focus {
-    color: $red_link_hover;
+    color: $link_hover;
   }
   &:hover {
     color: white;
-    background-color: $red_link_hover;
+    background-color: $link_hover;
   }
 }
 

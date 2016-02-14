@@ -6,7 +6,7 @@
     font-size: 1rem;
   }
   #symbol, #other {
-    color: $red_link;
+    color: $link;
   }
   #examples {
     font-style: italic;
@@ -26,7 +26,7 @@
     display: inline-block;
     margin: 0rem .5rem 0rem .5rem;
     a {
-      color: $red_link;
+      color: $link;
       -webkit-transition: color 0.3s;
       transition: opacity 0.3s;
       text-shadow: none;
@@ -48,7 +48,7 @@
       &:before {
         -webkit-transition: opacity 2s;
         transition: opacity 2s;
-        color: $red_link;
+        color: $link;
         opacity: 0;
         font-size: 2rem;
         text-shadow: none;
@@ -90,7 +90,7 @@
     cursor: pointer;
     &:hover {
       label {
-        color:$red_link_hover;
+        color:$link_hover;
       }
     }
     .tool-example {

@@ -1,15 +1,15 @@
 #header {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cc2828+0,ffffff+100 */
   background: #cc2828; /* Old browsers */
-  background: -moz-linear-gradient(45deg, $red_header 0%, $red_link_hover 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg, $red_header 0%, $red_link_hover 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, $red_header 0%,$red_link_hover 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$red_header', endColorstr='$red_link_hover',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: -moz-linear-gradient(45deg, $header 0%, $link_hover 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, $header 0%, $link_hover 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, $header 0%,$link_hover 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$header', endColorstr='$link_hover',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   width: 100%;
   padding: .2rem 1rem .2rem 1rem;
   border: none;
   a {
-    text-shadow: 2px 0px 0px $red_header, -2px 0px 0px $red_header;
+    text-shadow: 2px 0px 0px $header, -2px 0px 0px $header;
     color: white;
     font-size: 1rem;
     &:before {

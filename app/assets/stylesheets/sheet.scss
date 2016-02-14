@@ -17,13 +17,13 @@
     &:before {
       content: "";
       position: absolute;
-      background-color: $red_link;
+      background-color: $link;
       z-index: -3;
       bottom: 50%;
       left: 1rem;
       right: 1rem;
       height: 3px;
-      border: 1px inset $red_link;
+      border: 1px inset $link;
       border-radius: 6px;
     }
 
@@ -107,7 +107,7 @@
     display: inline-block;
     bottom: .2rem;
     &:focus {
-      color: $red_link;
+      color: $link;
     }
   }
   #spirit {
@@ -123,7 +123,7 @@
     margin-top: -.7rem;
   }
   .field {
-    color: $red_link;
+    color: $link;
   }
   .dire-fates {
     padding-top: 0;
