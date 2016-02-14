@@ -54,6 +54,6 @@ class SpellsController < ApplicationController
   private
     def spell_params
       params.require(:spell).permit(:name, :dangerous, :dark,
-         :time, :attention, :cost, :effects)
+         :time, :attention, :cost, :effects, :spirit)
     end
 end
