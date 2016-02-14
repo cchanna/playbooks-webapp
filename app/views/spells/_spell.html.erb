@@ -14,7 +14,7 @@
   <span class="spell-icon">E</span>
 <% end %>
 <% if spell.spirit %>
-  <span class="spell-icon">D</span>
+  <span class="spell-icon">*</span>
 <% end %>
 <%= button_to "e", [:edit, spell], method: :get, remote: true, class: "edit-spell button" %>
 <% if spell.cost %>
