@@ -18,7 +18,7 @@
         </div>
       </div>
     <% else %>
-      <% @move.character.archetype.def_moves.each do |dm| %>
+      <% @move.character.archetype.def_moves.order(:id).each do |dm| %>
         <% if dm == @move.def_move || !@move.character.moves.exists?(def_move_id: dm.id) %>
         <% if dm.options_selectable %>
         <% options = dm.options_selectable %>
