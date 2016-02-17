@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214015731) do
+ActiveRecord::Schema.define(version: 20160217212920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20160214015731) do
   create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.integer  "archetype_id"
-    t.boolean  "setting",      default: false
-    t.integer  "brave"
-    t.integer  "fierce"
-    t.integer  "wary"
-    t.integer  "clever"
-    t.integer  "strange"
+    t.boolean  "setting",          default: false
+    t.integer  "starting_brave"
+    t.integer  "starting_fierce"
+    t.integer  "starting_wary"
+    t.integer  "starting_clever"
+    t.integer  "starting_strange"
     t.integer  "spirit"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "def_dire_fates", force: :cascade do |t|
