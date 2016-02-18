@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217212920) do
+ActiveRecord::Schema.define(version: 20160217232104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 20160217212920) do
     t.text    "description"
     t.string  "advance"
     t.string  "complete"
+  end
+
+  create_table "def_improvements", force: :cascade do |t|
+    t.integer "archetype_id"
+    t.string  "action"
+    t.string  "value"
+    t.integer "order"
   end
 
   create_table "def_looks", force: :cascade do |t|
@@ -134,8 +141,16 @@ ActiveRecord::Schema.define(version: 20160217212920) do
     t.string   "name"
     t.text     "description"
     t.string   "detail"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "improvement_id"
+  end
+
+  create_table "improvements", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "def_improvement_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "looks", force: :cascade do |t|
@@ -164,8 +179,9 @@ ActiveRecord::Schema.define(version: 20160217212920) do
     t.integer  "character_id"
     t.integer  "def_move_id"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "improvement_id"
   end
 
   create_table "name_categories", force: :cascade do |t|
@@ -207,13 +223,21 @@ ActiveRecord::Schema.define(version: 20160217212920) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "stat_changes", force: :cascade do |t|
+    t.integer "improvement_id"
+    t.string  "stat"
+    t.integer "value",          default: 1
+  end
+
   create_table "tools", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "def_tool_id"
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "improvement_id"
+    t.integer  "replaces"
   end
 
   create_table "trust_questions", force: :cascade do |t|
@@ -226,8 +250,10 @@ ActiveRecord::Schema.define(version: 20160217212920) do
     t.integer  "character_id"
     t.integer  "def_vow_id"
     t.string   "detail"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "improvement_id"
+    t.integer  "replaces"
   end
 
 end

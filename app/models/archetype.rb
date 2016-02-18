@@ -7,4 +7,5 @@ class Archetype < ActiveRecord::Base
   has_many :def_moves, dependent: :destroy
   has_many :def_fates, dependent: :destroy
   has_many :def_dire_fates, dependent: :destroy
+  has_many :def_improvements, dependent: :destroy
 end

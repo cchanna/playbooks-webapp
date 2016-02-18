@@ -78,6 +78,7 @@ $ ->
       $(".change-fate-#{id}").prop disabled: true
       $(me).submit()
       changeToUncomplete me
+      slideTo '<%= new_character_improvement_path(@character) %>'
 
   onUncomplete = (me) ->
     fate = $(me).closest(".fate")

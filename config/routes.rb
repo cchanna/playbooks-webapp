@@ -21,6 +21,7 @@ resources :characters, except: [:index, :destroy] do
   end
   resources :fates, only: [:new, :edit, :create]
   resources :spells, only: [:new, :create]
+  resources :improvements, only: [:new, :create, :edit]
 end
 resources :dire_fates, only: [:update]
 
@@ -31,7 +32,8 @@ end
 resources :move_fields, only: [:destroy]
 resources :gifts, only: [:edit, :update]
 resources :tools, only: [:show, :destroy, :edit, :update]
-resources :spells, only: [:edit, :update, :destroy, :show] 
+resources :spells, only: [:edit, :update, :destroy, :show]
+resources :improvements, only: [:update, :destroy]
 
 resources :fates, only: [:update] do
   member do

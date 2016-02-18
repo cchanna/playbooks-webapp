@@ -1,78 +1,83 @@
-<div class="narrow">
-  <h1>
-    Edit
-  </h1>
-  <div>
-    <%= link_to "Setting", [:setting_symbol, @character], class: @character.setting ? "slide under complete" : "slide under" %>
-  </div>
-  <div>
-    <% if @character.name? %>
-      <%= link_to "Name: #{@character.name}", [:name, :edit, @character], class: "slide under complete" %>
-    <% else %>
-      <%= link_to "Name", [:name, :edit, @character], class: "slide under" %>
-    <% end %>
-  </div>
-  <div>
-    <% if @character.looks.count > 0 %>
-      <% result = "" %>
-      <% @character.looks.order(:def_look_id).each do |l| %>
-        <% result += " • #{l.def_look.look}" %>
-      <% end %>
-      <% link = result[3..-1] %>
-      <%= link_to "Look: #{link}", [:look, :edit, @character], class: "slide under complete" %>
-    <% else %>
-      <%= link_to "Look", [:look, :edit, @character], class: "slide under" %>
-    <% end %>
-  </div>
-  <div>
-    <% html_class = (@character.relationships.count > 0) ? "slide under complete" : "slide under" %>
-    <%= link_to "Trust", [:new, @character, :relationship], class: html_class %>
-  </div>
-  <% if @character.relationships.count > 0 %>
+<div id="edit" class="narrow">
+  <div id="edit-links">
+    <h1>
+      Edit
+    </h1>
     <div>
-      <% if @character.fates.count == 0 %>
-        <%= link_to "Fate", [:new, @character, :fate], class: "slide under" %>
+      <%= link_to "Setting", [:setting_symbol, @character], class: @character.setting ? "slide under complete" : "slide under" %>
+    </div>
+    <div>
+      <% if @character.name? %>
+        <%= link_to "Name: #{@character.name}", [:name, :edit, @character], class: "slide under complete" %>
       <% else %>
-        <%= link_to "Fate: #{@character.fates.first.def_fate.name}", [:edit, @character, @character.fates.first], class: "slide under complete" %>
+        <%= link_to "Name", [:name, :edit, @character], class: "slide under" %>
       <% end %>
     </div>
-    <% @character.tools.each do |t| %>
+    <div>
+      <% if @character.looks.count > 0 %>
+        <% result = "" %>
+        <% @character.looks.order(:def_look_id).each do |l| %>
+          <% result += " • #{l.def_look.look}" %>
+        <% end %>
+        <% link = result[3..-1] %>
+        <%= link_to "Look: #{link}", [:look, :edit, @character], class: "slide under complete" %>
+      <% else %>
+        <%= link_to "Look", [:look, :edit, @character], class: "slide under" %>
+      <% end %>
+    </div>
+    <div>
+      <% html_class = (@character.relationships.count > 0) ? "slide under complete" : "slide under" %>
+      <%= link_to "Trust", [:new, @character, :relationship], class: html_class %>
+    </div>
+    <% if @character.relationships.count > 0 %>
       <div>
-        <% if t.name %>
-          <%= link_to "Tool: #{t.name}", [:edit, t], class: "slide under complete" %>
+        <% if @character.fates.count == 0 %>
+          <%= link_to "Fate", [:new, @character, :fate], class: "slide under" %>
         <% else %>
-          <%= link_to "Tool", [:edit, t], class: "slide under" %>
+          <%= link_to "Fate: #{@character.fates.first.def_fate.name}", [:edit, @character, @character.fates.first], class: "slide under complete" %>
         <% end %>
       </div>
+      <% @character.tools.each do |t| %>
+        <div>
+          <% if t.name %>
+            <%= link_to "Tool: #{t.name}", [:edit, t], class: "slide under complete" %>
+          <% else %>
+            <%= link_to "Tool", [:edit, t], class: "slide under" %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @character.gift %>
+        <div>
+          <% if @character.gift.name %>
+            <%= link_to "Gift: #{@character.gift.name}", [:edit, @character.gift], class: "slide under complete" %>
+          <% else %>
+            <%= link_to "Gift", [:edit, @character.gift], class: "slide under" %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @character.archetype.name == "Warrior" %>
+        <div>
+          <% if @character.vows.count == 2 %>
+            <%= link_to "Vows", [:vows, :edit, @character], class: "slide under complete" %>
+          <% else %>
+            <%= link_to "Vows", [:vows, :edit, @character], class: "slide under" %>
+          <% end %>
+        </div>
+      <% end %>
+      <% @character.moves.order(:id).limit(@character.archetype.starting_move_count).each do |m| %>
+        <div>
+          <% if m.def_move %>
+            <%= link_to "Move#{m.def_move.free ? " (free)" : ""}: #{m.def_move.name}", [:edit, m], class: "slide under complete" %>
+          <% else %>
+            <%= link_to "Move", [:edit, m], class: "slide under" %>
+          <% end %>
+        </div>
+      <% end %>
+      <% @character.improvements.order(:id).each do |i| %>
+        <%= render partial: "improvements/link", locals: {improvement: i} %>
+      <% end %>
     <% end %>
-    <% if @character.gift %>
-      <div>
-        <% if @character.gift.name %>
-          <%= link_to "Gift: #{@character.gift.name}", [:edit, @character.gift], class: "slide under complete" %>
-        <% else %>
-          <%= link_to "Gift", [:edit, @character.gift], class: "slide under" %>
-        <% end %>
-      </div>
-    <% end %>
-    <% if @character.archetype.name == "Warrior" %>
-      <div>
-        <% if @character.vows.count == 2 %>
-          <%= link_to "Vows", [:vows, :edit, @character], class: "slide under complete" %>
-        <% else %>
-          <%= link_to "Vows", [:vows, :edit, @character], class: "slide under" %>
-        <% end %>
-      </div>
-    <% end %>
-    <% @character.moves.order(:id).limit(@character.archetype.starting_move_count).each do |m| %>
-      <div>
-        <% if m.def_move %>
-          <%= link_to "Move#{m.def_move.free ? " (free)" : ""}: #{m.def_move.name}", [:edit, m], class: "slide under complete" %>
-        <% else %>
-          <%= link_to "Move", [:edit, m], class: "slide under" %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+  </div>
   <% if @character.name? &&
         @character.def_looks.count > 0 &&
         @character.relationships.count > 0 &&
@@ -84,6 +89,9 @@
     <div class="text-center">
       <div class="submit-wrapper">
         <%= link_to ">", @character, class: "slide submit" %>
+      </div>
+      <div>
+        <%= link_to "Add improvement", character_improvements_path(@character), remote: true, method: :post, class: "button add-improvement" %>
       </div>
     </div>
   <% end %>

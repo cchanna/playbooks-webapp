@@ -440,3 +440,24 @@ form {
     }
   }
 }
+
+
+.word-button {
+  padding: .3rem;
+  border: none;
+  font-family: "Spartan", sans-serif;
+  display: block;
+  width: 100%;
+  text-align: left;
+  height: auto;
+  white-space: normal;
+  font-size: .8rem;
+  &.vow {
+    line-height: normal;
+    font-size: .8rem;
+  }
+  &a {
+    // width: auto;
+    // display: inline-block;
+  }
+}

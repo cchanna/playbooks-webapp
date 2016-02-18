@@ -21,8 +21,11 @@ $ ->
   startHidden alternateSubmitButton
   lookSubmitButton = '#edit-look-form .edit-character-form-submit'
   textField = 'input[type=text]'
-
   lookCheckBoxes = 'input[type=checkbox]'
+  editLinks = '#edit-links'
+
+  addImprovement = '.add-improvement'
+
   $(lookCheckBoxes).prop
     checked: false
 
@@ -82,4 +85,8 @@ $ ->
     else
       hide alternateSubmitButton
 
+  $(addImprovement).on 'ajax:success', (e, data, status, xhr) ->
+    improvement =  $(editLinks).append(data).children().last()
+    growIn improvement
+    
   fadeInBody()

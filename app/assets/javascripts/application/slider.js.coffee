@@ -47,6 +47,29 @@ fadeIn = (element, doFollowup) ->
 @fadeInBody = (after) ->
   show '#slider', after
 
+@growIn = (element, after) ->
+  height = $(element).innerHeight()
+  $(element).css opacity: 0
+  $(element).css height: 0
+  $(element).animate height: height, ->
+    show element, after
+
+@shrinkOut = (element, after) ->
+  hide element, ->
+    $(element).animate height: 0, after
+
+@growReplace = (element, html, after) ->
+  height1 = $(element).innerHeight()
+  $(element).find('input').prop disabled: true
+  fadeOut element, ->
+    $(element).html(html)
+    height2 = $(element).innerHeight()
+    $(element).css height: height1
+    $(element).animate height: height2
+    $(element).css height: "auto"
+    $(element).find('input').prop disabled: false
+    show element, after
+
 @pushStateTo = (url) ->
   console.log 'push state ' + url
   history.pushState {}, '', url
@@ -54,6 +77,7 @@ fadeIn = (element, doFollowup) ->
 replaceStateWith = (url) ->
   console.log 'replace state with ' + url
   history.replaceState {}, '', url
+
 
 @request = (url, dataMethod, doOnFailure) ->
   $.ajax(url: url, dataType: "script", method: dataMethod).complete (data, status) =>

@@ -1,0 +1,23 @@
+<div id="edit-improvement" class="narrow">
+  <h1>
+    Edit Improvement
+  </h1>
+  <%= form_for @improvement, remote:true do |f| %>
+  <div class="checklist">
+    <% @character.archetype.def_improvements.each do |di| %>
+      <div>
+        <% unless @improvement.def_improvement != di and @character.improvements.exists?(def_improvement: di) %>
+          <%= f.radio_button :def_improvement_id, di.id, class: "improvement-radio" %>
+          <%= f.label "def_improvement_id_#{di.id}", text(di), class: "improvement under-check" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+    <div id="improvement-options">
+      <%= render partial: "options" %>
+    </div>
+  <% end %>
+  <div class="text-center">
+    <%= link_to "Delete improvement", @improvement, remote: true, method: :delete, class: "delete under" %>
+  </div>
+</div>

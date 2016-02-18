@@ -1,0 +1,16 @@
+<div>
+  <% link = "Improvement" %>
+  <% css_class = "slide under" %>
+  <% complete = false %>
+  <% unless improvement.def_improvement.nil? %>
+    <% case improvement.def_improvement.action %>
+    <% when "add stat" %>
+      <% link = "Improvement: #{text(improvement.def_improvement)}" %>
+      <% complete = true %>
+    <% end %>
+  <% end %>
+  <% if complete %>
+    <% css_class += " complete" %>
+  <% end %>
+  <%= link_to link, [:edit, @character, improvement], class: css_class %>
+</div>
