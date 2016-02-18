@@ -2,3 +2,7 @@ add stat : fierce
 add stat : wary
 add stat : clever
 add stat : strange
+move: self
+move: self
+move: other
+move: other
