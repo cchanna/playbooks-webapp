@@ -7,7 +7,7 @@
   </span>
 </h2>
 <div class="checklist dire-fates">
-  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 1}).order(:id).each do |df| %>
+  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 1}).order('def_dire_fates.order').each do |df| %>
     <%= render df %>
   <% end %>
 </div>
@@ -17,7 +17,7 @@
   </span>
 </h2>
 <div class="checklist dire-fates">
-  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 2}).order(:id).each do |df| %>
+  <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 2}).order('def_dire_fates.order').each do |df| %>
     <%= render df %>
   <% end %>
 </div>
@@ -28,7 +28,7 @@
     </span>
   </h2>
   <div class="checklist dire-fates">
-    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order(:id).each do |df| %>
+    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order('def_dire_fates.order').each do |df| %>
       <%= render df %>
     <% end %>
   </div>
@@ -38,7 +38,7 @@
     </span>
   </h2>
   <div class="checklist dire-fates">
-    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 4}).order(:id).each do |df| %>
+    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 4}).order('def_dire_fates.order').each do |df| %>
       <%= render df %>
     <% end %>
   </div>
@@ -49,7 +49,7 @@
     </span>
   </h2>
   <div class="checklist dire-fates">
-    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order(:id).each do |df| %>
+    <% dire_fates.joins(:def_dire_fate).where(def_dire_fates: {peril: 3}).order('def_dire_fates.order').each do |df| %>
       <%= render df %>
     <% end %>
   </div>

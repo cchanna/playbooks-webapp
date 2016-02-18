@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217232104) do
+ActiveRecord::Schema.define(version: 20160218212324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160217232104) do
     t.string  "text"
     t.integer "peril"
     t.integer "archetype_id"
+    t.integer "order"
   end
 
   create_table "def_fates", force: :cascade do |t|

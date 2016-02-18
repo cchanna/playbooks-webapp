@@ -1,4 +1,5 @@
-DefAdvancement.seed
+DefImprovement.seed
+DefDireFate.seed
 
 # Archetype.destroy_all
 
