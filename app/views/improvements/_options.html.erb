@@ -1,7 +1,23 @@
 <% unless @improvement.def_improvement.nil? %>
-  <div class="text-center">
-    <div class="submit-wrapper">
-      <%= link_to ">", [:edit, @character], class: "slide submit" %>
+  <% complete = false %>
+  <% case @improvement.def_improvement.action %>
+  <% when "move" %>
+    <% link = "Move" %>
+    <% css = "slide under" %>
+    <% if @improvement.move && @improvement.move.def_move %>
+      <% link += ": #{@improvement.move.def_move.name}" %>
+      <% complete = true %>
+    <% end %>
+    <% css += " complete" if complete %>
+    <%= link_to link, [:edit, @improvement.move], class: css %>
+  <% when "add stat" %>
+    <% complete = true %>
+  <% end %>
+  <% if complete %>
+    <div class="text-center">
+      <div class="submit-wrapper">
+        <%= link_to ">", [:edit, @character], class: "slide submit" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

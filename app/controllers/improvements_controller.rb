@@ -27,11 +27,18 @@ class ImprovementsController < ApplicationController
     @improvement = Improvement.find params[:id]
     @character = @improvement.character
     @improvement.stat_change.delete unless @improvement.stat_change.nil?
+    @improvement.move.delete unless @improvement.move.nil?
     @improvement.update(improvement_params)
-    if @improvement.def_improvement.action == "add stat"
+    case @improvement.def_improvement.action
+    when "add stat"
       StatChange.create(
         improvement: @improvement,
         stat: @improvement.def_improvement.value
+      )
+    when "move"
+      Move.create(
+        character: @character,
+        improvement: @improvement
       )
     end
     render partial: "options"

@@ -5,8 +5,13 @@
   <% unless improvement.def_improvement.nil? %>
     <% case improvement.def_improvement.action %>
     <% when "add stat" %>
-      <% link = "Improvement: #{text(improvement.def_improvement)}" %>
+      <% link += ": #{text(improvement.def_improvement)}" %>
       <% complete = true %>
+    <% when "move" %>
+      <% if improvement.move && improvement.move.def_move %>
+        <% link += " (Move): #{improvement.move.def_move.name}" %>
+        <% complete = true %>
+      <% end %>
     <% end %>
   <% end %>
   <% if complete %>
