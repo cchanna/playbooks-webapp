@@ -53,6 +53,7 @@ class DefDireFate < ActiveRecord::Base
             order += 1
           else
             peril += 1
+            order = 1
           end
         end
         DefDireFate.where(order: nil).delete_all
