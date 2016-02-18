@@ -22,7 +22,8 @@ class DefImprovement < ActiveRecord::Base
             improvement = DefImprovement.find_by(
               archetype: archetype,
               action: action,
-              value: value
+              value: value,
+              order: nil
             )
             if improvement
               improvement.update(
