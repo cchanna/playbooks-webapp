@@ -11,7 +11,7 @@
       <% end %>
       <div class="check-title-free move" data-options='<%= options %>'>
         <%= f.radio_button "def_move_id", @move.def_move_id %>
-        <% move_class = "under-check-free move #{@move.def_move.stat ? @move.def_move.stat : 'nostat'} "%>
+        <% move_class = "under-check-free move-name #{@move.def_move.stat ? @move.def_move.stat : 'nostat'} "%>
         <%= f.label "def_move_id_#{@move.def_move_id}", @move.def_move.name, class: move_class %>
         <div class="body">
           <%= parsemove(@move.def_move.body).html_safe %>

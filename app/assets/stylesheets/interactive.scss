@@ -157,7 +157,7 @@ a {
 .check-title {
   input[type="radio"], input[type="checkbox"] {
   }
-  &:hover label.move {
+  &:hover label.move-name {
     color: $link_hover;
     &.brave {
       color: rgba($brave, 0.5);
@@ -198,7 +198,7 @@ a {
   :checked ~ .body {
     opacity: 1.0;
   }
-  label.move {
+  label.move-name {
     margin: 0;
   }
 }

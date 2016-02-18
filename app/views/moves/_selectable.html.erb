@@ -7,7 +7,7 @@
   <div class="check-title move" data-options='<%= options %>'>
     <%= f.radio_button "def_move_id", dm.id %>
     <% move_stat = dm.stat ? dm.stat : 'nostat' %>
-    <% move_class = "under-check move #{move_stat}"%>
+    <% move_class = "under-check move-name #{move_stat}"%>
     <%= f.label "def_move_id_#{dm.id}", dm.name, class: move_class %>
     <div class="body">
       <%= parsemove(dm.body).html_safe %>
