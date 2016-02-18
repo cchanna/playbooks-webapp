@@ -64,9 +64,9 @@ fadeIn = (element, doFollowup) ->
   fadeOut element, ->
     $(element).html(html)
     height2 = $(element).innerHeight()
-    $(element).css height: height1
-    $(element).animate height: height2
-    $(element).css height: "auto"
+    $(element).height height1
+    $(element).animate height: height2, ->
+      $(element).height "auto"
     $(element).find('input').prop disabled: false
     show element, after
 
