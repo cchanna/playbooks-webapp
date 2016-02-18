@@ -13,6 +13,7 @@
 /tmp
 .env
 .byebug_history
+/notes
 
 # ignore precompiled assets
 public/assets/**
