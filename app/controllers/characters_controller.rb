@@ -18,11 +18,11 @@ class CharactersController < ApplicationController
   def create
     @character = Character.create(character_params)
     @character.update(
-      brave: @character.archetype.brave,
-      fierce: @character.archetype.fierce,
-      wary: @character.archetype.wary,
-      clever: @character.archetype.clever,
-      strange: @character.archetype.strange,
+      starting_brave: @character.archetype.brave,
+      starting_fierce: @character.archetype.fierce,
+      starting_wary: @character.archetype.wary,
+      starting_clever: @character.archetype.clever,
+      starting_strange: @character.archetype.strange,
       spirit: 2
     )
     @character.archetype.def_dire_fates.each do |ddf|
